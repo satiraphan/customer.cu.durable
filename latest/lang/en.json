@@ -1,0 +1,10 @@
+{
+	"global" : {
+		"add" : "Add", 
+		"edit" : "Edit",
+		"remove" : "Remove",
+		"dismiss" : "Dismiss",
+		"home" : "Home",
+		"search" : "Search"
+	},
+}

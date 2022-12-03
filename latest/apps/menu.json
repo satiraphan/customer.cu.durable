@@ -1,0 +1,36 @@
+[
+	{
+		"appname" : "location",
+		"name" : "สถานที่เก็บของ",
+		"icon" : "fa fa-building",
+		"path" : "apps/location/index.php"
+	},{
+		"appname" : "asset",
+		"name" : "รายการครุภัณฑ์",
+		"icon" : "fa fa-box",
+		"path" : "apps/asset/index.php"
+	},{
+		"appname" : "accctrl",
+		"name" : "ระบบจัดการผู้ใช้งาน",
+		"icon_type" : "feather",
+		"icon" : "users",
+		"path" : "apps/accctrl/index.php"
+	},{
+		"appname" : "dashboard",
+		"name" : "ระบบจัดการครุภัณฑ์",
+		"icon" : "fa fa-list-check",
+		"path" : "apps/dashboard/index.php"
+	},{
+		"appname" : "dashboard",
+		"name" : "ระบบจัดการงาน",
+		"icon_type" : "feather",
+		"icon" : "trello",
+		"path" : "apps/dashboard/index.php"
+	},{
+		"appname" : "dashboard",
+		"name" : "รายงาน",
+		"icon_type" : "feather",
+		"icon" : "trello",
+		"path" : "apps/dashboard/index.php"
+	}
+]
