@@ -16,10 +16,10 @@
 		"icon" : "users",
 		"path" : "apps/accctrl/index.php"
 	},{
-		"appname" : "dashboard",
+		"appname" : "counting",
 		"name" : "ระบบจัดการครุภัณฑ์",
 		"icon" : "fa fa-list-check",
-		"path" : "apps/dashboard/index.php"
+		"path" : "apps/counting/index.php"
 	},{
 		"appname" : "dashboard",
 		"name" : "ระบบจัดการงาน",

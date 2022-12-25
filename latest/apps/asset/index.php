@@ -11,7 +11,7 @@
 	$os = new oceanos($dbc);
 	$panel = new ipanel($dbc,$os->auth);
 
-	$panel->setApp("authentication","Authentication");
+	$panel->setApp("asset","Assets");
 	$panel->setView(isset($_GET['view'])?$_GET['view']:'asset');
 
 	$panel->setMeta(array(
@@ -39,8 +39,8 @@
 		'plugins/moment/moment.min.js'
 	];
 	App.loadPlugins(plugins, null).then(() => {
-		App.checkAll()
+		App.checkAll();
+		
 	
-
 	}).then(() => App.stopLoading())
 </script>
