@@ -12,8 +12,8 @@
 	$os = new oceanos($dbc);
 
 	foreach($_POST['items'] as $item){
-		$building = $dbc->GetRecord("buildings","*","id=".$item);
-		$dbc->Delete("buildings","id=".$item);
+		$building = $dbc->GetRecord("asm_locations","*","id=".$item);
+		$dbc->Delete("asm_locations","id=".$item);
 		$os->save_log(0,$_SESSION['auth']['user_id'],"building-delete",$id,array("buildings" => $building));
 	}
 

@@ -11,22 +11,23 @@
 	$dbc->Connect();
 	$os = new oceanos($dbc);
 
-	if($dbc->HasRecord("buildings","name = '".$_POST['name']."'")){
+	if($dbc->HasRecord("asm_locations","name = '".$_POST['name']."' AND id != ".$_POST['id'])){
 		echo json_encode(array(
 			'success'=>false,
 			'msg'=>'Building Name is already exist.'
 		));
 	}else{
 		$data = array(
-			'name' => $_POST['name'],
+			"name" => addslashes($_POST['name']),
 			'#updated' => 'NOW()',
+			"detail" => addslashes($_POST['detail'])
 		);
 
-		if($dbc->Update("buildings",$data,"id=".$_POST['id'])){
+		if($dbc->Update("asm_locations",$data,"id=".$_POST['id'])){
 			echo json_encode(array(
 				'success'=>true
 			));
-			$building = $dbc->GetRecord("buildings","*","id=".$_POST['id']);
+			$building = $dbc->GetRecord("asm_locations","*","id=".$_POST['id']);
 			$os->save_log(0,$_SESSION['auth']['user_id'],"building-edit",$_POST['id'],array("buildings" => $building));
 		}else{
 			echo json_encode(array(

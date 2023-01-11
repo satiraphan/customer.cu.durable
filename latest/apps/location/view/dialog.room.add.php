@@ -25,19 +25,21 @@
 	$blueprint = array(
 		array(
 			array(
-				"type" => "combobox",
+				"type" => "comboboxdb",
 				"name" => "building",
-				"source" => array('อาคาร 1','อาคาร 2','อาคาร 3'),
-				"caption" => "ชื่ออาหาร",
-				"placeholder" => "ชื่ออาหาร"
+				"source" => array(
+					"table" => "asm_locations",
+					"name" => "name",
+					"value" => "id",
+					"where" => "type = 1"
+				),
+				"caption" => "ชื่ออาคาร"
 			)
 		),array(
 			array(
 				"type" => "combobox",
-				"name" => "building",
-				"source" => array('ชั้น 1','ชั้น 2','ชั้น 3'),
-				"caption" => "ชื่อชั้น",
-				"placeholder" => "ชื่ออาหาร"
+				"name" => "parent",
+				"caption" => "ชื่ออาคาร"
 			)
 		),array(
 			array(

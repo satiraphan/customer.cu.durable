@@ -8,7 +8,10 @@ $("#tblRoom").DataTable({
 	"ajax": "apps/location/store/store-room.php",	
 	"aoColumns": [
 		{"bSortable":false		,"data":"id"		,"sClass":"hidden-xs text-center",	"sWidth": "20px"  },
-		{"bSort":true			,"data":"name"	},
+		{"bSort":true			,"data":"name","sClass":"text-center" 	},
+		{"bSort":true			,"data":"floor","sClass":"text-center" 	},
+		{"bSort":true			,"data":"building","sClass":"text-center" 	},
+		{"bSort":true			,"data":"status","sClass":"text-center" 	},
 		{"bSortable":false		,"data":"id"		,"sClass":"text-center" , "sWidth": "80px"  }
 	],"order": [[ 1, "desc" ]],
 	"createdRow": function ( row, data, index ) {
@@ -20,7 +23,7 @@ $("#tblRoom").DataTable({
 		$("td", row).eq(0).html(fn.ui.checkbox("chk_room",data[0],selected));
 		s = '';
 		s += fn.ui.button("btn btn-xs btn-outline-dark","far fa-pen","fn.app.location.room.dialog_edit("+data[0]+")");
-		$("td", row).eq(2).html(s);
+		$("td", row).eq(5).html(s);
 	}
 });
 fn.ui.datatable.selectable("#tblRoom","chk_room");

@@ -26,8 +26,8 @@
 		array(
 			array(
 				"name" => "name",
-				"caption" => "ชื่ออาหาร",
-				"placeholder" => "ชื่ออาหาร"
+				"caption" => "ชื่ออาคาร",
+				"placeholder" => "ชื่ออาคาร"
 			)
 		),array(
 			array(

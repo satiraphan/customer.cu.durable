@@ -26,7 +26,7 @@
 			if($removable){
 				echo '<ul>';
 				foreach($items as $item){
-					$room = $dbc->GetRecord("rooms","*","id=".$item);
+					$room = $dbc->GetRecord("asm_locations","*","id=".$item);
 					echo "<li>".$room['id'].' : '.$room['name']."</li>";
 				}
 				echo '</ul>';

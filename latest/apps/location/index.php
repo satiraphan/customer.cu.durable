@@ -46,19 +46,19 @@
 		switch($panel->getView()){
 			
 			case "building":
-				//include "control/controller.building.view.js";
+				include "control/controller.building.view.js";
 				if($os->allow("location","add"))include "control/controller.building.add.js";
 				if($os->allow("location","edit"))include "control/controller.building.edit.js";
 				if($os->allow("location","remove"))include "control/controller.building.remove.js";
 				break;
 			case "floor":
-				//include "control/controller.floor.view.js";
+				include "control/controller.floor.view.js";
 				if($os->allow("location","add"))include "control/controller.floor.add.js";
 				if($os->allow("location","edit"))include "control/controller.floor.edit.js";
 				if($os->allow("location","remove"))include "control/controller.floor.remove.js";
 				break;
 			case "room":
-				//include "control/controller.room.view.js";
+				include "control/controller.room.view.js";
 				if($os->allow("location","add"))include "control/controller.room.add.js";
 				if($os->allow("location","edit"))include "control/controller.room.edit.js";
 				if($os->allow("location","remove"))include "control/controller.room.remove.js";

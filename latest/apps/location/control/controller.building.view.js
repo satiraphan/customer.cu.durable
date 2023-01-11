@@ -8,7 +8,9 @@ $("#tblBuilding").DataTable({
 	"ajax": "apps/location/store/store-building.php",	
 	"aoColumns": [
 		{"bSortable":false		,"data":"id"		,"sClass":"hidden-xs text-center",	"sWidth": "20px"  },
+		{"bSort":true			,"data":"code"	},
 		{"bSort":true			,"data":"name"	},
+		{"bSort":true			,"data":"status","sClass":"text-center"	},
 		{"bSortable":false		,"data":"id"		,"sClass":"text-center" , "sWidth": "80px"  }
 	],"order": [[ 1, "desc" ]],
 	"createdRow": function ( row, data, index ) {
@@ -19,8 +21,12 @@ $("#tblBuilding").DataTable({
 		}
 		$("td", row).eq(0).html(fn.ui.checkbox("chk_building",data[0],selected));
 		s = '';
+		s += fn.ui.switchbox(data.status=="1","fn.app.location.building.dialog_edit("+data[0]+")");
+		$("td", row).eq(4).html(s);
+
+		s = '';
 		s += fn.ui.button("btn btn-xs btn-outline-dark","far fa-pen","fn.app.location.building.dialog_edit("+data[0]+")");
-		$("td", row).eq(2).html(s);
+		$("td", row).eq(4).html(s);
 	}
 });
 fn.ui.datatable.selectable("#tblBuilding","chk_building");

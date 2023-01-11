@@ -7,6 +7,16 @@
 			success: function(html){
 				$("body").append(html);
 				fn.ui.modal.setup({dialog_id : "#dialog_edit_room"});
+
+				$("form[name=form_editroom] select[name=building]").change(function(){
+					$("form[name=form_editroom] select[name=parent]").html("");
+					$.post("apps/location/xhr/action-list-building.php",{building_id:$(this).val()},function(json){
+						for(i in json){
+							let s = '<option value="'+json[i][0]+'">'+json[i][1]+'</option>';
+							$("form[name=form_editroom] select[name=parent]").append(s);
+						}
+					},"json");
+				});
 			}
 		});
 	};

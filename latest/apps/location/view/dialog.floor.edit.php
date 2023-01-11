@@ -12,7 +12,7 @@
 	$dbc->Connect();
 
 	$os = new oceanos($dbc);
-	$floor = $dbc->GetRecord("floors","*","id=".$_POST['id']);
+	$floor = $dbc->GetRecord("asm_locations","*","id=".$_POST['id']);
 
 	$modal = new imodal($dbc,$os->auth);
 
@@ -34,6 +34,38 @@
 				"caption" => "Name",
 				"placeholder" => "Floor Name",
 				"value" => $floor['name']
+			)
+		)
+	);
+
+	$blueprint = array(
+		array(
+			array(
+				"type" => "comboboxdb",
+				"name" => "parent",
+				"source" => array(
+					"table" => "asm_locations",
+					"name" => "name",
+					"value" => "id",
+					"where" => "type = 1"
+				),
+				"caption" => "ชื่ออาคาร",
+				"value" => $floor['parent']
+			)
+		),array(
+			array(
+				"name" => "name",
+				"caption" => "ชื่อชั้น",
+				"placeholder" => "ชื่อชั้น",
+				"value" => $floor['name']
+			)
+		),array(
+			array(
+				"type" => "textarea",
+				"name" => "detail",
+				"caption" => "รายละเอียด",
+				"placeholder" => "รายละเอียด",
+				"value" => $floor['detail']
 			)
 		)
 	);

@@ -12,7 +12,7 @@
 	$dbc->Connect();
 
 	$os = new oceanos($dbc);
-	$building = $dbc->GetRecord("buildings","*","id=".$_POST['id']);
+	$building = $dbc->GetRecord("asm_locations","*","id=".$_POST['id']);
 
 	$modal = new imodal($dbc,$os->auth);
 
@@ -34,6 +34,14 @@
 				"caption" => "Name",
 				"placeholder" => "Building Name",
 				"value" => $building['name']
+			)
+		),array(
+			array(
+				"type" => "textarea",
+				"name" => "detail",
+				"caption" => "รายละเอียด",
+				"placeholder" => "รายละเอียด",
+				"value" => $building['detail']
 			)
 		)
 	);

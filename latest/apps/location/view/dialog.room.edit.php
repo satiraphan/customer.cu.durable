@@ -12,7 +12,7 @@
 	$dbc->Connect();
 
 	$os = new oceanos($dbc);
-	$room = $dbc->GetRecord("rooms","*","id=".$_POST['id']);
+	$room = $dbc->GetRecord("asm_locations","*","id=".$_POST['id']);
 
 	$modal = new imodal($dbc,$os->auth);
 
@@ -34,6 +34,55 @@
 				"caption" => "Name",
 				"placeholder" => "Room Name",
 				"value" => $room['name']
+			)
+		)
+	);
+
+	
+	$floor = $dbc->GetRecord("asm_locations","*","id=".$room['parent']);
+
+	
+	$blueprint = array(
+		array(
+			array(
+				"type" => "comboboxdb",
+				"name" => "building",
+				"source" => array(
+					"table" => "asm_locations",
+					"name" => "name",
+					"value" => "id",
+					"where" => "type = 1"
+				),
+				"caption" => "ชื่ออาคาร",
+				"value" => $floor['parent']
+			)
+		),array(
+			array(
+				"type" => "comboboxdb",
+				"name" => "parent",
+				"source" => array(
+					"table" => "asm_locations",
+					"name" => "name",
+					"value" => "id",
+					"where" => "type = 2 AND parent = ". $floor['parent']
+				),
+				"caption" => "ชื่ออาคาร",
+				"value" => $room['parent']
+			)
+		),array(
+			array(
+				"name" => "name",
+				"caption" => "ห้อง",
+				"placeholder" => "ห้อง",
+				"value" => $room['name']
+			)
+		),array(
+			array(
+				"type" => "textarea",
+				"name" => "detail",
+				"caption" => "รายละเอียด",
+				"placeholder" => "รายละเอียด",
+				"value" => $room['detail']
 			)
 		)
 	);

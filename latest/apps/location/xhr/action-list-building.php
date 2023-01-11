@@ -11,11 +11,18 @@
 	$dbc->Connect();
 	$os = new oceanos($dbc);
 
-	foreach($_POST['items'] as $item){
-		$room = $dbc->GetRecord("asm_locations","*","id=".$item);
-		$dbc->Delete("asm_locations","id=".$item);
-		$os->save_log(0,$_SESSION['auth']['user_id'],"room-delete",$id,array("rooms" => $room));
+	$locations = array();
+
+	$sql = "SELECT * FROM asm_locations WHERE type=2";
+	$rst = $dbc->Query($sql);
+	while($list = $dbc->Fetch($rst)){
+		array_push($locations,array(
+			$list['id'],
+			$list['name']
+		));
 	}
+
+	echo json_encode($locations);
 
 	$dbc->Close();
 ?>

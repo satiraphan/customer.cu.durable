@@ -10,13 +10,21 @@
 	$dbc->Connect();
 
 	$columns = array(
-		"id" => "buildings.id",
-		"name" => "buildings.name",
+		"id" => "asm_locations.id",
+		"code" => "asm_locations.code",
+		"name" => "asm_locations.name",
+		"type" => "asm_locations.type",
+		"created" => "asm_locations.created",
+		"updated" => "asm_locations.updated",
+		"detail" => "asm_locations.detail",
+		"parent" => "asm_locations.parent",
+		"status" => "asm_locations.status",
 	);
 
 	$table = array(
 		"index" => "id",
-		"name" => "buildings",
+		"name" => "asm_locations",
+		"where" => "asm_locations.type = 1",
 	);
 
 	$dbc->SetParam($table,$columns,$_GET['order'],$_GET['columns'],$_GET['search']);

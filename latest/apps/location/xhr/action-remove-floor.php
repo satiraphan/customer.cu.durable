@@ -12,8 +12,8 @@
 	$os = new oceanos($dbc);
 
 	foreach($_POST['items'] as $item){
-		$floor = $dbc->GetRecord("floors","*","id=".$item);
-		$dbc->Delete("floors","id=".$item);
+		$floor = $dbc->GetRecord("asm_locations","*","id=".$item);
+		$dbc->Delete("asm_locations","id=".$item);
 		$os->save_log(0,$_SESSION['auth']['user_id'],"floor-delete",$id,array("floors" => $floor));
 	}
 

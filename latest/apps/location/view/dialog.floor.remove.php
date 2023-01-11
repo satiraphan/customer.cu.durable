@@ -26,7 +26,7 @@
 			if($removable){
 				echo '<ul>';
 				foreach($items as $item){
-					$floor = $dbc->GetRecord("floors","*","id=".$item);
+					$floor = $dbc->GetRecord("asm_locations","*","id=".$item);
 					echo "<li>".$floor['id'].' : '.$floor['name']."</li>";
 				}
 				echo '</ul>';
