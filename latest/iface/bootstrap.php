@@ -24,8 +24,7 @@
 </head>
 
 <body class="<?php if($menu_type=="topnav")echo'sticky-navbar';?>">
-
-	<div id="ajaxloader" class="fade"></div>
+	<?php include_once "comp/loader.php";?>
 
 	<!-- Sidebar -->
 	<div class="sidebar">
@@ -77,10 +76,17 @@
 			if($os->load_variable("needrestart")=="yes")echo'<a class="btn btn-danger ml-2" href="javascript:;" onclick="fn.system.restart()">Need Restart</a>';
 			?>
 			
-			
 			<ul class="nav nav-circle ml-auto">
-				<li class="nav-item d-md-none">
-				<a class="nav-link nav-link-faded nav-icon" data-toggle="modal" href="#html/ajax/searchModal"><i class="material-icons">search</i></a></li>
+				<li class="nav-item d-md-none"><a class="nav-link nav-link-faded nav-icon" data-toggle="modal" href="#html/ajax/searchModal"><i class="material-icons">search</i></a></li>
+				<li class="nav-item d-none d-sm-block mr-2">
+					<input readonly id="online_debug" type="text" class="form-control">
+				</li>
+				<li class="nav-item d-none d-sm-block">
+					<div class="custom-control custom-switch mt-2">
+						<input id="bOnline" class="custom-control-input" type="checkbox" name="bOnline" value="yes" checked="">
+						<label for="bOnline" class="custom-control-label">Online</label>
+					</div>
+				</li>
 				<li class="nav-item d-none d-sm-block"><a class="nav-link nav-link-faded nav-icon" href="" id="refreshPage"><i class="material-icons">refresh</i></a></li>
 				<?php include "part/iface_notify.php";?>
 				<li class="nav-item dropdown ml-2">

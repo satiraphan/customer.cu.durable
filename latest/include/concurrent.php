@@ -46,7 +46,8 @@ class concurrent{
 			"success" => true,
 			"user_id" => $user['id'],
 			"user_name" => $user['name'],
-			"token" => $token
+			"token" => $token,
+			"session_id" => session_id()
 		);
 	}
 	

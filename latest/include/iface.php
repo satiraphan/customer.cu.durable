@@ -73,6 +73,8 @@
 				}
 			}			
 		}
+
+		
 		
 		function EchoInterface(){
 			echo '<div class="card">';
@@ -136,6 +138,19 @@
 			echo '</div>';
 			
 		}
+
+		function EchoPageInterface(){
+			echo '<div class="card">';
+				echo '<div class="card-body">';
+				include_once "view/page.".$this->view.".php";
+				echo '</div>';
+			echo '</div>';
+		}
+
+		function EchoViewInterface(){
+				include_once "view/page.".$this->view.".php";
+		}
+		
 		
 		function PageBreadcrumb(){
 			echo '<ol class="breadcrumb page-breadcrumb mb-0">';

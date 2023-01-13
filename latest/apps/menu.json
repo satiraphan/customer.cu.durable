@@ -1,9 +1,19 @@
 [
 	{
+		"appname" : "counter",
+		"name" : "การตรวจนับ",
+		"icon" : "fa fa-box-check",
+		"path" : "apps/counter/index.php"
+	},{
 		"appname" : "location",
 		"name" : "สถานที่เก็บของ",
 		"icon" : "fa fa-building",
 		"path" : "apps/location/index.php"
+	},{
+		"appname" : "category",
+		"name" : "หมวดหมู่ครุภัณฑ์",
+		"icon" : "fa fa-tree",
+		"path" : "apps/category/index.php"
 	},{
 		"appname" : "asset",
 		"name" : "รายการครุภัณฑ์",
@@ -17,7 +27,7 @@
 		"path" : "apps/accctrl/index.php"
 	},{
 		"appname" : "counting",
-		"name" : "ระบบจัดการครุภัณฑ์",
+		"name" : "เตรียมการตรวจนับ",
 		"icon" : "fa fa-list-check",
 		"path" : "apps/counting/index.php"
 	},{

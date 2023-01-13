@@ -103,6 +103,9 @@ var fn={
 			}else{
 				return data;
 			}
+		},
+		update : function(service){
+
 		}
 	},
 	notify : {
@@ -242,25 +245,11 @@ var fn={
 					break;
 			}
 		},
-		login : function(){
-			$.post("ajax/abox/action-login.php",$("form[name=form_login]").serialize(),function(response){
-				if(response.success){
-					window.location = "#apps/dashboard/index.php";
-					fn.navigate("dashboard");
-					//window.location.reload();
-				}else{
-					fn.alertbox("Access Denied",response.msg);
-				}
-			},"json");
-			return false;
-		},
-		logout : function(){
-			GoogleAuth.signOut();
-			$.post("ajax/abox/action-logout.php",function(html){
-				window.location.reload();
-			});
-		},
 		init : function(auto_start){
+
+
+
+			
 			new Switchery(document.getElementById('checkbox-ios1'));
 			var changeCheckbox = document.querySelector('#checkbox-ios1');
 			
@@ -454,8 +443,9 @@ var fn={
 		var token = $.cookie('nebulaos.token');;
 		if(token != null){
 			$.post("ajax/auth/action-check-save-logon.php",{token:token},function(response){
-				window.location.reload();
-				console.log(response);
+				if(response){
+					window.location.reload();
+				}
 			},"json");
 		}
 	},
@@ -468,7 +458,7 @@ var fn={
 				//fn.navigate("dashboard");
 				if($("#remember").prop("checked")){
 					
-					$.cookie('nebulaos.token', response.token,{ expires: 7 });
+					$.cookie('nebulaos.token', response.session_id,{ expires: 7 });
 				}
 				window.location.reload();
 			}else{

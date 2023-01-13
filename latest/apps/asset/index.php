@@ -11,26 +11,20 @@
 	$os = new oceanos($dbc);
 	$panel = new ipanel($dbc,$os->auth);
 
-	$panel->setApp("asset","Assets");
-	$panel->setView(isset($_GET['view'])?$_GET['view']:'asset');
+	$panel->setApp("asset","Asset");
+	$panel->setView(isset($_GET['view'])?$_GET['view']:'view');
 
 	$panel->setMeta(array(
-		array("asset","ครุภัณฑ์","far fa-user"),
-		array("add","เพิ่มครุภัณฑ์","far fa-plus"),
+		array("add","Add","fa fa-circle-plus"),
+		array("edit","Edit","fa fa-pen"),
+		array("view","View","fa fa-eye"),
 	));
-?>
-<?php
 	$panel->PageBreadcrumb();
+	$panel->EchoViewInterface();
 ?>
-<div class="row">
-	<div class="col-xl-12">
-	<?php
-		$panel->EchoInterface();
-	?>
-	</div>
-</div>
 <script>
 	var plugins = [
+		'apps/asset/include/interface.js',
 		'plugins/datatables/dataTables.bootstrap4.min.css',
 		'plugins/datatables/responsive.bootstrap4.min.css',
 		'plugins/datatables/jquery.dataTables.bootstrap4.responsive.min.js',
@@ -39,8 +33,21 @@
 		'plugins/moment/moment.min.js'
 	];
 	App.loadPlugins(plugins, null).then(() => {
-		App.checkAll();
-		
-	
+		App.checkAll()
+	<?php
+		switch($panel->getView()){
+			case "add":
+				if($os->allow("asset","add"))include "control/controller.add.js";
+				break;
+			case "edit":
+				if($os->allow("asset","edit"))include "control/controller.edit.js";
+				break;
+			case "view":
+				include "control/controller.view.js";
+				if($os->allow("asset","edit"))include "control/controller.photo.js";
+				if($os->allow("asset","remove"))include "control/controller.remove.js";
+				break;
+		}
+	?>
 	}).then(() => App.stopLoading())
 </script>

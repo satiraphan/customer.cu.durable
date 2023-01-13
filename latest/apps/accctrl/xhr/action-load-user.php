@@ -13,10 +13,10 @@
 	
 	
 	function load_user($dbc,$id){
-		$user = $dbc->GetRecord("users","*","id=".$id);
-		$group = $dbc->GetRecord("groups","*","id=".$user['gid']);
-		$contact = $dbc->GetRecord("contacts","*","id=".$user['contact']);
-		$address = $dbc->GetRecord("address","*","contact=".$contact['id']);
+		$user = $dbc->GetRecord("os_users","*","id=".$id);
+		$group = $dbc->GetRecord("os_groups","*","id=".$user['gid']);
+		$contact = $dbc->GetRecord("os_contacts","*","id=".$user['contact']);
+		$address = $dbc->GetRecord("os_address","*","contact=".$contact['id']);
 		$setting = json_decode($user['setting'],true);
 		
 		if($contact['avatar']==""){

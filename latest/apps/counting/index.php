@@ -12,22 +12,15 @@
 	$panel = new ipanel($dbc,$os->auth);
 
 	$panel->setApp("counting","Counting");
-	$panel->setView(isset($_GET['view'])?$_GET['view']:'count');
+	$panel->setView(isset($_GET['view'])?$_GET['view']:'view');
 
 	$panel->setMeta(array(
-		array("count","Count","far fa-user"),
-		array("manage","Manage","far fa-user"),
-		array("history","History","far fa-user"),
+		array("lookup","Lookup","fa fa-lookup"),
+		array("manage","Manage","fa fa-manage"),
 	));
 	$panel->PageBreadcrumb();
+	$panel->EchoViewInterface();
 ?>
-<div class="row">
-	<div class="col-xl-12">
-	<?php
-		$panel->EchoInterface();
-	?>
-	</div>
-</div>
 <script>
 	var plugins = [
 		'apps/counting/include/interface.js',
@@ -42,27 +35,21 @@
 		App.checkAll()
 	<?php
 		switch($panel->getView()){
-			case "count":
-				//include "control/controller.count.view.js";
-				if($os->allow("counting","add"))include "control/controller.count.add.js";
-				if($os->allow("counting","edit"))include "control/controller.count.edit.js";
-				if($os->allow("counting","remove"))include "control/controller.count.remove.js";
-				//if($os->allow("counting","assign"))include "control/controller.count.assign.js";
-				//if($os->allow("counting","start"))include "control/controller.count.start.js";
-				//if($os->allow("counting","end"))include "control/controller.count.end.js";
+			case "view":
+				include "control/controller.view.js";
+				if($os->allow("counting","add"))include "control/controller.add.js";
+				if($os->allow("counting","edit"))include "control/controller.edit.js";
+				if($os->allow("counting","edit"))include "control/controller.close.js";
+				if($os->allow("counting","edit"))include "control/controller.start.js";
+				break;
+				break;
+			case "lookup":
+				if($os->allow("counting","lookup"))include "control/controller.lookup.js";
 				break;
 			case "manage":
-			//	include "control/controller.manage.view.js";
-			//	if($os->allow("counting","add"))include "control/controller.manage.add.js";
-			//	if($os->allow("counting","edit"))include "control/controller.manage.edit.js";
-				//if($os->allow("counting","remove"))include "control/controller.manage.remove.js";
-				//if($os->allow("counting","approve"))include "control/controller.manage.approve.js";
+				include "control/controller.manage.js";
 				break;
-			case "history":
-			//	include "control/controller.history.view.js";
-				//if($os->allow("counting","view"))include "control/controller.history.view.js";
-				break;
-}
+		}
 	?>
 	}).then(() => App.stopLoading())
 </script>

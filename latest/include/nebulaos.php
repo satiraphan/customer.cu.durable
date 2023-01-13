@@ -86,6 +86,45 @@ class nebulaos extends oceanos{
 			
 		}
 	}
+
+		function create_table_from_record($data,$class="table",$verticle=true){
+		echo '<table class="'.$class.'">';
+		if($verticle){
+			echo '<tbody>';
+				foreach($data as $key => $item){
+					if(!is_numeric($key)){
+						echo '<tr>';
+							echo '<th>'.$key.'</th>';
+							echo '<td>'.$item.'</td>';
+						echo '</tr>';
+					}
+				}
+			echo '</tbody>';
+		}else{
+			echo '<thead>';
+				echo '<tr>';
+				foreach($data as $key => $item){
+					if(!is_numeric($key)){
+						
+							echo '<th class="text-center">'.$key.'</th>';
+						
+					}
+				}
+				echo '</tr>';
+			echo '</thead>';
+			echo '<tbody>';
+				echo '<tr>';
+				foreach($data as $key => $item){
+					if(!is_numeric($key)){
+							echo '<td class="text-center">'.$item.'</td>';
+						
+					}
+				}
+				echo '</tr>';
+			echo '</tbody>';
+		}
+		echo '</table>';
+	}
 	
 	
 	

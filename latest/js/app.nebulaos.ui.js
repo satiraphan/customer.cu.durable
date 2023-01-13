@@ -1,7 +1,6 @@
 fn.ui = {
 	unique : 0,
 	button : function(btnClass,iconClass,func,txtCaption){
-		
 		var settings = {
 			class_name : "btn btn-primary",
 			icon_type : "none", //none,font-awesome,material
@@ -34,14 +33,25 @@ fn.ui = {
 		s += '</button>';
 		return s;
 	},
-	checkbox : function(name,val,selected,multiple){
+	checkbox_custom : function(name,val,selected,multiple){
 		if(typeof multiple == "undefined")multiple = true;
-		
 		var icon_selected = (multiple?"check-square":"dot-circle")
 		var icon_notselected = (multiple?"square":"circle")
-		
+		let id = name+ '_' + val;
 		var s = '';
-		s += '<span name="' + name + '" type="checkbox" data="' + val + '" class="far fa-lg fa-'+(selected?icon_selected:icon_notselected) +'"></span>';
+		//s += '<span name="' + name + '" type="checkbox" data="' + val + '" class="far fa-lg fa-'+(selected?icon_selected:icon_notselected) +'"></span>';
+		s += '<div class="custom-control custom-checkbox">';
+			s += '<input type="checkbox" name="'+name+'" data-id="'+val+'" class="custom-control-input" id="'+id+'"'+(selected?" checked":"") +'>';
+			s += '<label class="custom-control-label" for="'+id+'"></label>';
+		s += '</div>';
+		return s;
+	},
+	checkbox : function(name,val,selected,multiple){
+		if(typeof multiple == "undefined")multiple = true;
+		var icon_selected = (multiple?"check-square":"dot-circle")
+		var icon_notselected = (multiple?"square":"circle")
+		var s = '';
+		s += '<span name="'+name+'" type="checkbox" data="' + val + '" class="far fa-lg fa-'+(selected?icon_selected:icon_notselected) +'"></span>';
 		return s;
 	},
 	switchbox : function(status,func){
@@ -55,6 +65,25 @@ fn.ui = {
 		return s;
 	},
 	datatable : {
+		init : function(){
+			$.extend(true, $.fn.dataTable.defaults, {
+				language: {
+					processing:     "กำลังโหลด...",
+					search:         "ค้นหา",
+					lengthMenu:    "แสดงผล _MENU_ รายการต่อหน้า",
+					info:           "แสดงรายการที่ _START_ ถึง _END_ จาก _TOTAL_ รายการ",
+					infoEmpty:      "ไม่พบข้อมูล",
+					infoFiltered:   "(กรองจากข้อมูลทั้งหมด _MAX_ รายการ)",
+					infoPostFix:    "",
+					paginate: {
+							first:      "หน้าแรก",
+							previous:   "ก่อนหน้า",
+							next:       "ต่อไป",
+							last:       "หน้าสุุดท้าย"
+					}
+				}
+			});
+		},
 		dom : {
 			default : "<'row mb-3'<'col-sm-12 col-md-6 d-flex align-items-center justify-content-start'f><'col-sm-12 col-md-6 d-flex align-items-center justify-content-end'B>>" +
 				"<'row'<'col-sm-12'tr>>" +
@@ -76,6 +105,79 @@ fn.ui = {
 					$(table).DataTable().ajax.reload();
 				}).change();
 			},'json');
+		},
+		selectable_custom : function(tblName,chkName,multiple,func){
+			var table = $(tblName);
+			if(typeof multiple == "undefined"){
+				multiple = true;
+			}
+
+			if(multiple){
+				table.on('change','input[type=checkbox][name='+chkName+']', function () {
+					var id = $(this).attr("data-id");
+					var index = $.inArray(id,table.data("selected"));
+					if ( index === -1 ) {
+						table.data("selected").push( id );
+					} else {
+						table.data("selected").splice( index, 1 );
+						var allchecked = true;
+						$('input[type=checkbox][name='+chkName+']').each(function(){
+							if(!$(this).prop("checked")){
+								allchecked = false;
+							}
+						});
+						if(!allchecked){
+							$('input[control='+chkName+']').prop("checked",false);
+						}
+					}
+					func();
+				});
+
+				table.on('click','input[type=checkbox][control='+chkName+']', function () {
+					var allchecked = true;
+					$('input[type=checkbox][name='+chkName+']').each(function(){
+						if(!$(this).prop("checked")){
+							allchecked = false;
+						}
+					});
+					
+					if(allchecked){
+						$('input[name='+chkName+']').prop("checked",false);
+						$('input[name='+chkName+']').each(function(){
+							var id = $(this).attr("data-id");
+							var index = $.inArray(id, table.data( "selected"));
+							if ( index != -1 ) {
+								table.data("selected").splice( index, 1 );
+							}
+						});
+					}else{
+						$('input[name='+chkName+']').prop("checked",true);
+						$('input[name='+chkName+']').each(function(){
+								var id = $(this).attr("data-id");
+								var index = $.inArray(id, table.data("selected"));
+								if ( index === -1 ) {
+									table.data( "selected").push( id );
+								}
+						});
+					}
+					func();
+				});
+
+				
+				table.find('input[control='+chkName+']').click(function(){
+					var checkbox = $(this);
+				});
+			}else{ //For General Seelction
+				table.on('click', 'td:not(:last-child, .unselectable)', function () {
+					var me = $(this).parent();
+					var id = me[0].id;
+					table.find('span[type=checkbox]').removeClass("fa-dot-circle").addClass("fa-circle");
+					$(me).find('span[type=checkbox]').removeClass("fa-circle").addClass("fa-dot-circle");
+					table.data( "selected", id );
+					table.find('tr').removeClass('selected');
+					$(me).addClass('selected');
+				});
+			}
 		},
 		selectable : function(tblName,chkName,multiple){
 			var table = $(tblName);

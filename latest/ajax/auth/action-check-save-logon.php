@@ -11,8 +11,8 @@
 	$dbc->Connect();
 	$concurrent = new concurrent($dbc);
 
-	if($dbc->HasRecord("os_concurrents","token = '".$_POST['token']."'")){
-		$conc = $dbc->GetRecord("os_concurrents","*","token = '".$_POST['token']."'");
+	if($dbc->HasRecord("os_concurrents","session_id = '".$_POST['token']."'")){
+		$conc = $dbc->GetRecord("os_concurrents","*","session_id = '".$_POST['token']."'");
 		$concurrent->login($conc['user_id']);
 		echo json_encode(true);
 	}else{

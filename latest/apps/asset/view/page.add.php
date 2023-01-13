@@ -1,21 +1,8 @@
 <?php
+	global $os,$dbc;
+
 	$modal = new iform($dbc,$os->auth);
-	$modal->setForm("form_addaccount");
-	
-	/*
-	$modal->setButton(array(
-		array("close","btn-secondary","Dismiss"),
-		array("action","btn-primary","Save Change","fn.app.accctrl.account.add()")
-	));
-	*/
-	
-	$modal->SetVariable(array(
-		array("org_id","")
-	));
-?>
-	<div>
-	</div>
-<?php
+	$modal->setForm("form_add_asset");
 
 	$blueprint = array(
 		array(
@@ -25,11 +12,30 @@
 				"placeholder" => "Account Name"
       )
 		),
+		array(
+			array(
+				"type" => "comboboxdb",
+				"name" => "cat_id",
+				"source" => array(
+					"table" => "asm_categories",
+					"name" => "name",
+					"value" => "id"
+				),
+				"caption" => "หมวดหมู่"
+			)
+		),
     array(
 			array(
 				"name" => "name",
 				"caption" => "ชื่อครุภัณฑ์",
 				"placeholder" => "ชื่อครุภัณฑ์"
+			)
+		),
+    array(
+			array(
+				"name" => "brand",
+				"caption" => "Brand",
+				"placeholder" => "Brand"
 			)
 		),
     array(
@@ -55,36 +61,51 @@
         "flex" => 3
       ),
 			array(
+				"type" => "date",
 				"name" => "date_depreciate",
 				"placeholder" => "วันหมดอายุ",
         "flex" => 3
       ),
 			array(
+				"type" => "date",
 				"name" => "date_warranty",
 				"placeholder" => "วันหมดประกัน",
         "flex" => 3
 			)
 		),array(
 			array(
-        "type" => "combobox",
-        "name" => "parent",
-        "caption" => "ห้องเก็บ",
-        "source" => array(
-          "ห้อง A","ห้อง B"
-        ),
-        "default" => array(
+				"type" => "comboboxdb",
+				"name" => "location",
+				"source" => array(
+					"table" => "asm_locations",
+					"name" => "name",
+					"value" => "id",
+					"where" => "status = 1"
+				),
+				"default" => array(
           "value" => "NULL",
           "name" => "ไม่ระบุ"
-        )
-      )
+        ),
+				"caption" => "สถานที่จัดเก็บ"
+			)
 		)
 	);
-	
-	
-	
-	$modal->SetBlueprint($blueprint);
-	$modal->EchoInterface();
 
-	
+	$modal->SetBlueprint($blueprint);
 ?>
-<button class="btn btn-outline-dark">เพิ่มครุภัณฑ์</button>
+<div class="card container">
+	<div class="card-header border-bottom">
+		<h5 class="card-title p-2"><i class="far fa-pen mr-2"></i>Add Asset</h5>
+	</div>
+	<div class="card-body">
+	<?php $modal->EchoInterface(); ?>
+	</div>
+	<div class="card-bottom border-top">
+		<div class="m-2 float-right">
+			<button class="btn btn-outline-dark" onclick="fn.app.asset.add()"><i class="fa-solid fa-save mr-1"></i> Save</button>
+		</div>
+		<div class="m-2">
+			<button class="btn btn-outline-dark" onclick="window.history.back()"><i class="fa-solid fa-up-left mr-1"></i> Back</button>
+		</div>
+	</div>
+</div>
