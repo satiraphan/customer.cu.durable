@@ -17,6 +17,7 @@
 			<thead>
 				<tr>
 					<th class="text-center">ดำเนินการ</th>
+					<th class="text-center">การตรวจนับ</th>
 					<th class="text-center">รหัสสินค้า</th>
 					<th class="text-center">รายการ</th>
 					<th class="text-center">ที่จัดเก็บ</th>
@@ -35,9 +36,8 @@
 	?>
 	</div>
 	<div class="card-bottom border-top">
-		<div class="m-2">
-			<form name="aroover">
-			<button class="btn btn-outline-dark" onclick="window.history.back()"><i class="fa-solid fa-up-left mr-1"></i> Back</button>
+		<div class="m-2 float-right">
+			<button class="btn btn-outline-warning" onclick="fn.app.counter.dialog_submit(<?php echo $counter['id'];?>)"><i class="fa-solid fa-thumbs-up mr-1"></i> ยืนยัน</button>
 		</div>
 		<div class="m-2">
 			<button class="btn btn-outline-dark" onclick="window.history.back()"><i class="fa-solid fa-up-left mr-1"></i> Back</button>

@@ -13,6 +13,7 @@ $("#tblAsset").DataTable({
 	},
 	"aoColumns": [
 		{"bSortable":false		,"data":"id"		,"class":"text-center"  },
+		{"bSort":true					,"data":"action_number"	,"class":"text-center",	},
 		{"bSort":true					,"data":"code"	,"class":"text-center",	},
 		{"bSort":true					,"data":"name"	,"class":"text-center",	},
 		{"bSort":true					,"data":"location"	,"class":"text-center",	},
@@ -21,9 +22,19 @@ $("#tblAsset").DataTable({
 	],"order": [[ 1, "desc" ]],
 	"createdRow": function ( row, data, index ) {
 		var selected = false,checked = "",s = '';
+		var counting_id = $('#tblAsset').attr('data-counting-id');
+
+		switch(data.action_number){
+			case "1":$("td", row).eq(1).html('<span class="badge badge-success">ตรวจสอบแล้ว</span>');break;
+			case "2":$("td", row).eq(1).html('<span class="badge badge-warning">เสียหาย</span>');break;
+			case "3":$("td", row).eq(1).html('<span class="badge badge-warning">ผิดตำแหน่ง</span>');break;
+			case "4":$("td", row).eq(1).html('<span class="badge badge-danger">ไม่พบ</span>');break;
+			case "5":$("td", row).eq(1).html('<span class="badge badge-warning">ปัญหาอื่น ๆ</span>');break;
+			default:$("td", row).eq(1).html('-');break;
+		}
 
 		s = '';
-		s += fn.ui.button("btn btn-xs btn-outline-dark mr-1","fa fa-box-check","fn.navigate('counter','view=inspect&id="+data[0]+"')");
+		s += fn.ui.button("btn btn-xs btn-outline-dark mr-1","fa fa-box-check","fn.navigate('counter','view=inspect&id="+data[0]+"&counting_id="+counting_id+"')");
 		s += fn.ui.button("btn btn-xs btn-outline-dark mr-1","far fa-pen","fn.navigate('asset','view=edit&id="+data[0]+"')");
 		s += fn.ui.button("btn btn-xs btn-outline-dark mr-1","far fa-images","fn.app.asset.dialog_photo("+data[0]+")");
 		s += fn.ui.button("btn btn-xs btn-outline-dark mr-1","far fa-eye","fn.navigate('asset','view=lookup&id="+data[0]+"')");

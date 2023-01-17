@@ -47,9 +47,13 @@
 				break;
 			case "count":
 				include "control/controller.count.js";
+				if($os->allow("counter","edit"))include "control/controller.submit.js";
 				break;
 			case "review":
 				if($os->allow("counter","review"))include "control/controller.review.js";
+				break;
+			case "inspect":
+				include "control/controller.inspect.js";
 				break;
 		}
 	?>

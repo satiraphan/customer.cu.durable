@@ -31,11 +31,11 @@
 		"icon" : "fa fa-list-check",
 		"path" : "apps/counting/index.php"
 	},{
-		"appname" : "dashboard",
+		"appname" : "task",
 		"name" : "ระบบจัดการงาน",
 		"icon_type" : "feather",
 		"icon" : "trello",
-		"path" : "apps/dashboard/index.php"
+		"path" : "apps/task/index.php"
 	},{
 		"appname" : "dashboard",
 		"name" : "รายงาน",

@@ -1,9 +1,8 @@
-	fn.app.counter.dialog_submit = function() {
-		var item_selected = $("#tblCounter").data("selected");
+	fn.app.counter.dialog_submit = function(id) {
 		$.ajax({
 			url: "apps/counter/view/dialog.submit.php",
 			type: "POST",
-			data: {item:item_selected},
+			data: {id:id},
 			dataType: "html",
 			success: function(html){
 				$("body").append(html);
@@ -15,9 +14,7 @@
 	fn.app.counter.submit = function(){
 		$.post("apps/counter/xhr/action-submit.php",$("form[name=form_submit_counter]").serialize(),function(response){
 			if(response.success){
-				$("#tblCounter").data("selected",[]);
-				$("#tblCounter").DataTable().draw();
-				$("#dialog_submit_counter").modal("hide");
+				fn.navigate("counter");
 			}else{
 				fn.notify.warnbox(response.msg,"Oops...");
 			}

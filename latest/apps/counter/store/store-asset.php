@@ -22,6 +22,8 @@
 		"location" => "asm_assets.location",
 		"created" => "asm_assets.created",
 		"updated" => "asm_assets.updated",
+		"action_number" => "asm_counting_items.action",
+		"validator" => "asm_counting_items.validator",
 	);
 
 	$table = array(
@@ -32,6 +34,11 @@
 				"field" => "location",
 				"table" => "asm_counting_locations",
 				"with" => "location_id"
+			),
+			array(
+				"field" => "id",
+				"table" => "asm_counting_items",
+				"with" => "asset_id"
 			)
 		),
 		"where" => "asm_counting_locations.counting_id = ".$_GET['counting_id']

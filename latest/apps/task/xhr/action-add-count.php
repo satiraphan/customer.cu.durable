@@ -11,27 +11,33 @@
 	$dbc->Connect();
 	$os = new oceanos($dbc);
 
-	if($dbc->HasRecord("os_users","name = '".$_POST['name']."'")){
+
+	if($dbc->HasRecord("counts","name = '".$_POST['name']."'")){
 		echo json_encode(array(
 			'success'=>false,
-			'msg'=>'Counter Name is already exist.'
+			'msg'=>'Count Name is already exist.'
 		));
 	}else{
 		$data = array(
+			'#id' => "DEFAULT",
 			'name' => $_POST['name'],
-			'#updated' => 'NOW()',
+			'#created' => 'NOW()',
+			'#updated' => 'NOW()'
 		);
 
-		if($dbc->Update("os_users",$data,"id=".$_POST['id'])){
+		if($dbc->Insert("counts",$data)){
+			$count_id = $dbc->GetID();
 			echo json_encode(array(
-				'success'=>true
+				'success'=>true,
+				'msg'=> $count_id
 			));
-			$counter = $dbc->GetRecord("os_users","*","id=".$_POST['id']);
-			$os->save_log(0,$_SESSION['auth']['user_id'],"counter-submit",$_POST['id'],array("os_users" => $counter));
+
+			$count = $dbc->GetRecord("counts","*","id=".$count_id);
+			$os->save_log(0,$_SESSION['auth']['user_id'],"count-add",$count_id,array("counts" => $count));
 		}else{
 			echo json_encode(array(
 				'success'=>false,
-				'msg' => "No Change"
+				'msg' => "Insert Error"
 			));
 		}
 	}
