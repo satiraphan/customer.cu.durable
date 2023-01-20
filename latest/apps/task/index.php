@@ -12,10 +12,10 @@
 	$panel = new ipanel($dbc,$os->auth);
 
 	$panel->setApp("task","Task");
-	$panel->setView(isset($_GET['view'])?$_GET['view']:'view');
+	$panel->setView(isset($_GET['view'])?$_GET['view']:'count');
 
 	$panel->setMeta(array(
-		array("count","Count","far fa-user"),
+		array("count","ตรวจสอบรายงาน","far fa-user"),
 		array("issue","Issue","far fa-user"),
 	));
 	$panel->PageBreadcrumb();
