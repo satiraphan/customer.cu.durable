@@ -21,6 +21,7 @@ $("#tblRoom").DataTable({
 			selected = true;
 		}
 		$("td", row).eq(0).html(fn.ui.checkbox("chk_room",data[0],selected));
+		$("td", row).eq(4).html(fn.ui.switchbox(data.status=="1"?true:false,"fn.app.location.change_status("+data.id+")"));
 		s = '';
 		s += fn.ui.button("btn btn-xs btn-outline-dark","far fa-pen","fn.app.location.room.dialog_edit("+data[0]+")");
 		$("td", row).eq(5).html(s);

@@ -8,8 +8,14 @@ $("#tblIssue").DataTable({
 	"ajax": "apps/task/store/store-issue.php",	
 	"aoColumns": [
 		{"bSortable":false		,"data":"id"		,"sClass":"hidden-xs text-center",	"sWidth": "20px"  },
-		{"bSort":true			,"data":"name"	},
-		{"bSortable":false		,"data":"id"		,"sClass":"text-center" , "sWidth": "80px"  }
+		{"bSort":true			,"data":"type"	},
+		{"bSort":true			,"data":"title"	},
+		{"bSort":true			,"data":"asset_id"	},
+		{"bSort":true			,"data":"issued"	},
+		{"bSort":true			,"data":"issuer"	},
+		{"bSort":true			,"data":"counting_item_id"	},
+		{"bSort":true			,"data":"remark"	},
+		{"bSortable":false		,"data":"id"		,"sClass":"text-center" , "sWidth": "120px"  }
 	],"order": [[ 1, "desc" ]],
 	"createdRow": function ( row, data, index ) {
 		var selected = false,checked = "",s = '';
@@ -19,8 +25,12 @@ $("#tblIssue").DataTable({
 		}
 		$("td", row).eq(0).html(fn.ui.checkbox("chk_issue",data[0],selected));
 		s = '';
-		s += fn.ui.button("btn btn-xs btn-outline-dark","far fa-pen","fn.app.task.issue.dialog_edit("+data[0]+")");
-		$("td", row).eq(2).html(s);
+		s += fn.ui.button("btn btn-xs btn-dark mr-1","fa fa-rotate","fn.app.task.issue.dialog_action_relocation("+data[0]+")");
+		s += fn.ui.button("btn btn-xs btn-dark mr-1","fa fa-screwdriver-wrench","fn.app.task.issue.dialog_action_repair("+data[0]+")");
+		s += fn.ui.button("btn btn-xs btn-dark mr-1","fa fa-empty-set","fn.app.task.issue.dialog_action_change_status_lost("+data[0]+")");
+		
+		s += fn.ui.button("btn btn-xs btn-outline-dark mr-1","fa-solid fa-check-double","fn.app.task.issue.dialog_close("+data[0]+")");
+		$("td", row).eq(8).html(s);
 	}
 });
 fn.ui.datatable.selectable("#tblIssue","chk_issue");

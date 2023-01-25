@@ -10,22 +10,21 @@
 	$dbc->Connect();
 
 	$columns = array(
-		"id" => "ams_tasks.id",
-		"type" => "ams_tasks.type",
-		"title" => "ams_tasks.title",
-		"asset_id" => "ams_tasks.asset_id",
-		"issued" => "ams_tasks.issued",
-		"issuer" => "ams_tasks.issuer",
-		"status" => "ams_tasks.status",
-		"closed" => "ams_tasks.closed",
-		"counting_item_id" => "ams_tasks.counting_item_id",
-		"data" => "ams_tasks.data",
-		"remark" => "ams_tasks.remark",
+		"id" => "asm_repairing.id",
+		"task_id" => "asm_repairing.task_id",
+		"asset_id" => "asm_repairing.asset_id",
+		"created" => "asm_repairing.created",
+		"updated" => "asm_repairing.updated",
+		"status" => "asm_repairing.status",
+		"data" => "asm_repairing.data",
+		"returned" => "asm_repairing.returned",
+		"date_repair_plan" => "asm_repairing.date_repair_plan",
+		"date_repair_actual" => "asm_repairing.date_repair_actual"
 	);
 
 	$table = array(
 		"index" => "id",
-		"name" => "ams_tasks",
+		"name" => "asm_repairing",
 	);
 
 	$dbc->SetParam($table,$columns,$_GET['order'],$_GET['columns'],$_GET['search']);

@@ -77,10 +77,19 @@
 				"type" => "comboboxdb",
 				"name" => "location",
 				"source" => array(
-					"table" => "asm_locations",
-					"name" => "name",
-					"value" => "id",
-					"where" => "status = 1"
+					"table" => "asm_locations AS a LEFT JOIN asm_locations AS b ON a.parent = b.id LEFT JOIN asm_locations AS c ON b.parent = c.id",
+					"name" => "
+						IF(
+							c.id IS NOT NULL,
+							CONCAT(c.name,' ',b.name,' ',a.name),
+							IF(
+								b.id IS NOT NULL,
+								CONCAT(b.name,' ',a.name),
+								a.name
+							)
+						)",
+					"value" => "a.id",
+					"where" => "a.status = 1"
 				),
 				"default" => array(
           "value" => "NULL",

@@ -42,6 +42,11 @@
 		"icon" : "trello",
 		"path" : "apps/task/index.php"
 	},{
+		"appname" : "repair",
+		"name" : "งานซ่อมบำรุง",
+		"icon" : "fa fa-wrench",
+		"path" : "apps/repair/index.php"
+	},{
 		"appname" : "dashboard",
 		"name" : "รายงาน",
 		"icon_type" : "feather",

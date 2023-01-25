@@ -12,7 +12,7 @@
 	$os = new oceanos($dbc);
 
 
-	if($dbc->HasRecord("asm_locations","name = '".$_POST['name']."'")){
+	if($dbc->HasRecord("asm_locations","name = '".$_POST['name']."' AND parent =".$_POST['parent'])){
 		echo json_encode(array(
 			'success'=>false,
 			'msg'=>'Floor Name is already exist.'

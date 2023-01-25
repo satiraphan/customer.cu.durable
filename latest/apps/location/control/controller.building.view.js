@@ -21,8 +21,9 @@ $("#tblBuilding").DataTable({
 		}
 		$("td", row).eq(0).html(fn.ui.checkbox("chk_building",data[0],selected));
 		s = '';
-		s += fn.ui.switchbox(data.status=="1","fn.app.location.building.dialog_edit("+data[0]+")");
-		$("td", row).eq(4).html(s);
+
+		$("td", row).eq(3).html(fn.ui.switchbox(data.status=="1"?true:false,"fn.app.location.change_status("+data.id+")"));
+
 
 		s = '';
 		s += fn.ui.button("btn btn-xs btn-outline-dark","far fa-pen","fn.app.location.building.dialog_edit("+data[0]+")");

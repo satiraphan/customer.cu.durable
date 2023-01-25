@@ -11,19 +11,19 @@
 	$os = new oceanos($dbc);
 	$panel = new ipanel($dbc,$os->auth);
 
-	$panel->setApp("validator","Validator");
+	$panel->setApp("repair","Repair");
 	$panel->setView(isset($_GET['view'])?$_GET['view']:'view');
 
 	$panel->setMeta(array(
-		array("view","View","fa fa-eye"),
-		array("validate","Validate","fa fa-check"),
+		array("view","View","fa fa-wrench"),
+		array("lookup","Lookup","fa fa-eye"),
 	));
 	$panel->PageBreadcrumb();
 	$panel->EchoViewInterface();
 ?>
 <script>
 	var plugins = [
-		'apps/validator/include/interface.js',
+		'apps/repair/include/interface.js',
 		'plugins/datatables/dataTables.bootstrap4.min.css',
 		'plugins/datatables/responsive.bootstrap4.min.css',
 		'plugins/datatables/jquery.dataTables.bootstrap4.responsive.min.js',
@@ -37,11 +37,11 @@
 		switch($panel->getView()){
 			case "view":
 				include "control/controller.view.js";
-				if($os->allow("validator","approve"))include "control/controller.close.js";
+				if($os->allow("repair","edit"))include "control/controller.edit.js";
+				if($os->allow("repair","return"))include "control/controller.return.js";
 				break;
-			case "validate":
-				include "control/controller.validate.js";
-				if($os->allow("validator","approve"))include "control/controller.task.js";
+			case "lookup":
+				if($os->allow("repair","lookup"))include "control/controller.lookup.js";
 				break;
 		}
 	?>

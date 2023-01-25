@@ -11,7 +11,7 @@
 	$dbc->Connect();
 	$os = new oceanos($dbc);
 
-	if($dbc->HasRecord("asm_locations","name = '".$_POST['name']."' AND id !=".$_POST['id'])){
+	if($dbc->HasRecord("asm_locations","name = '".$_POST['name']."' AND parent =".$_POST['parent']." AND id !=".$_POST['id'])){
 		echo json_encode(array(
 			'success'=>false,
 			'msg'=>'Floor Name is already exist.'

@@ -5,6 +5,7 @@
 	include "../../include/db.php";
 	include "../../include/oceanos.php";
 	include "../../include/iface.php";
+	include "../const.php";
 
 	$dbc = new dbc;
 	$dbc->Connect();

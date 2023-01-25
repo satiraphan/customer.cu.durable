@@ -21,7 +21,13 @@ var modules = {
 		add : fn.noaccess,
 		edit : fn.noaccess,
 		remove : fn.noaccess,
-		close : fn.noaccess
+		close : fn.noaccess,
+		dialog_action_relocation : fn.noaccess,
+		dialog_action_repair : fn.noaccess,
+		dialog_action_change_status_lost : fn.noaccess,
+		action_relocation : fn.noaccess,
+		action_repair : fn.noaccess,
+		action_change_status_lost : fn.noaccess
 	},
 };
 $.extend(fn.app,{task:modules});

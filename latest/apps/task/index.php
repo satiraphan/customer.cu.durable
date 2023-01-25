@@ -12,10 +12,10 @@
 	$panel = new ipanel($dbc,$os->auth);
 
 	$panel->setApp("task","Task");
-	$panel->setView(isset($_GET['view'])?$_GET['view']:'count');
+	$panel->setView(isset($_GET['view'])?$_GET['view']:'issue');
 
 	$panel->setMeta(array(
-		array("count","ตรวจสอบรายงาน","far fa-user"),
+		//array("count","ตรวจสอบรายงาน","far fa-user"),
 		array("issue","Issue","far fa-user"),
 	));
 	$panel->PageBreadcrumb();
@@ -54,7 +54,8 @@
 				if($os->allow("task","add"))include "control/controller.issue.add.js";
 				if($os->allow("task","edit"))include "control/controller.issue.edit.js";
 				if($os->allow("task","remove"))include "control/controller.issue.remove.js";
-				if($os->allow("task","close"))include "control/controller.issue.close.js";
+				if($os->allow("task","approve"))include "control/controller.issue.close.js";
+				if($os->allow("task","approve"))include "control/controller.issue.action.js";
 				break;
 		}
 	?>

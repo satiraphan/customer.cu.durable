@@ -1,7 +1,17 @@
 <?
-	global $os,$dbc;
+	global $os,$dbc,$aAction;
 	$asset = $dbc->GetRecord("asm_assets","*","id=".$_GET['id']);
 	$category = $dbc->GetRecord("asm_categories","*","id=".$asset['cat_id']);
+
+
+	if($dbc->HasRecord("asm_counting_items","counting_id = ".$_GET['counting_id']." AND asset_id = ".$asset['id'])){
+		$counting_item = $dbc->GetRecord("asm_counting_items","*","counting_id = ".$_GET['counting_id']." AND asset_id = ".$asset['id']);
+		$action_value = $counting_item['action'];
+		$counting_item_id = $counting_item['id'];
+	}else{
+		$action_value = "1";
+		$counting_item_id = "";
+	}
 ?>
 <div class="card container">
 	<div class="card-header border-bottom">
@@ -21,23 +31,22 @@
 		echo '</dl>';
 	?>
 	</div>
-	<div class="card-bottom border-top">
-		<div class="m-2">
-			<button class="btn btn-success" onclick="fn.app.counter.inspect();"><i class="fa-solid fa-check mr-1"></i> Approve</button>
-			<button class="btn btn-outline-dark" onclick="window.history.back()"><i class="fa-solid fa-up-left mr-1"></i> Back</button>
-		</div>
+	<div class="card-bottom">
+		
 		<form name="form_inspect" >
 			<input type="hidden" name="asset_id" value="<?php echo $asset['id']?>">
 			<input type="hidden" name="counting_id" value="<?php echo $_GET['counting_id']?>">
-			<input type="hidden" name="action" value="1">
-			
+			<input type="hidden" name="action" value="<?php echo $action_value;?>">
+			<input type="hidden" name="counting_item_id" value="<?php echo $counting_item_id;?>">
 			<div class="m-2 border-top pt-2">
 				<div class="btn-group" role="group" aria-label="Basic example">
-					<button type="button" xname="option" data-value="1" class="btn btn-dark text-white">ถูกต้อง</button>
-					<button type="button" xname="option" data-value="2" class="btn btn-outline-dark">แจ้งของเสีย</button>
-					<button type="button" xname="option" data-value="3" class="btn btn-outline-dark">แจ้งของผิดตำแหน่ง</button>
-					<button type="button" xname="option" data-value="4" class="btn btn-outline-dark">แจ้งของหาย</button>
-					<button type="button" xname="option" data-value="5" class="btn btn-outline-dark">อื่น ๆ</button>
+				<?php
+					foreach($aAction as $action){
+						$class = $action[0]==$action_value?"btn btn-dark text-white":"btn btn-outline-dark";
+						echo '<button type="button" xname="option" data-value="'.$action[0].'" class="'.$class.'">'.$action[1].'</button>';
+					}
+
+				?>
 				</div>
 			</div>
 			<div class="m-2 border-top pt-2 form-inline show_location">
@@ -58,4 +67,8 @@
 					<textarea class="form-control" name="detail"></textarea>
 			</div>
 		</form>
+		<div class="m-2 border-top">
+			<button class="btn btn-success" onclick="fn.app.counter.inspect();"><i class="fa-solid fa-check mr-1"></i> Approve</button>
+			<button class="btn btn-outline-dark" onclick="window.history.back()"><i class="fa-solid fa-up-left mr-1"></i> Back</button>
+		</div>
 	</div>

@@ -11,25 +11,23 @@
 	$dbc->Connect();
 	$os = new oceanos($dbc);
 
-	if($dbc->HasRecord("asm_locations","name = '".$_POST['name']."' AND parent =".$_POST['parent']." AND id !=".$_POST['id'])){
+	if($dbc->HasRecord("os_users","name = '".$_POST['name']."'")){
 		echo json_encode(array(
 			'success'=>false,
-			'msg'=>'Room Name is already exist.'
+			'msg'=>'Repair Name is already exist.'
 		));
 	}else{
 		$data = array(
-			"name" => addslashes($_POST['name']),
+			'name' => $_POST['name'],
 			'#updated' => 'NOW()',
-			"detail" => addslashes($_POST['detail']),
-			"#parent" => $_POST['parent']
 		);
 
-		if($dbc->Update("asm_locations",$data,"id=".$_POST['id'])){
+		if($dbc->Update("os_users",$data,"id=".$_POST['id'])){
 			echo json_encode(array(
 				'success'=>true
 			));
-			$room = $dbc->GetRecord("asm_locations","*","id=".$_POST['id']);
-			$os->save_log(0,$_SESSION['auth']['user_id'],"room-edit",$_POST['id'],array("rooms" => $room));
+			$repair = $dbc->GetRecord("os_users","*","id=".$_POST['id']);
+			$os->save_log(0,$_SESSION['auth']['user_id'],"repair-view",$_POST['id'],array("os_users" => $repair));
 		}else{
 			echo json_encode(array(
 				'success'=>false,

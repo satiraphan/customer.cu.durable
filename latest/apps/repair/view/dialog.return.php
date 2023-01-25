@@ -16,22 +16,16 @@
 	class myModel extends imodal{
 		function body(){
 			$dbc = $this->dbc;
-			$issue = $dbc->GetRecord("ams_tasks","*","id=".$this->param['id']);
-
-			echo '<form name="form_closeissue">';
-				echo '<div>';
-					echo '<textarea class="form-control" name="remark">'.$issue['remark'].'</textarea>';
-				echo '</div>';
-			echo '</form>';
+			$repair = $dbc->GetRecord("os_users","*","id=".$this->param['id']);
 		}
 	}
 
 	$modal = new myModel($dbc,$os->auth);
 	$modal->setParam($_POST);
-	$modal->setModel("dialog_close_issue","Close Issue");
+	$modal->setModel("dialog_return_repair","Return Repair");
 	$modal->setButton(array(
 		array("close","btn-secondary","Dismiss"),
-		array("action","btn-danger","Close","fn.app.task.issue.close()")
+		array("action","btn-danger","Return","fn.app.repair.return()")
 	));
 	$modal->EchoInterface();
 

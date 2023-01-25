@@ -40,6 +40,7 @@
 
 			if(data.checked == null){
 				s += fn.ui.button("btn btn-xs btn-outline-primary mr-1","fa fa-thumbs-up","fn.app.validator.checked("+data.id+")");
+				s += fn.ui.button("btn btn-xs btn-outline-warning mr-1","fa fa-list-check","fn.app.validator.dialog_task("+data.id+")");
 			}
 			//s += fn.ui.button("btn btn-xs btn-outline-dark mr-1","far fa-thumps-up","fn.navigate('validator','view=lookup&id="+data[0]+"')");
 			$("td", row).eq(8).html(s);

@@ -26,5 +26,6 @@ var func = {
 		edit : fn.noaccess,
 		remove : fn.noaccess
 	},
+	change_status : fn.noaccess
 };
 $.extend(fn.app,{location:func});

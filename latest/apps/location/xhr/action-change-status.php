@@ -11,18 +11,23 @@
 	$dbc->Connect();
 	$os = new oceanos($dbc);
 
-	$locations = array();
+	$location = $dbc->GetRecord("asm_locations","*","id=".$_POST['id']);
 
-	$sql = "SELECT * FROM asm_locations WHERE type=2 AND parent =".$_POST['building_id'];
-	$rst = $dbc->Query($sql);
-	while($list = $dbc->Fetch($rst)){
-		array_push($locations,array(
-			$list['id'],
-			$list['name']
-		));
+	if($location['status']==0){
+		$new_status = 1;
+	}else{
+		$new_status = 0;
 	}
+	
+	$data = array(
+		'#status' => $new_status,
+		'#updated' => 'NOW()'
+	);
 
-	echo json_encode($locations);
+	$dbc->Update("asm_locations",$data,"id=".$_POST['id']);
+	echo json_encode(array(
+		'success'=>true
+	));
 
 	$dbc->Close();
 ?>

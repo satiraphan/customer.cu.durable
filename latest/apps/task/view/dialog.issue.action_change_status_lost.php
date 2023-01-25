@@ -18,7 +18,7 @@
 			$dbc = $this->dbc;
 			$issue = $dbc->GetRecord("ams_tasks","*","id=".$this->param['id']);
 
-			echo '<form name="form_closeissue">';
+			echo '<form name="form_action">';
 				echo '<div>';
 					echo '<textarea class="form-control" name="remark">'.$issue['remark'].'</textarea>';
 				echo '</div>';
@@ -28,7 +28,7 @@
 
 	$modal = new myModel($dbc,$os->auth);
 	$modal->setParam($_POST);
-	$modal->setModel("dialog_close_issue","Close Issue");
+	$modal->setModel("dialog_action","Close Issue");
 	$modal->setButton(array(
 		array("close","btn-secondary","Dismiss"),
 		array("action","btn-danger","Close","fn.app.task.issue.close()")

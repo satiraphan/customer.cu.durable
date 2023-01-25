@@ -25,11 +25,11 @@ $("#tblAsset").DataTable({
 		var counting_id = $('#tblAsset').attr('data-counting-id');
 
 		switch(data.action_number){
-			case "1":$("td", row).eq(1).html('<span class="badge badge-success">ตรวจสอบแล้ว</span>');break;
-			case "2":$("td", row).eq(1).html('<span class="badge badge-warning">เสียหาย</span>');break;
-			case "3":$("td", row).eq(1).html('<span class="badge badge-warning">ผิดตำแหน่ง</span>');break;
-			case "4":$("td", row).eq(1).html('<span class="badge badge-danger">ไม่พบ</span>');break;
-			case "5":$("td", row).eq(1).html('<span class="badge badge-warning">ปัญหาอื่น ๆ</span>');break;
+			case "1":$("td", row).eq(1).html('<span class="badge badge-success">ข้อมูลถูกต้อง</span>');break;
+			case "2":$("td", row).eq(1).html('<span class="badge badge-warning">พบความเสียหาย</span>');break;
+			case "3":$("td", row).eq(1).html('<span class="badge badge-primary">ผิดตำแหน่ง</span>');break;
+			case "4":$("td", row).eq(1).html('<span class="badge badge-danger">ไม่พบของ</span>');break;
+			case "5":$("td", row).eq(1).html('<span class="badge badge-dark">ปัญหาอื่น ๆ</span>');break;
 			default:$("td", row).eq(1).html('-');break;
 		}
 

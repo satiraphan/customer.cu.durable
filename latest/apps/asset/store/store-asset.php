@@ -19,7 +19,7 @@
 		"date_depreciate" => "asm_assets.date_depreciate",
 		"date_warranty" => "asm_assets.date_warranty",
 		"status" => "asm_assets.status",
-		"location" => "asm_assets.location",
+		"location" => "asm_locations.name",
 		"created" => "asm_assets.created",
 		"updated" => "asm_assets.updated",
 	);
@@ -27,6 +27,13 @@
 	$table = array(
 		"index" => "id",
 		"name" => "asm_assets",
+		"join" => array(
+			array(
+				"field" => "location",
+				"table" => "asm_locations",
+				"with" => "id",
+			)
+		)
 	);
 
 	$dbc->SetParam($table,$columns,$_GET['order'],$_GET['columns'],$_GET['search']);

@@ -43,8 +43,8 @@
 	App.loadPlugins(plugins, null).then(() => {
 		App.checkAll()
 	<?php
+		include "control/controller.location.js";
 		switch($panel->getView()){
-			
 			case "building":
 				include "control/controller.building.view.js";
 				if($os->allow("location","add"))include "control/controller.building.add.js";
