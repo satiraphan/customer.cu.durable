@@ -30,7 +30,8 @@
 		'plugins/datatables/jquery.dataTables.bootstrap4.responsive.min.js',
 		'plugins/select2/css/select2.min.css',
 		'plugins/select2/js/select2.min.js',
-		'plugins/moment/moment.min.js'
+		'plugins/moment/moment.min.js',
+		'plugins/davidshimjs/qrcode.min.js'
 	];
 	App.loadPlugins(plugins, null).then(() => {
 		App.checkAll()
@@ -46,6 +47,9 @@
 				include "control/controller.view.js";
 				if($os->allow("asset","edit"))include "control/controller.photo.js";
 				if($os->allow("asset","remove"))include "control/controller.remove.js";
+				break;
+			case "lookup":
+				include "control/controller.lookup.js";
 				break;
 		}
 	?>
