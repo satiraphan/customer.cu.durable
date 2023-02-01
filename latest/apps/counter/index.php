@@ -24,6 +24,7 @@
 	$panel->PageBreadcrumb();
 	$panel->EchoViewInterface();
 ?>
+
 <script>
 	var plugins = [
 		'apps/counter/include/interface.js',
@@ -32,7 +33,9 @@
 		'plugins/datatables/jquery.dataTables.bootstrap4.responsive.min.js',
 		'plugins/select2/css/select2.min.css',
 		'plugins/select2/js/select2.min.js',
-		'plugins/moment/moment.min.js'
+		'plugins/moment/moment.min.js',
+		'plugins/qr-code/js/qrcode-reader.min.js',
+		'plugins/qr-code/css/qrcode-reader.min.css',
 	];
 	App.loadPlugins(plugins, null).then(() => {
 		App.checkAll()

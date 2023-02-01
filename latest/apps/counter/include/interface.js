@@ -9,5 +9,7 @@ var modules = {
 		cancel : fn.noaccess,
 		dialog_location_lookup : fn.noaccess,
 		select_location : fn.noaccess,
+		dialog_search : fn.noaccess,
+		search : fn.noaccess
 };
 $.extend(fn.app,{counter:modules});

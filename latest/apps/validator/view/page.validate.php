@@ -4,7 +4,11 @@
 ?>
 <div class="card container">
 	<div class="card-header border-bottom">
-		<h5 class="card-title p-2"><i class="far fa-eye mr-2"></i>Validator Validate</h5>
+		<h5 class="card-title p-2"><i class="far fa-eye mr-2"></i>ตรวจสอบการทำงาน</h5>
+		<div class="custom-control custom-switch">
+			<input onchange='$("#tblAsset").DataTable().draw();' type="checkbox" class="custom-control-input" id="chk_showall">
+			<label class="custom-control-label" for="chk_showall">Show All</label>
+		</div>
 	</div>
 	<div class="card-body">
 	<table id="tblValidate" class="table table-striped table-bordered table-hover" width="100%" counting-id="<?php echo $counting['id'];?>">

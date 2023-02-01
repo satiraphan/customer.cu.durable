@@ -1,6 +1,7 @@
 fn.ui.datatable.init();
 $("#tblAsset").data( "selected", [] );
 $("#tblAsset").DataTable({
+	scrollX: true,
 	"bStateSave": true,
 	"autoWidth" : true,
 	"processing": true,
@@ -9,13 +10,18 @@ $("#tblAsset").DataTable({
 		"url": "apps/counter/store/store-asset.php",	
 		"data": function ( d ) {
 			d.counting_id = $('#tblAsset').attr('data-counting-id');
+			d.show_all = $('#chk_showall').prop('checked');
+
+			
 		}
 	},
 	"aoColumns": [
-		{"bSortable":false		,"data":"id"		,"class":"text-center"  },
+		{"bSortable":false		,"data":"id"		,"class":"text-center","width" : "80"  },
 		{"bSort":true					,"data":"action_number"	,"class":"text-center",	},
 		{"bSort":true					,"data":"code"	,"class":"text-center",	},
+		{"bSort":true					,"data":"category"	,"class":"text-center",	},
 		{"bSort":true					,"data":"name"	,"class":"text-center",	},
+		{"bSort":true					,"data":"brand"	,"class":"text-center",	},
 		{"bSort":true					,"data":"location"	,"class":"text-center",	},
 		{"bSort":true					,"data":"status"	,"class":"text-center",	},
 		{"bSort":true					,"data":"serial"	,"class":"text-center",	},
@@ -35,8 +41,7 @@ $("#tblAsset").DataTable({
 
 		s = '';
 		s += fn.ui.button("btn btn-xs btn-outline-dark mr-1","fa fa-box-check","fn.navigate('counter','view=inspect&id="+data[0]+"&counting_id="+counting_id+"')");
-		s += fn.ui.button("btn btn-xs btn-outline-dark mr-1","far fa-pen","fn.navigate('asset','view=edit&id="+data[0]+"')");
-		s += fn.ui.button("btn btn-xs btn-outline-dark mr-1","far fa-images","fn.app.asset.dialog_photo("+data[0]+")");
+		//s += fn.ui.button("btn btn-xs btn-outline-dark mr-1","far fa-pen","fn.navigate('asset','view=edit&id="+data[0]+"')");
 		s += fn.ui.button("btn btn-xs btn-outline-dark mr-1","far fa-eye","fn.navigate('asset','view=lookup&id="+data[0]+"')");
 		$("td", row).eq(0).html(s);
 	}
@@ -129,3 +134,54 @@ $("#tblAsset").DataTable({
 			},'json');
 		}
 	}
+
+
+	fn.app.counter.dialog_search = function(counting_id,user_id) {
+		$.ajax({
+			url: "apps/counter/view/dialog.count.search.php",
+			type: "POST",
+			data : {
+				counting_id : counting_id,
+				user_id : user_id
+			},
+			dataType: "html",
+			success: function(html){
+				$("body").append(html);
+				fn.ui.modal.setup({dialog_id : "#dialog_count_search"});
+				
+			}	
+		});
+		return false;
+	}
+
+	fn.app.counter.search = function(){
+		$.post("apps/counter/xhr/action-search.php",$("form[name=form-count-search]").serialize(),function(response){
+			if(response.success){
+				fn.navigate('counter','view=inspect&id='+response.asset_id+'&counting_id='+response.asset_id);
+				//window.history.back();
+			}else{
+				fn.notify.warnbox(response.msg,"Oops...");
+			}
+		},"json");
+		return false;
+	};
+
+	
+	$.qrCodeReader.jsQRpath = "plugins/qr-code/js/jsQR/jsQR.min.js";
+	$.qrCodeReader.beepPath = "plugins/qr-code/audio/beep.mp3";
+	
+	$("#openreader-btn").qrCodeReader({
+		callback : function(code){
+			$.post("apps/counter/xhr/action-search.php",{
+				"code" : code,
+				"counting_id" : $("#openreader-btn").attr("data-counting-id")
+			},function(response){
+				if(response.success){
+					fn.navigate('counter','view=inspect&id='+response.asset_id+'&counting_id='+response.asset_id);
+					//window.history.back();
+				}else{
+					fn.notify.warnbox(response.msg,"Oops...");
+				}
+			},"json");
+		}
+	});

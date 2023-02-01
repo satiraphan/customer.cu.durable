@@ -25,10 +25,18 @@ $("#tblCounting").DataTable({
 			selected = true;
 		}
 		$("td", row).eq(0).html(fn.ui.checkbox_custom("chk_counting",data[0],selected));
+
+		switch(data.status){
+			case "1":$("td", row).eq(3).html('<span class="badge badge-warning">เตรียมการตรวจนับ</span>');break;
+			case "2":$("td", row).eq(3).html('<span class="badge badge-danger">กำลังตรวจนับ</span>');break;
+			case "3":$("td", row).eq(3).html('<span class="badge badge-success">ส่งผลตรวจแล้ว</span>');break;
+			case "4":$("td", row).eq(3).html('<span class="badge badge-dark">ตรวจสอบเรียบร้อย</span>');break;
+		}
+
+
 		s = '';
 		s += fn.ui.button("btn btn-xs btn-outline-dark mr-1","far fa-pen","fn.app.counting.dialog_edit("+data[0]+")");
 		s += fn.ui.button("btn btn-xs btn-outline-dark mr-1","far fa-wrench","fn.navigate('counting','view=manage&id="+data[0]+"')");
-
 		//s += fn.ui.button("btn btn-xs btn-outline-dark mr-1","far fa-images","fn.app.counting.dialog_photo("+data[0]+")");
 		s += fn.ui.button("btn btn-xs btn-outline-dark mr-1","far fa-eye","fn.navigate('counting','view=lookup&id="+data[0]+"')");
 		s += fn.ui.button("btn btn-xs btn-outline-warning mr-1","far fa-play","fn.app.counting.start("+data[0]+")");

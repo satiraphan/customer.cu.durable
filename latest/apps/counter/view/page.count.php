@@ -8,18 +8,28 @@
 	</div>
 	<div class="card-menu border-bottom">
 		<div class="m-2">
-		<button class="btn btn-outline-dark" onclick=""><i class="fa-solid fa-magnifying-glass"></i> ค้นหา</button>
+			<div id="reader" width="300px"></div>
+			<button id="openreader-btn" data-counting-id="<?php echo $counter['id'];?>" class="btn btn-outline-dark mr-1"><i class="fa-solid fa-barcode"></i> ค้นหา</button>
+			<button class="btn btn-outline-dark" onclick="fn.app.counter.dialog_search(<?php echo $counter['id'];?>,<?php echo $os->auth['id'];?>)"><i class="fa-solid fa-magnifying-glass"></i> ค้นหา</button>
 			<button class="btn btn-outline-dark" onclick="fn.app.counter.dialog_location_lookup(<?php echo $counter['id'];?>,<?php echo $os->auth['id'];?>)"><i class="fa-solid fa-chooise mr-1"></i> เลือกห้องที่ต้องการตรวจสอบ</button>
+		
 		</div>
+	
 	</div>
 	<div class="card-body">
+		<div class="custom-control custom-switch">
+			<input onchange='$("#tblAsset").DataTable().draw();' type="checkbox" class="custom-control-input" id="chk_showall">
+			<label class="custom-control-label" for="chk_showall">Show All</label>
+		</div>
 		<table id="tblAsset" data-counting-id="<?php echo $counter['id'];?>" class="table table-striped table-bordered table-hover" width="100%" account="<?php echo $os->auth['account'];?>">
 			<thead>
 				<tr>
 					<th class="text-center">ดำเนินการ</th>
 					<th class="text-center">การตรวจนับ</th>
 					<th class="text-center">รหัสสินค้า</th>
+					<th class="text-center">หมวดหมู่</th>
 					<th class="text-center">รายการ</th>
+					<th class="text-center">แบรนด์</th>
 					<th class="text-center">ที่จัดเก็บ</th>
 					<th class="text-center">สถานะ</th>
 					<th class="text-center">Serial Number</th>

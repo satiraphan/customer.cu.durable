@@ -56,7 +56,11 @@
 						$sql = "SELECT * FROM asm_locations WHERE status = 1";
 						$rst = $dbc->Query($sql);
 						while($location = $dbc->Fetch($rst)){
-							$selected = $asset['location']==$location['id']?" selected":"";
+							if($counting_item_id != ""){
+								$selected = $counting_item['location_id']==$location['id']?" selected":"";
+							}else{
+								$selected = $asset['location']==$location['id']?" selected":"";
+							}
 							echo '<option value="'.$location['id'].'"'.$selected .'>'.$location['name'].'</option>';
 						}
 					?>

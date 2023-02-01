@@ -36,9 +36,16 @@
 		"old_location" => "asm_assets.location",
 		"created" => "asm_assets.created",
 		"updated" => "asm_assets.updated",
+		"action" => "asm_counting_items.action",
 		"remark" => "asm_assets.remark",
 		"imgs" => "asm_assets.imgs"
 	);
+
+	$where = "asm_counting_items.counting_id = ".$_GET['counting_id'];
+
+	if($_GET['show_all']=="false"){
+		$where .=" AND asm_counting_items.checked IS NULL";
+	}
 
 	$table = array(
 		"index" => "id",
@@ -50,7 +57,7 @@
 				"with" => "id"
 			)
 		),
-		"where" => "asm_counting_items.counting_id = ".$_GET['counting_id']
+		"where" => $where
 	);
 
 	$dbc->SetParam($table,$columns,$_GET['order'],$_GET['columns'],$_GET['search']);

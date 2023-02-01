@@ -1,3 +1,5 @@
+<?php
+?>
 <div class="card">
 	<div class="card-header border-bottom">
 		<h5 class="card-title p-2"><i class="mr-2 fa-regular fa-list-check"></i>การตรวจนับ</h5>

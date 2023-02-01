@@ -29,7 +29,7 @@
 			{"bSort":true					,"data":"asset_status"	,"class":"text-center",	},
 			{"bSort":true					,"data":"validated"	,"class":"text-center",	},
 			{"bSort":true					,"data":"validator"	,"class":"text-center",	},
-			{"bSort":true					,"data":"status"	,"class":"text-center",	},
+			{"bSort":true					,"data":"action"	,"class":"text-center",	},
 			{"bSort":true					,"data":"detail"	,"class":"text-center",	},
 			{"bSortable":false		,"data":"id"		,"class":"text-center" , "sWidth": "120px"  }
 		],"order": [[ 1, "desc" ]],
@@ -42,6 +42,15 @@
 				s += fn.ui.button("btn btn-xs btn-outline-primary mr-1","fa fa-thumbs-up","fn.app.validator.checked("+data.id+")");
 				s += fn.ui.button("btn btn-xs btn-outline-warning mr-1","fa fa-list-check","fn.app.validator.dialog_task("+data.id+")");
 			}
+
+			switch(data.action){
+				case "1":$("td", row).eq(6).html('<span class="badge badge-success">ข้อมูลถูกต้อง</span>');break;
+				case "2":$("td", row).eq(6).html('<span class="badge badge-warning">พบความเสียหาย</span>');break;
+				case "3":$("td", row).eq(6).html('<span class="badge badge-primary">ผิดตำแหน่ง</span>');break;
+				case "4":$("td", row).eq(6).html('<span class="badge badge-danger">ไม่พบของ</span>');break;
+				case "5":$("td", row).eq(6).html('<span class="badge badge-dark">อื่น ๆ</span>');break;
+			}
+
 			//s += fn.ui.button("btn btn-xs btn-outline-dark mr-1","far fa-thumps-up","fn.navigate('validator','view=lookup&id="+data[0]+"')");
 			$("td", row).eq(8).html(s);
 		}

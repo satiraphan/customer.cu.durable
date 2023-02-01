@@ -1,11 +1,10 @@
 <div class="card">
 	<div class="card-header border-bottom">
 		<h5 class="card-title p-2"><i class="fa fa-eye mr-2"></i>View</h5>
+		
 	</div>
 	<div class="card-body">
 		<div class="btn-area mb-2">
-			<button onclick="fn.navigate('validator','view=add')" class="btn btn-outline-dark" ><i class="fa fa-circle-plus mr-1"></i>Add</button>
-			<button onclick="fn.app.validator.dialog_remove()" class="btn btn-outline-danger" ><i class="fa fa-trash mr-1"></i>Remove</button>
 		</div>
 		<table id="tblValidator" class="table table-striped table-bordered table-hover" width="100%" account="<?php echo $os->auth['account'];?>">
 			<thead>
