@@ -90,6 +90,10 @@ class datastore extends dbc{
 				}else{
 					$sql .= $join['table'].".".$join['with'];
 				}
+
+				if(isset($join['addon'])){
+					$sql .= " ".$join['addon'];
+				}
 			}
 		}
 		return $sql;

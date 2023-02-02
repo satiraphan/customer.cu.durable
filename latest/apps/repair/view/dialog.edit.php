@@ -12,7 +12,7 @@
 	$dbc->Connect();
 
 	$os = new oceanos($dbc);
-	$repair = $dbc->GetRecord("os_users","*","id=".$_POST['id']);
+	$repair = $dbc->GetRecord("asm_repairing","*","id=".$_POST['id']);
 
 	$modal = new imodal($dbc,$os->auth);
 
@@ -30,10 +30,26 @@
 	$blueprint = array(
 		array(
 			array(
-				"name" => "name",
-				"caption" => "Name",
-				"placeholder" => "Repair Name",
-				"value" => $repair['name']
+				"name" => "data",
+				"caption" => "Data",
+				"placeholder" => "Data",
+				"value" => $repair['data']
+			)
+		),
+		array(
+			array(
+				"type" => "date",
+				"name" => "date_repair_plan",
+				"caption" => "Plan Repair",
+				"value" => $repair['date_repair_plan']
+			)
+		),
+		array(
+			array(
+				"type" => "date",
+				"name" => "date_repair_actual",
+				"caption" => "Plan Repair",
+				"value" => $repair['date_repair_actual']
 			)
 		)
 	);

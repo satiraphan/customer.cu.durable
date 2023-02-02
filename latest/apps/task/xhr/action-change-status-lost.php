@@ -19,7 +19,7 @@
 		$task = $dbc->GetRecord("ams_tasks","*","id=".$_POST['id']);
 
 		$data = array('#status' => 0);
-		$dbc->Update("asm_assets",$data,"id=".$task['asset_id'])
+		$dbc->Update("asm_assets",$data,"id=".$task['asset_id']);
 
 		$os->save_log(0,$_SESSION['auth']['user_id'],"task-action-lost",$_POST['id'],array("task" => $task));
 	}else{

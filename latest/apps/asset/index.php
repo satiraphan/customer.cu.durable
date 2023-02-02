@@ -51,6 +51,12 @@
 			case "lookup":
 				include "control/controller.lookup.js";
 				break;
+			case "tags":
+				include "control/controller.tag.js";
+				break;
+			case "gallery":
+				include "control/controller.gallery.js";
+				break;
 		}
 	?>
 	}).then(() => App.stopLoading())

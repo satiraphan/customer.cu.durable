@@ -19,9 +19,9 @@
 		$task = $dbc->GetRecord("ams_tasks","*","id=".$_POST['id']);
 
 		$data = array('#location' => $_POST['location']);
-		$dbc->Update("asm_assets",$data,"id=".$task['asset_id'])
+		$asset = $dbc->Update("asm_assets",$data,"id=".$task['asset_id']);
 
-		$os->save_log(0,$_SESSION['auth']['user_id'],"task-action-lost",$_POST['id'],array("task" => $task));
+		$os->save_log(0,$_SESSION['auth']['user_id'],"task-relocation",$_POST['id'],array("asset" =>$asset));
 	}else{
 		echo json_encode(array(
 			'success'=>false,

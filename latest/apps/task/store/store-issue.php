@@ -14,6 +14,8 @@
 		"type" => "ams_tasks.type",
 		"title" => "ams_tasks.title",
 		"asset_id" => "ams_tasks.asset_id",
+		"asset_name" => "asm_assets.name",
+		"asset_status" => "asm_assets.status",
 		"issued" => "ams_tasks.issued",
 		"issuer" => "ams_tasks.issuer",
 		"status" => "ams_tasks.status",
@@ -21,11 +23,32 @@
 		"counting_item_id" => "ams_tasks.counting_item_id",
 		"data" => "ams_tasks.data",
 		"remark" => "ams_tasks.remark",
+		"current_location_id" => "asm_assets.location",
+		"new_location_id" => "asm_counting_items.location_id",
+		"repair_id" => "asm_repairing.id"
 	);
 
 	$table = array(
 		"index" => "id",
 		"name" => "ams_tasks",
+		"join" => array(
+			array(
+				"field" => "asset_id",
+				"table" => "asm_assets",
+				"with" => "id"
+			),
+			array(
+				"field" => "counting_item_id",
+				"table" => "asm_counting_items",
+				"with" => "id"
+			),
+			array(
+				"field" => "id",
+				"table" => "asm_repairing",
+				"with" => "task_id"
+			),
+		),
+		"where" => "ams_tasks.status != 3"
 	);
 
 	$dbc->SetParam($table,$columns,$_GET['order'],$_GET['columns'],$_GET['search']);

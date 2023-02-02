@@ -16,6 +16,7 @@
 <div class="card container">
 	<div class="card-header border-bottom">
 		<h5 class="card-title p-2"><i class="far fa-eye mr-2"></i>Asset Number :</h5>
+		<button class="btn btn-outline-dark" onclick="window.history.back()"><i class="fa-solid fa-up-left mr-1"></i> Back</button>
 	</div>
 	<div class="card-body">
 	<?php
@@ -72,7 +73,7 @@
 			</div>
 		</form>
 		<div class="m-2 border-top">
-			<button class="btn btn-success" onclick="fn.app.counter.inspect();"><i class="fa-solid fa-check mr-1"></i> Approve</button>
-			<button class="btn btn-outline-dark" onclick="window.history.back()"><i class="fa-solid fa-up-left mr-1"></i> Back</button>
+			<button class="btn btn-lg btn-block btn-success" onclick="fn.app.counter.inspect();"><i class="fa-solid fa-check mr-1"></i> Approve</button>
+			
 		</div>
 	</div>

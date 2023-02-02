@@ -13,10 +13,12 @@ $("#tblRepair").DataTable({
 	},
 	"aoColumns": [
 		{"bSortable":false		,"data":"id"		,"class":"text-center",	"sWidth": "20px"  },
+		{"bSortable":false		,"data":"id"		,"class":"text-center" , "sWidth": "80px"  },
 		{"bSort":true					,"data":"asset_id"	,"class":"text-center",	},
+		{"bSort":true					,"data":"asset_name"	,"class":"text-center",	},
 		{"bSort":true					,"data":"date_repair_plan"	,"class":"text-center",	},
-		{"bSort":true					,"data":"task_id"	,"class":"text-center",	},
-		{"bSortable":false		,"data":"id"		,"class":"text-center" , "sWidth": "80px"  }
+		{"bSort":true					,"data":"date_repair_actual"	,"class":"text-center",	},
+		{"bSort":true					,"data":"task_id"	,"class":"text-center",	}
 	],"order": [[ 1, "desc" ]],
 	"createdRow": function ( row, data, index ) {
 		var selected = false,checked = "",s = '';
@@ -26,9 +28,12 @@ $("#tblRepair").DataTable({
 		}
 		$("td", row).eq(0).html(fn.ui.checkbox_custom("chk_repair",data[0],selected));
 		s = '';
-		s += fn.ui.button("btn btn-xs btn-outline-dark mr-1","far fa-pen","fn.navigate('repair','view=edit&id="+data[0]+"')");
+		s += fn.ui.button("btn btn-xs btn-outline-dark mr-1","far fa-pen","fn.app.repair.dialog_edit("+data.id+")");
 		s += fn.ui.button("btn btn-xs btn-outline-dark mr-1","far fa-eye","fn.navigate('repair','view=lookup&id="+data[0]+"')");
-		$("td", row).eq(2).html(s);
+		s += fn.ui.button("btn btn-xs btn-outline-dark mr-1","far fa-check","fn.app.repair.return("+data.id+")");
+
+		
+		$("td", row).eq(1).html(s);
 	}
 });
 fn.ui.datatable.selectable_custom('#tblRepair','chk_repair',true,function(){

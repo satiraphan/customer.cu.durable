@@ -22,7 +22,6 @@
 			$asset = $dbc->GetRecord("asm_assets","*","code='".$_POST['code']."'");
 			echo json_encode(array(
 				'success'=>true,
-				'msg' => "Not Found",
 				"asset_id" => $asset['id'],
 				"counting_id" => $_POST['counting_id'],
 			));

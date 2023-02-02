@@ -134,46 +134,4 @@
 
 
 
-  new Chart('pie-basic', {
-    type: 'pie',
-    data: {
-      labels: ['Red', 'Blue', 'Yellow'],
-      datasets: [{
-        data: [300, 50, 100],
-        backgroundColor: [red, blue, yellow]
-      }]
-    },
-    options: options
-  })
-
-  monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July']
-  data1 = [33, 79, 85, 54, 64, 97, 79]
-
-
-  new Chart('bar-chart-horizontal', {
-    type: 'horizontalBar',
-    data: {
-      labels: monthNames,
-      datasets: [{
-        label: 'My dataset',
-        backgroundColor: Chart.helpers.color(green).alpha(0.5).rgbString(),
-        borderColor: green,
-        data: data1
-      }]
-    },
-    options: {
-      maintainAspectRatio: false, 
-      tooltips: {
-        mode: 'index',
-        intersect: false,
-      },
-      elements: {
-        line: {
-          borderWidth: 1
-        },
-        rectangle: {
-          borderWidth: 1
-        }
-      }
-    }
-  })
+ 

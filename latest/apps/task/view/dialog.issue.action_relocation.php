@@ -23,7 +23,7 @@
 	$modal->setExtraClass("modal-lg");
 	$modal->setButton(array(
 		array("close","btn-secondary","Dismiss"),
-		array("action","btn-outline-dark","Save Change","fn.app.task.count.edit()")
+		array("action","btn-outline-dark","ย้ายตำแหน่งใหม่","fn.app.task.issue.relocation()")
 	));
 	$modal->SetVariable(array(
 		array("id",$task['id']),

@@ -20,6 +20,7 @@
 
 			echo '<form name="form_closeissue">';
 				echo '<div>';
+					echo '<input type="hidden" name="id" value="'.$this->param['id'].'">';
 					echo '<textarea class="form-control" name="remark">'.$issue['remark'].'</textarea>';
 				echo '</div>';
 			echo '</form>';

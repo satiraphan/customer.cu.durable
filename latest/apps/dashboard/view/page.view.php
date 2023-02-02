@@ -9,9 +9,6 @@
 	if($counting!=0){
 		$total_counting_counted = $dbc->GetRecord("asm_counting_items","COUNT(id)","counting_id = ".$counting['id']);
 	}
-
-	
-
 ?>
 <div class="row gutters-sm">
 	<div class="col-sm-6 col-xl-3 mb-3">

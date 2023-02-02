@@ -23,6 +23,7 @@
 ?>
 <script>
 	var plugins = [
+		'apps/dashboard/include/interface.js',
 		'apps/counting/include/interface.js',
 		'plugins/chart.js/Chart.min.js',
 		'plugins/jquery-sparkline/jquery.sparkline.min.js',
@@ -39,6 +40,10 @@
 			switch($panel->getView()){
 				case "view":
 					include "control/controller.view.js";
+					
+					include "control/controller.loader.js";
+
+					echo "fn.app.dashboard.loadData();";
 					break;
 			}
 		?>

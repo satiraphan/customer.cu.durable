@@ -19,7 +19,7 @@
 		$task = $dbc->GetRecord("ams_tasks","*","id=".$_POST['id']);
 
 		$data = array('#status' => 2);
-		$dbc->Update("asm_assets",$data,"id=".$task['asset_id'])
+		$dbc->Update("asm_assets",$data,"id=".$task['asset_id']);
 
 		$data = array(
 			"#id" => "DEFAULT",
@@ -28,14 +28,21 @@
 			"#created" => "NOW()",
 			"#updated" => "NOW()",
 			"#status" => "1",
-			"data" => $_POST['data'],
+			"data" => addslashes($_POST['data']),
 			"#returned" => "NULL",
-			"#date_repair_plan" => $_POST['date_repair_plan'],
-			"#date_repair_actual" =>  "NULL",
+			"#date_repair_actual" =>  "NULL"
 		);
-		$dbc->Insert("asm_repairing",$data);
 
-		$os->save_log(0,$_SESSION['auth']['user_id'],"task-action-lost",$_POST['id'],array("task" => $task));
+		if($_POST['date_repair_plan']==""){
+			$data['#date_repair_plan'] = "NULL";
+		}else{
+			$data['date_repair_plan'] = $_POST['date_repair_plan'];
+		}
+
+		$dbc->Insert("asm_repairing",$data);
+		$repair_id = $dbc->GetID();
+
+		$os->save_log(0,$_SESSION['auth']['user_id'],"task-repair",$_POST['id'],array("repair" => $repair_id));
 	}else{
 		echo json_encode(array(
 			'success'=>false,

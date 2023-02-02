@@ -43,6 +43,7 @@ $("#tblAsset").DataTable({
 		s += fn.ui.button("btn btn-xs btn-outline-dark mr-1","fa fa-box-check","fn.navigate('counter','view=inspect&id="+data[0]+"&counting_id="+counting_id+"')");
 		//s += fn.ui.button("btn btn-xs btn-outline-dark mr-1","far fa-pen","fn.navigate('asset','view=edit&id="+data[0]+"')");
 		s += fn.ui.button("btn btn-xs btn-outline-dark mr-1","far fa-eye","fn.navigate('asset','view=lookup&id="+data[0]+"')");
+		s += fn.ui.button("btn btn-xs btn-outline-dark mr-1","far fa-images","fn.navigate('asset','view=gallery&id="+data[0]+"')");
 		$("td", row).eq(0).html(s);
 	}
 });
@@ -157,7 +158,7 @@ $("#tblAsset").DataTable({
 	fn.app.counter.search = function(){
 		$.post("apps/counter/xhr/action-search.php",$("form[name=form-count-search]").serialize(),function(response){
 			if(response.success){
-				fn.navigate('counter','view=inspect&id='+response.asset_id+'&counting_id='+response.asset_id);
+				fn.navigate('counter','view=inspect&id='+response.asset_id+'&counting_id='+response.counting_id);
 				//window.history.back();
 			}else{
 				fn.notify.warnbox(response.msg,"Oops...");
@@ -177,7 +178,7 @@ $("#tblAsset").DataTable({
 				"counting_id" : $("#openreader-btn").attr("data-counting-id")
 			},function(response){
 				if(response.success){
-					fn.navigate('counter','view=inspect&id='+response.asset_id+'&counting_id='+response.asset_id);
+					fn.navigate('counter','view=inspect&id='+response.asset_id+'&counting_id='+response.counting_id);
 					//window.history.back();
 				}else{
 					fn.notify.warnbox(response.msg,"Oops...");

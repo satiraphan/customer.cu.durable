@@ -1,5 +1,5 @@
-var dashbaord = {
-	
+var dashboard = {
+	loadData : fn.noaccess
 };
+$.extend(fn.app,{dashboard:dashboard});
 
-$.extend(fn.app,{dashbaord:dashbaord});

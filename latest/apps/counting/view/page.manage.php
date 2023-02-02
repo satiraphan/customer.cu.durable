@@ -63,18 +63,19 @@
 							$rst = $dbc->Query($sql);
 							while($item = $dbc->Fetch($rst)){
 								$user = $dbc->GetRecord("os_users","*","id=".$item['user_id']);
-								$group = $dbc->GetRecord("os_groups","*","id=".$user['gid']);
-								echo '<tr data-id="'.$user['id'].'" cname="tr-user">';
-									echo '<td class="text-center">';
-									echo'<button class="btn btn-xs btn-danger" onclick="$(this).parent().parent().remove()">Remove</button>';
-									echo'<input type="hidden" name="user[]" value="'.$user['id'].'">';
-									echo'</td>';
-									echo '<td class="text-center">'.$user['name'].'</td>';
-									echo '<td class="text-center">'.$user['display'].'</td>';
-									echo '<td class="text-center">'.$group['name'].'</td>';
+								if($user != 0){
+									$group = $dbc->GetRecord("os_groups","*","id=".$user['gid']);
+									echo '<tr data-id="'.$user['id'].'" cname="tr-user">';
+										echo '<td class="text-center">';
+										echo'<button class="btn btn-xs btn-danger" onclick="$(this).parent().parent().remove()">Remove</button>';
+										echo'<input type="hidden" name="user[]" value="'.$user['id'].'">';
+										echo'</td>';
+										echo '<td class="text-center">'.$user['name'].'</td>';
+										echo '<td class="text-center">'.$user['display'].'</td>';
+										echo '<td class="text-center">'.$group['name'].'</td>';
 
-								echo '</tr>';
-
+									echo '</tr>';
+								}
 							}
 						?>
 						</tbody>

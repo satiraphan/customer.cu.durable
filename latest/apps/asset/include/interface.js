@@ -5,5 +5,6 @@ var modules = {
 		remove : fn.noaccess,
 		view : fn.noaccess,
 		dialog_photo : fn.noaccess,
+		print_tag: fn.noaccess,
 };
 $.extend(fn.app,{asset:modules});

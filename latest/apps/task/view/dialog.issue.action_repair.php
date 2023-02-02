@@ -23,39 +23,30 @@
 	$modal->setExtraClass("modal-lg");
 	$modal->setButton(array(
 		array("close","btn-secondary","Dismiss"),
-		array("action","btn-outline-dark","Save Change","fn.app.task.count.edit()")
+		array("action","btn-outline-dark","ส่งซ่อม","fn.app.task.issue.repair()")
 	));
 	$modal->SetVariable(array(
-		array("id",$count['id']),
+		array("id",$task['id']),
+		array("task_id",$task['id']),
 		array("counting_item_id",$counting_item['id']),
 		array("counting_id",$counting['id']),
-		array("asset_id",$counting['asset_id'])
+		array("asset_id",$counting_item['asset_id'])
 	));
 
 	$blueprint = array(
 		array(
 			array(
-				"name" => "name",
-				"caption" => "Name",
-				"placeholder" => "Count Name",
-				"value" => $count['name']
+				"type" => "textarea",
+				"name" => "data",
+				"caption" => "รายละเอียด",
+				"placeholder" => "รายละเอียดเพิ่มเติม"
 			)
 		),array(
 			array(
-				"type" => "comboboxdb",
-				"name" => "location",
-				"source" => array(
-					"table" => "asm_locations",
-					"name" => "name",
-					"value" => "id",
-					"where" => "status = 1"
-				),
-				"default" => array(
-          "value" => "NULL",
-          "name" => "ไม่ระบุ"
-        ),
-				"caption" => "สถานที่จัดเก็บ",
-				"value" => $counting_item['location_id']
+				"type" => "date",
+				"name" => "date_repair_plan",
+				"caption" => "วันที่ซ่อมเสร็จ",
+				"placeholder" => "วันที่ซ่อมเสร็จ"
 			)
 		)
 	);

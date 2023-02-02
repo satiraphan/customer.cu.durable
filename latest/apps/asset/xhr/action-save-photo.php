@@ -13,15 +13,17 @@
 
 	$imgs = array();
 
-	if($_POST['name']==""){
-		echo json_encode(array(
-			'success'=>false,
-			'msg'=>'Asset Name is null'
-		));
-	}else{
+
+
+			for($i=0;$i<count($_POST['img']);$i++){
+				array_push($imgs,array(
+					"path" => $_POST['img'][$i],
+					"caption" => $_POST['caption'][$i]
+				));
+			}
 
 		$data = array(
-			"imgs" => json_encode($imgs),
+			"imgs" => json_encode($imgs,JSON_UNESCAPED_UNICODE),
 			'#updated' => 'NOW()'
 		);
 
@@ -37,7 +39,7 @@
 				'msg' => "No Change"
 			));
 		}
-	}
+	
 
 	$dbc->Close();
 ?>

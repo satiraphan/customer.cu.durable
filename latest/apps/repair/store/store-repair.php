@@ -13,6 +13,7 @@
 		"id" => "asm_repairing.id",
 		"task_id" => "asm_repairing.task_id",
 		"asset_id" => "asm_repairing.asset_id",
+		"asset_name" => "asm_assets.name",
 		"created" => "asm_repairing.created",
 		"updated" => "asm_repairing.updated",
 		"status" => "asm_repairing.status",
@@ -25,6 +26,20 @@
 	$table = array(
 		"index" => "id",
 		"name" => "asm_repairing",
+		"join" => array(
+			array(
+				"field" => "asset_id",
+				"table" => "asm_assets",
+				"with" => "id"
+			),
+			array(
+				"field" => "task_id",
+				"table" => "ams_tasks",
+				"with" => "id"
+			)
+		),
+		"where" => "asm_repairing.status != 9"
+
 	);
 
 	$dbc->SetParam($table,$columns,$_GET['order'],$_GET['columns'],$_GET['search']);

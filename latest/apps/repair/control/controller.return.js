@@ -12,15 +12,20 @@
 		});
 	};
 
-	fn.app.repair.return = function(){
-		$.post("apps/repair/xhr/action-return.php",$("form[name=form_return_repair]").serialize(),function(response){
-			if(response.success){
-				$("#tblRepair").data("selected",[]);
-				$("#tblRepair").DataTable().draw();
-				$("#dialog_return_repair").modal("hide");
-			}else{
-				fn.notify.warnbox(response.msg,"Oops...");
+	
+	fn.app.repair.return  = function(id) {
+		bootbox.confirm('ยินยันการส่งมอมงาน', function(result) {
+			if(result){
+				$.post("apps/repair/xhr/action-return.php",{id:id},function(response){
+					if(response.success){
+						$("#tblIssue").DataTable().draw();
+					}else{
+						fn.notify.warnbox(response.msg,"Oops...");
+					}
+				},"json");
 			}
-		},"json");
-		return false;
+		});
+
+
 	};
+	

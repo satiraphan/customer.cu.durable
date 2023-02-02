@@ -24,13 +24,14 @@
 		"location" => "asm_locations.name",
 		"created" => "asm_assets.created",
 		"updated" => "asm_assets.updated",
-		"action_number" => "(SELECT action FROM asm_counting_items WHERE asm_counting_items.counting_id = ".$_GET['counting_id']." AND asm_counting_items.asset_id=asm_assets.id)"
+		"action_number" => "asm_counting_items.action",
+		//"action_number" => "(SELECT action FROM asm_counting_items WHERE asm_counting_items.counting_id = ".$_GET['counting_id']." AND asm_counting_items.asset_id=asm_assets.id)"
 	);
 
 	$where = "asm_counting_locations.counting_id = ".$_GET['counting_id'];
 
 	if($_GET['show_all']=="false"){
-		$where .=" AND (SELECT action FROM asm_counting_items WHERE asm_counting_items.counting_id = ".$_GET['counting_id']." AND asm_counting_items.asset_id=asm_assets.id) IS NULL";
+		$where .=" AND asm_counting_items.action IS NULL";
 	}
 
 	$table = array(
@@ -49,6 +50,11 @@
 				"field" => "location",
 				"table" => "asm_locations",
 				"with" => "id"
+			),array(
+				"field" => "id",
+				"table" => "asm_counting_items",
+				"with" => "asset_id",
+				"addon" => "AND asm_counting_items.counting_id = ".$_GET['counting_id']
 			)
 		),
 		"where" => $where

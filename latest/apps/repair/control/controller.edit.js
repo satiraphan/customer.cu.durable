@@ -1,9 +1,8 @@
-	fn.app.repair.dialog_edit = function() {
-		var item_selected = $("#tblRepair").data("selected");
+	fn.app.repair.dialog_edit = function(id) {
 		$.ajax({
 			url: "apps/repair/view/dialog.edit.php",
 			type: "POST",
-			data: {item:item_selected},
+			data: {id:id},
 			dataType: "html",
 			success: function(html){
 				$("body").append(html);

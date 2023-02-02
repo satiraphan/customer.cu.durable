@@ -38,7 +38,7 @@
 			case "view":
 				include "control/controller.view.js";
 				if($os->allow("repair","edit"))include "control/controller.edit.js";
-				if($os->allow("repair","return"))include "control/controller.return.js";
+				if($os->allow("repair","approve"))include "control/controller.return.js";
 				break;
 			case "lookup":
 				if($os->allow("repair","lookup"))include "control/controller.lookup.js";

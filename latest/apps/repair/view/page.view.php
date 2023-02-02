@@ -4,7 +4,6 @@
 	</div>
 	<div class="card-body">
 		<div class="btn-area mb-2">
-			<button onclick="fn.navigate('repair','view=add')" class="btn btn-outline-dark" ><i class="fa fa-circle-plus mr-1"></i>Add</button>
 			<button onclick="fn.app.repair.dialog_remove()" class="btn btn-outline-danger" ><i class="fa fa-trash mr-1"></i>Remove</button>
 		</div>
 		<table id="tblRepair" class="table table-striped table-bordered table-hover" width="100%" account="<?php echo $os->auth['account'];?>">
@@ -16,10 +15,12 @@
 							<label class="custom-control-label" for="chk_repair"></label>
 						</div>
 					</th>
-					<th class="text-center">Asset ID</th>
-					<th class="text-center">Plan</th>
-					<th class="text-center">Task ID</th>
 					<th class="text-center">Action</th>
+					<th class="text-center">Asset ID</th>
+					<th class="text-center">Asset Name</th>
+					<th class="text-center">Plan</th>
+					<th class="text-center">Actual</th>
+					<th class="text-center">Task ID</th>
 				</tr>
 			</thead>
 			<tbody>

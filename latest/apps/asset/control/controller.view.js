@@ -30,7 +30,8 @@ $("#tblAsset").DataTable({
 		$("td", row).eq(0).html(fn.ui.checkbox_custom("chk_asset",data[0],selected));
 		s = '';
 		s += fn.ui.button("btn btn-xs btn-outline-dark mr-1","far fa-pen","fn.navigate('asset','view=edit&id="+data[0]+"')");
-		s += fn.ui.button("btn btn-xs btn-outline-dark mr-1","far fa-images","fn.app.asset.dialog_photo("+data[0]+")");
+		//s += fn.ui.button("btn btn-xs btn-outline-dark mr-1","far fa-images","fn.app.asset.dialog_photo("+data[0]+")");
+		s += fn.ui.button("btn btn-xs btn-outline-dark mr-1","far fa-images","fn.navigate('asset','view=gallery&id="+data[0]+"')");
 		s += fn.ui.button("btn btn-xs btn-outline-dark mr-1","far fa-eye","fn.navigate('asset','view=lookup&id="+data[0]+"')");
 		$("td", row).eq(7).html(s);
 	}
@@ -42,3 +43,12 @@ fn.ui.datatable.selectable_custom('#tblAsset','chk_asset',true,function(){
 	});
 	$("#selected_item").html(s);
 });
+
+fn.app.asset.print_tag = function() {
+	var item_selected = $("#tblAsset").data("selected");
+	if(item_selected.length >0){
+		fn.navigate('asset','view=tags&ids='+item_selected);
+	}else{
+		fn.notify.warnbox("โปรดเลือกรายการ","Oops...");
+	}
+};
