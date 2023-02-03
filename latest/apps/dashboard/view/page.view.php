@@ -1,7 +1,7 @@
 <?php
 	global $dbc;
 
-	$counting = $dbc->GetRecord("asm_counting","*","status = 2");
+	$counting = $dbc->GetRecord("asm_counting","*","status = 2 ORDER BY id DESC");
 	$total_cat = $dbc->GetRecord("asm_categories","COUNT(id)","1");
 	$total_asset = $dbc->GetRecord("asm_assets","COUNT(id)","status > 0");
 	$total_location = $dbc->GetRecord("asm_locations","COUNT(id)","status = 1");

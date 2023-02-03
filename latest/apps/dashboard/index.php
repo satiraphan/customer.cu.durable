@@ -40,7 +40,6 @@
 			switch($panel->getView()){
 				case "view":
 					include "control/controller.view.js";
-					
 					include "control/controller.loader.js";
 
 					echo "fn.app.dashboard.loadData();";

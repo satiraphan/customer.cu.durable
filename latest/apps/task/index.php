@@ -46,8 +46,8 @@
 				if($os->allow("task","add"))include "control/controller.count.add.js";
 				if($os->allow("task","edit"))include "control/controller.count.edit.js";
 				if($os->allow("task","remove"))include "control/controller.count.remove.js";
-				if($os->allow("task","check"))include "control/controller.count.check.js";
-				if($os->allow("task","create_task"))include "control/controller.count.create_task.js";
+				if($os->allow("task","edit"))include "control/controller.count.check.js";
+				if($os->allow("task","edit"))include "control/controller.count.create_task.js";
 				break;
 			case "issue":
 				include "control/controller.issue.view.js";

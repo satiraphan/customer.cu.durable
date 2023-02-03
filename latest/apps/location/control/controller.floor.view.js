@@ -12,7 +12,8 @@ $("#tblFloor").DataTable({
 		{"bSort":true			,"data":"name"	,"sClass":"text-center" },
 		{"bSort":true			,"data":"building","sClass":"text-center" 	},
 		{"bSort":true			,"data":"status"	,"sClass":"text-center" },
-		{"bSortable":false		,"data":"id"		,"sClass":"text-center" , "sWidth": "80px"  }
+		{"bSortable":false		,"data":"id"		,"sClass":"text-center" , "sWidth": "80px"  },
+		{"bSort":true			,"data":"total"	,"sClass":"text-center" }
 	],"order": [[ 1, "desc" ]],
 	"createdRow": function ( row, data, index ) {
 		var selected = false,checked = "",s = '';

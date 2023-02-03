@@ -19,6 +19,7 @@
 		"detail" => "asm_locations.detail",
 		"parent" => "asm_locations.parent",
 		"status" => "asm_locations.status",
+		"total" => "(SELECT COUNT(id) FROM asm_assets WHERE asm_assets.location = asm_locations.id)"
 	);
 
 	$table = array(

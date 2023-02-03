@@ -65,28 +65,14 @@
 				}
 			?>
 			<a class="nav-link nav-link-faded rounded-circle nav-icon<?php if($menu_type=="topnav")echo' d-lg-none';?>" href="#" data-toggle="sidebar"><i class="material-icons">menu</i></a>
-			<form action="#apps/search/index.php" method="GET" class="form-inline ml-3 d-none d-md-flex">
-				<span class="input-icon">
-					<i class="material-icons">search</i>
-					<input name="param" type="text" placeholder="Search..." class="form-control bg-gray-200 border-gray-200 rounded-lg">
-				</span>
-			</form>
+			
 			<?php
 			if($os->load_variable("needreload")=="yes")echo'<a class="btn btn-warning ml-2" href="javascript:;" onclick="fn.system.reload()">Need Reload</a>';
 			if($os->load_variable("needrestart")=="yes")echo'<a class="btn btn-danger ml-2" href="javascript:;" onclick="fn.system.restart()">Need Restart</a>';
 			?>
 			
 			<ul class="nav nav-circle ml-auto">
-				<li class="nav-item d-md-none"><a class="nav-link nav-link-faded nav-icon" data-toggle="modal" href="#html/ajax/searchModal"><i class="material-icons">search</i></a></li>
-				<li class="nav-item d-none d-sm-block mr-2">
-					<input readonly id="online_debug" type="text" class="form-control">
-				</li>
-				<li class="nav-item d-none d-sm-block">
-					<div class="custom-control custom-switch mt-2">
-						<input id="bOnline" class="custom-control-input" type="checkbox" name="bOnline" value="yes" checked="">
-						<label for="bOnline" class="custom-control-label">Online</label>
-					</div>
-				</li>
+				
 				<li class="nav-item d-none d-sm-block"><a class="nav-link nav-link-faded nav-icon" href="" id="refreshPage"><i class="material-icons">refresh</i></a></li>
 				<?php include "part/iface_notify.php";?>
 				<li class="nav-item dropdown ml-2">

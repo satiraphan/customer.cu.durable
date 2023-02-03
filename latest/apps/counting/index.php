@@ -44,7 +44,7 @@
 				break;
 				break;
 			case "lookup":
-				if($os->allow("counting","lookup"))include "control/controller.lookup.js";
+				if($os->allow("counting","view"))include "control/controller.lookup.js";
 				break;
 			case "manage":
 				include "control/controller.manage.js";

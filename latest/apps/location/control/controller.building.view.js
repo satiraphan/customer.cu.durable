@@ -11,7 +11,8 @@ $("#tblBuilding").DataTable({
 		{"bSort":true			,"data":"code"	},
 		{"bSort":true			,"data":"name"	},
 		{"bSort":true			,"data":"status","sClass":"text-center"	},
-		{"bSortable":false		,"data":"id"		,"sClass":"text-center" , "sWidth": "80px"  }
+		{"bSortable":false		,"data":"id"		,"sClass":"text-center" , "sWidth": "80px"  },
+		{"bSort":true			,"data":"total"	,"sClass":"text-center" }
 	],"order": [[ 1, "desc" ]],
 	"createdRow": function ( row, data, index ) {
 		var selected = false,checked = "",s = '';

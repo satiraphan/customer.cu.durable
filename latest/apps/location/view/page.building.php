@@ -8,6 +8,7 @@
 			<th class="text-center">รหัสอาคาร</th>
 			<th class="text-center">สถานะ</th>
 			<th class="text-center">ดำเนินการ</th>
+			<th class="text-center">จำนวนครุภัณฑ์</th>
 		</tr>
 	</thead>
 	<tbody>
