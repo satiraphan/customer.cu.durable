@@ -27,6 +27,7 @@
 
 <script>
 	var plugins = [
+		'apps/asset/include/interface.js',
 		'apps/counter/include/interface.js',
 		'plugins/datatables/dataTables.bootstrap4.min.css',
 		'plugins/datatables/responsive.bootstrap4.min.css',
