@@ -13,7 +13,7 @@
 	<link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
 	<link rel="stylesheet" href="plugins/simplebar/simplebar.min.css">
 	<link rel="stylesheet" href="css/style.min.css" id="main-css">
-	<link rel="stylesheet" href="css/sidebar-chula.css" id="theme-css"> <!-- options: blue,cyan,dark,gray,green,pink,purple,red,royal,ash,crimson,namn,frost -->
+	<link rel="stylesheet" href="css/sidebar-frost.css" id="theme-css"> <!-- options: blue,cyan,dark,gray,green,pink,purple,red,royal,ash,crimson,namn,frost -->
 	<link rel="stylesheet" media="screen, print" href="css/fa-regular.css">
 	<link rel="stylesheet" media="screen, print" href="css/fa-brands.css">
 	<link rel="stylesheet" media="screen, print" href="css/fa-solid.css">
@@ -30,8 +30,8 @@
 	<div class="sidebar">
 		<!-- Sidebar header -->
 		<div class="sidebar-header">
-			<a href="#" class="logo">
-				<img src="img/logo-white.svg" alt="Logo" id="main-logo"><?php echo SYSTEM_NAME;?>
+			<a href="#" class="logo" style="font-size:16px;">
+				<img src="img/logo.png" alt="Logo" id="main-logo">CHULALONGKORN BUSINESS SCHOOL
 			</a>
 			<a href="#" class="nav-link nav-icon rounded-circle ml-auto" data-toggle="sidebar">
 				<i class="material-icons">close</i>
