@@ -5,7 +5,7 @@
 	<div class="card-header border-bottom  d-print-none">
 			<button class="btn btn-outline-dark" onclick="window.history.back()"><i class="fa-solid fa-up-left mr-1"></i> Back</button>
 	</div>
-	<div class="card-body">
+	<div class="card-body print-area">
 	<?php
 		$sql = "SELECT * FROM asm_assets WHERE id in (".$_GET['ids'].")";
 		$rst = $dbc->Query($sql);
@@ -39,5 +39,6 @@
     .breadcrumb,.main-header{
         display: none !important;
     }
+
 }
 </style>
