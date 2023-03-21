@@ -1,3 +1,6 @@
+<?
+	global $os,$dbc;
+?>
 <div class="card">
 	<div class="card-header border-bottom">
 		<h5 class="card-title p-2"><i class="mr-2 fa-regular fa-box"></i>รายการครุภัณฑ์</h5>

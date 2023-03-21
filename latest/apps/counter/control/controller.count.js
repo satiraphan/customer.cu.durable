@@ -16,7 +16,7 @@ $("#tblAsset").DataTable({
 		}
 	},
 	"aoColumns": [
-		{"bSortable":false		,"data":"id"		,"class":"text-center","width" : "80"  },
+		{"bSortable":false		,"data":"id"		,"class":"text-center","width" : "120"  },
 		{"bSort":true					,"data":"action_number"	,"class":"text-center",	},
 		{"bSort":true					,"data":"code"	,"class":"text-center",	},
 		{"bSort":true					,"data":"category"	,"class":"text-center",	},
@@ -40,10 +40,10 @@ $("#tblAsset").DataTable({
 		}
 
 		s = '';
-		s += fn.ui.button("btn btn-xs btn-outline-dark mr-1","fa fa-box-check","fn.navigate('counter','view=inspect&id="+data[0]+"&counting_id="+counting_id+"')");
+		s += fn.ui.button("btn btn-xs btn-outline-dark mr-1","fa fa-box-check","fn.navigate('counter','view=inspect&id="+data[0]+"&counting_id="+counting_id+"')","","ตรวจนับ");
 		//s += fn.ui.button("btn btn-xs btn-outline-dark mr-1","far fa-pen","fn.navigate('asset','view=edit&id="+data[0]+"')");
-		s += fn.ui.button("btn btn-xs btn-outline-dark mr-1","far fa-eye","fn.navigate('asset','view=lookup&id="+data[0]+"')");
-		s += fn.ui.button("btn btn-xs btn-outline-dark mr-1","far fa-images","fn.navigate('asset','view=gallery&id="+data[0]+"')");
+		s += fn.ui.button("btn btn-xs btn-outline-dark mr-1","far fa-eye","fn.navigate('asset','view=lookup&id="+data[0]+"')","","ข้อมูล");
+		s += fn.ui.button("btn btn-xs btn-outline-dark mr-1","far fa-images","fn.navigate('asset','view=gallery&id="+data[0]+"')","","รูปภาพ");
 		$("td", row).eq(0).html(s);
 	}
 });

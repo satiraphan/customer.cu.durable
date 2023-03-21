@@ -1,3 +1,6 @@
+<?
+	global $os,$dbc;
+?>
 <div class="row card m-2">
 	<div class="col-12 p-3">
 	<?php

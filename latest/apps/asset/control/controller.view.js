@@ -28,11 +28,20 @@ $("#tblAsset").DataTable({
 			selected = true;
 		}
 		$("td", row).eq(0).html(fn.ui.checkbox_custom("chk_asset",data[0],selected));
+
+
+		switch(data.status){
+			case "0":$("td", row).eq(6).html("<span class='badge badge-danger'>หาย</span>");break;
+			case "1":$("td", row).eq(6).html("<span class='badge badge-dark'>ปกติ</span>");break;
+			case "2":$("td", row).eq(6).html("<span class='badge badge-warning'>กำลังซ่อม</span>");break;
+		}
+
+
 		s = '';
-		s += fn.ui.button("btn btn-xs btn-outline-dark mr-1","far fa-pen","fn.navigate('asset','view=edit&id="+data[0]+"')");
+		s += fn.ui.button("btn btn-xs btn-outline-dark mr-1","far fa-pen","fn.navigate('asset','view=edit&id="+data[0]+"')","","แก้ไข");
 		//s += fn.ui.button("btn btn-xs btn-outline-dark mr-1","far fa-images","fn.app.asset.dialog_photo("+data[0]+")");
-		s += fn.ui.button("btn btn-xs btn-outline-dark mr-1","far fa-images","fn.navigate('asset','view=gallery&id="+data[0]+"')");
-		s += fn.ui.button("btn btn-xs btn-outline-dark mr-1","far fa-eye","fn.navigate('asset','view=lookup&id="+data[0]+"')");
+		s += fn.ui.button("btn btn-xs btn-outline-dark mr-1","far fa-images","fn.navigate('asset','view=gallery&id="+data[0]+"')","","รูปภาพ");
+		s += fn.ui.button("btn btn-xs btn-outline-dark mr-1","far fa-eye","fn.navigate('asset','view=lookup&id="+data[0]+"')","","ข้อมูล");
 		$("td", row).eq(7).html(s);
 	}
 });

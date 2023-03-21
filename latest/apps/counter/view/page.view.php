@@ -1,5 +1,5 @@
-<?php
-	global $os;
+<?
+	global $os,$dbc;
 ?>
 <div class="card">
 	<div class="card-header border-bottom">

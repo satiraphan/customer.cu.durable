@@ -27,7 +27,7 @@
 	<?php include_once "comp/loader.php";?>
 
 	<!-- Sidebar -->
-	<div class="sidebar">
+	<div class="sidebar  d-print-none">
 		<!-- Sidebar header -->
 		<div class="sidebar-header">
 			<a href="#" class="logo" style="font-size:16px;">

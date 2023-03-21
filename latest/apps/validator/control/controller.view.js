@@ -28,8 +28,8 @@ $("#tblValidator").DataTable({
 		}
 		$("td", row).eq(0).html(fn.ui.checkbox_custom("chk_validator",data[0],selected));
 		s = '';
-		s += fn.ui.button("btn btn-xs btn-outline-dark mr-1","far fa-wrench","fn.navigate('validator','view=validate&id="+data[0]+"')");
-		s += fn.ui.button("btn btn-xs btn-outline-dark mr-1","far fa-archive","fn.app.validator.dialog_close("+data.id+")");
+		s += fn.ui.button("btn btn-xs btn-warning mr-1","far fa-wrench","fn.navigate('validator','view=validate&id="+data[0]+"')","","จัดการงาน");
+		s += fn.ui.button("btn btn-xs btn-outline-dark mr-1","far fa-archive","fn.app.validator.dialog_close("+data.id+")","","ปิดงาน");
 		$("td", row).eq(6).html(s);
 	}
 });

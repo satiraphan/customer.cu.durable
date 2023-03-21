@@ -12,15 +12,15 @@ $("#tblCounter").DataTable({
 		}
 	},
 	"aoColumns": [
-		{"bSortable":false		,"data":"id"		,"class":"text-center",	"sWidth": "100px"  },
-		{"bSort":true					,"data":"name"	,"class":"text-center",	},
-		{"bSort":true					,"data":"date_start"	,"class":"text-center",	},
-		{"bSort":true					,"data":"date_finish"	,"class":"text-center",	},
-		{"bSort":true					,"data":"remark"	,"class":"text-center",	},
+		{"bSortable":false		,"data":"id"			,"class":"text-center",	"sWidth": "150px"  },
+		{"bSort":true			,"data":"name"			,"class":"text-center",	},
+		{"bSort":true			,"data":"date_start"	,"class":"text-center",	},
+		{"bSort":true			,"data":"date_finish"	,"class":"text-center",	},
+		{"bSort":true			,"data":"remark"		,"class":"text-center",	},
 	],"order": [[ 1, "desc" ]],
 	"createdRow": function ( row, data, index ) {
 		s = '';
-		s += fn.ui.button("btn btn-xs btn-outline-primary mr-1","far fa-play","fn.navigate('counter','view=count&id="+data[0]+"')");
+		s += fn.ui.button("btn btn-xs btn-outline-primary mr-1","far fa-play","fn.navigate('counter','view=count&id="+data[0]+"')","","เริ่มต้นการนับ");
 		/*
 		s += fn.ui.button("btn btn-xs btn-outline-dark mr-1","far fa-pen","fn.navigate('counter','view=edit&id="+data[0]+"')");
 		s += fn.ui.button("btn btn-xs btn-outline-dark mr-1","far fa-eye","fn.navigate('counter','view=lookup&id="+data[0]+"')");

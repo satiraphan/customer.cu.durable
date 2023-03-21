@@ -1,5 +1,5 @@
 <?php
-	global $os,$dbc;
+	global $os,$db,$_GET;
 	$counting = $dbc->GetRecord("asm_counting","*","id=".$_GET['id']);
 	
 	$total_asset = $dbc->GetRecord("asm_assets","COUNT(id)","status > 0");

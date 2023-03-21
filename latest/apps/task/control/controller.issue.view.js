@@ -26,11 +26,11 @@ $("#tblIssue").DataTable({
 		}
 		$("td", row).eq(0).html(fn.ui.checkbox("chk_issue",data[0],selected));
 		s = '';
-		s += fn.ui.button("btn btn-xs btn-dark mr-1","fa fa-rotate","fn.app.task.issue.dialog_action_relocation("+data[0]+")");
-		s += fn.ui.button("btn btn-xs btn-dark mr-1","fa fa-screwdriver-wrench","fn.app.task.issue.dialog_action_repair("+data[0]+")");
-		s += fn.ui.button("btn btn-xs btn-dark mr-1","fa fa-empty-set","fn.app.task.issue.dialog_action_change_status_lost("+data[0]+")");
+		s += fn.ui.button("btn btn-xs btn-dark mr-1","fa fa-rotate","fn.app.task.issue.dialog_action_relocation("+data[0]+")","","ย้ายสินค้า");
+		s += fn.ui.button("btn btn-xs btn-dark mr-1","fa fa-screwdriver-wrench","fn.app.task.issue.dialog_action_repair("+data[0]+")","","ส่งซ่อม");
+		s += fn.ui.button("btn btn-xs btn-dark mr-1","fa fa-empty-set","fn.app.task.issue.dialog_action_change_status_lost("+data[0]+")","","แจ้งหาย");
 		
-		s += fn.ui.button("btn btn-xs btn-outline-dark mr-1","fa-solid fa-check-double","fn.app.task.issue.dialog_close("+data[0]+")");
+		s += fn.ui.button("btn btn-xs btn-outline-dark mr-1","fa-solid fa-check-double","fn.app.task.issue.dialog_close("+data[0]+")","","ยินยันการแก้ไข");
 		$("td", row).eq(1).html(s);
 
 		switch(data.type){

@@ -1,5 +1,5 @@
 <?php
-	global $os,$dbc;
+	global $os,$db,$_GET;
 	$counting = $dbc->GetRecord("asm_counting","*","id=".$_GET['id']);
 ?>
 <div class="card container">

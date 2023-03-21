@@ -35,11 +35,11 @@ $("#tblCounting").DataTable({
 
 
 		s = '';
-		s += fn.ui.button("btn btn-xs btn-outline-dark mr-1","far fa-pen","fn.app.counting.dialog_edit("+data[0]+")");
-		s += fn.ui.button("btn btn-xs btn-outline-dark mr-1","far fa-wrench","fn.navigate('counting','view=manage&id="+data[0]+"')");
+		s += fn.ui.button("btn btn-xs btn-outline-dark mr-1","far fa-pen","fn.app.counting.dialog_edit("+data[0]+")","","แก้ไข");
+		s += fn.ui.button("btn btn-xs btn-outline-dark mr-1","far fa-wrench","fn.navigate('counting','view=manage&id="+data[0]+"')","","จัดการ");
 		//s += fn.ui.button("btn btn-xs btn-outline-dark mr-1","far fa-images","fn.app.counting.dialog_photo("+data[0]+")");
-		s += fn.ui.button("btn btn-xs btn-outline-dark mr-1","far fa-eye","fn.navigate('counting','view=lookup&id="+data[0]+"')");
-		s += fn.ui.button("btn btn-xs btn-outline-warning mr-1","far fa-play","fn.app.counting.start("+data[0]+")");
+		s += fn.ui.button("btn btn-xs btn-outline-dark mr-1","far fa-eye","fn.navigate('counting','view=lookup&id="+data[0]+"')","","ตรวจดูข้อมูล");
+		s += fn.ui.button("btn btn-xs btn-outline-warning mr-1","far fa-play","fn.app.counting.start("+data[0]+")","","เริ่มต้น");
 		$("td", row).eq(4).html(s);
 	}
 });

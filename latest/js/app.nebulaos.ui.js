@@ -1,12 +1,13 @@
 fn.ui = {
 	unique : 0,
-	button : function(btnClass,iconClass,func,txtCaption){
+	button : function(btnClass,iconClass,func,txtCaption,tooltip){
 		var settings = {
 			class_name : "btn btn-primary",
 			icon_type : "none", //none,font-awesome,material
 			icon : "",
 			onclick : "",
-			caption : ""
+			caption : "",
+			tooltip : ""
 		};
 		
 		var s = '';
@@ -18,9 +19,14 @@ fn.ui = {
 			settings.icon = iconClass;
 			settings.onclick = func;
 			if(typeof txtCaption != "undefined")settings.caption = txtCaption;
+			if(typeof tooltip != "undefined")settings.tooltip = tooltip;
 		}
 		
-		s += '<button type="button" class="'+settings.class_name+'" onclick="'+settings.onclick+'">';
+		s += '<button type="button" class="'+settings.class_name+'" onclick="'+settings.onclick+'"';
+		if(settings.tooltip != ""){
+			s += ' data-toggle="tooltip" data-placement="top" title="'+settings.tooltip+'"';
+		}
+		s +='>';
 		switch(settings.icon_type){
 			case "font-awesome":
 				s += '<i class="'+settings.icon+'"></i>';

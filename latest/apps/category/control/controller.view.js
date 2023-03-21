@@ -24,7 +24,7 @@ $("#tblCategory").DataTable({
 		}
 		$("td", row).eq(0).html(fn.ui.checkbox_custom("chk_category",data[0],selected));
 		s = '';
-		s += fn.ui.button("btn btn-xs btn-outline-dark mr-1","far fa-pen","fn.app.category.dialog_edit("+data.id+")");
+		s += fn.ui.button("btn btn-xs btn-outline-dark mr-1","far fa-pen","fn.app.category.dialog_edit("+data.id+")","","แก้ไข");
 		$("td", row).eq(2).html(s);
 	}
 });

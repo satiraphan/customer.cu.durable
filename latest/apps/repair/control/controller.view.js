@@ -28,9 +28,9 @@ $("#tblRepair").DataTable({
 		}
 		$("td", row).eq(0).html(fn.ui.checkbox_custom("chk_repair",data[0],selected));
 		s = '';
-		s += fn.ui.button("btn btn-xs btn-outline-dark mr-1","far fa-pen","fn.app.repair.dialog_edit("+data.id+")");
-		s += fn.ui.button("btn btn-xs btn-outline-dark mr-1","far fa-eye","fn.navigate('repair','view=lookup&id="+data[0]+"')");
-		s += fn.ui.button("btn btn-xs btn-outline-dark mr-1","far fa-check","fn.app.repair.return("+data.id+")");
+		s += fn.ui.button("btn btn-xs btn-outline-dark mr-1","far fa-pen","fn.app.repair.dialog_edit("+data.id+")","","เปลี่ยนแปลงข้อมูล");
+		s += fn.ui.button("btn btn-xs btn-outline-dark mr-1","far fa-eye","fn.navigate('repair','view=lookup&id="+data[0]+"')","","ดูรายละเอียด");
+		s += fn.ui.button("btn btn-xs btn-outline-dark mr-1","far fa-check","fn.app.repair.return("+data.id+")","","ส่งมอบกลับ");
 
 		
 		$("td", row).eq(1).html(s);

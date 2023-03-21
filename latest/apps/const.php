@@ -1,4 +1,11 @@
 <?php
+
+  $aAssetStatus = array(
+    array(0,"หาย","badge-danger"),
+    array(1,"ปกติ","badge-dark"),
+    array(2,"กำลังซ่อม","badge-warning")
+  );
+
   $aCountingStatus = array(
     array(1,"เตรียมการตรวจนับ","badge-warning"),
     array(2,"กำลังตรวจนับ","badge-danger"),
