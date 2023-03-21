@@ -1,9 +1,8 @@
-	fn.app.validator.dialog_close = function() {
-		var item_selected = $("#tblValidator").data("selected");
+	fn.app.validator.dialog_close = function(id) {
 		$.ajax({
 			url: "apps/validator/view/dialog.close.php",
 			type: "POST",
-			data: {item:item_selected},
+			data: {id:id},
 			dataType: "html",
 			success: function(html){
 				$("body").append(html);
@@ -13,7 +12,7 @@
 	};
 
 	fn.app.validator.close = function(){
-		$.post("apps/validator/xhr/action-close.php",$("form[name=form_close_validator]").serialize(),function(response){
+		$.post("apps/validator/xhr/action-close-validator.php",$("form[name=form_close_validator]").serialize(),function(response){
 			if(response.success){
 				$("#tblValidator").data("selected",[]);
 				$("#tblValidator").DataTable().draw();

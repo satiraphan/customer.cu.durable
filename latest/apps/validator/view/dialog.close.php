@@ -16,7 +16,9 @@
 	class myModel extends imodal{
 		function body(){
 			$dbc = $this->dbc;
-			$validator = $dbc->GetRecord("asm_counting","*","id=".$this->param['id']);
+			$counting = $dbc->GetRecord("asm_counting","*","id=".$this->param['id']);
+			echo 'ต้องการที่จะปิด "'.$counting['name'].'" หรือไม่';
+			echo '<form name="form_close_validator"><input type="hidden" name="id" value="'.$counting['id'].'"></form>';
 		}
 	}
 

@@ -1,4 +1,4 @@
-<?
+<?php
 	global $os,$dbc;
 ?>
 <div class="card">

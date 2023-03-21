@@ -23,11 +23,20 @@
 		"closed" => "asm_counting.closed",
 		"name" => "asm_counting.name",
 		"remark" => "asm_counting.remark",
+		"username" => "os_users.name",
 	);
 
 	$table = array(
 		"index" => "id",
 		"name" => "asm_counting",
+		"join" => array(
+			array(
+				"field" => "submit_user_id",
+				"table" => "os_users",
+				"with" => "id" 
+
+			)
+		),
 		"where" => "asm_counting.status = 3"
 	);
 

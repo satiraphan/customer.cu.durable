@@ -16,7 +16,7 @@ $("#tblValidator").DataTable({
 		{"bSort":true					,"data":"name"	,"class":"text-center",	},
 		{"bSort":true					,"data":"date_start"	,"class":"text-center",	},
 		{"bSort":true					,"data":"submitted"	,"class":"text-center",	},
-		{"bSort":true					,"data":"submit_user_id"	,"class":"text-center",	},
+		{"bSort":true					,"data":"username"	,"class":"text-center",	},
 		{"bSort":true					,"data":"status"	,"class":"text-center",	},
 		{"bSortable":false		,"data":"id"		,"class":"text-center" , "sWidth": "120px"  }
 	],"order": [[ 1, "desc" ]],
@@ -27,6 +27,15 @@ $("#tblValidator").DataTable({
 			selected = true;
 		}
 		$("td", row).eq(0).html(fn.ui.checkbox_custom("chk_validator",data[0],selected));
+
+		switch(data.status){
+			case "1":$("td", row).eq(5).html('<span class="badge badge-warning">เตรียมการตรวจนับ</span>');break;
+			case "2":$("td", row).eq(5).html('<span class="badge badge-danger">กำลังตรวจนับ</span>');break;
+			case "3":$("td", row).eq(5).html('<span class="badge badge-success">ส่งผลตรวจแล้ว</span>');break;
+			case "4":$("td", row).eq(5).html('<span class="badge badge-dark">ตรวจสอบเรียบร้อย</span>');break;
+		}
+
+
 		s = '';
 		s += fn.ui.button("btn btn-xs btn-warning mr-1","far fa-wrench","fn.navigate('validator','view=validate&id="+data[0]+"')","","จัดการงาน");
 		s += fn.ui.button("btn btn-xs btn-outline-dark mr-1","far fa-archive","fn.app.validator.dialog_close("+data.id+")","","ปิดงาน");

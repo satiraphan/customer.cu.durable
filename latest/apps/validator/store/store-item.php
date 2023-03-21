@@ -38,7 +38,9 @@
 		"updated" => "asm_assets.updated",
 		"action" => "asm_counting_items.action",
 		"remark" => "asm_assets.remark",
-		"imgs" => "asm_assets.imgs"
+		"imgs" => "asm_assets.imgs",
+
+		"username" => "os_users.name"
 	);
 
 	$where = "asm_counting_items.counting_id = ".$_GET['counting_id'];
@@ -55,7 +57,13 @@
 				"field" => "asset_id",
 				"table" => "asm_assets",
 				"with" => "id"
+			),array(
+				"field" => "validator",
+				"table" => "os_users",
+				"with" => "id" 
+
 			)
+			
 		),
 		"where" => $where
 	);

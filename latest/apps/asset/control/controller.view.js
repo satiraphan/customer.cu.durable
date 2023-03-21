@@ -31,7 +31,7 @@ $("#tblAsset").DataTable({
 
 
 		switch(data.status){
-			case "0":$("td", row).eq(6).html("<span class='badge badge-danger'>หาย</span>");break;
+			case "0":$("td", row).eq(6).html("<span class='badge badge-danger'>ไม่พบ</span>");break;
 			case "1":$("td", row).eq(6).html("<span class='badge badge-dark'>ปกติ</span>");break;
 			case "2":$("td", row).eq(6).html("<span class='badge badge-warning'>กำลังซ่อม</span>");break;
 		}

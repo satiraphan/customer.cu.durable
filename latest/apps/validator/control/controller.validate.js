@@ -28,7 +28,7 @@
 			{"bSort":true					,"data":"serial"	,"class":"text-center",	},
 			{"bSort":true					,"data":"asset_status"	,"class":"text-center",	},
 			{"bSort":true					,"data":"validated"	,"class":"text-center",	},
-			{"bSort":true					,"data":"validator"	,"class":"text-center",	},
+			{"bSort":true					,"data":"username"	,"class":"text-center",	},
 			{"bSort":true					,"data":"action"	,"class":"text-center",	},
 			{"bSort":true					,"data":"detail"	,"class":"text-center",	},
 			{"bSortable":false		,"data":"id"		,"class":"text-center" , "sWidth": "120px"  }
@@ -41,6 +41,12 @@
 			if(data.checked == null){
 				s += fn.ui.button("btn btn-xs btn-outline-primary mr-1","fa fa-thumbs-up","fn.app.validator.checked("+data.id+")");
 				s += fn.ui.button("btn btn-xs btn-outline-warning mr-1","fa fa-list-check","fn.app.validator.dialog_task("+data.id+")");
+			}
+
+			switch(data.status){
+				case "0":$("td", row).eq(3).html("<span class='badge badge-danger'>ไม่พบ</span>");break;
+				case "1":$("td", row).eq(3).html("<span class='badge badge-dark'>ปกติ</span>");break;
+				case "2":$("td", row).eq(3).html("<span class='badge badge-warning'>กำลังซ่อม</span>");break;
 			}
 
 			switch(data.action){
