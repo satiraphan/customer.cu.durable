@@ -1,4 +1,4 @@
-<?
+<?php
 	global $os,$dbc;
 	$repair = $dbc->GetRecord("asm_repairing","*","id=".$_GET['id']);
 	$task = $dbc->GetRecord("ams_tasks","*","id=".$repair['task_id']);

@@ -48,7 +48,7 @@
 			array(
 				"type" => "date",
 				"name" => "date_repair_actual",
-				"caption" => "Plan Repair",
+				"caption" => "Plan Actual",
 				"value" => $repair['date_repair_actual']
 			)
 		)

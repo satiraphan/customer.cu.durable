@@ -12,14 +12,14 @@
 	<title>Nebulaos Admin</title>
 </head>
 
-<body class="login-page">
+<body class="bg-dark">
 
 	<div class="container pt-5">
 		<div class="row justify-content-center">
 			<div class="col-md-auto d-flex justify-content-center">
 				<div class="card shadow">
-					<div class="card-header bg-dark text-white flex-column">
-						<h4 class="text-center mb-0">Log In</h4>
+					<div class="card-header bg-primary text-white flex-column">
+						<h4 class="text-center mb-0">เข้า่สู่ระบบ</h4>
 						<div class="text-center opacity-50 font-italic">คณะพาณิชยศาสตร์และการบัญชี </div>
 						<div class="text-center opacity-50 font-italic">Durable Counting System </div>
 					</div>
@@ -40,13 +40,7 @@
 									<label for="password">Password</label>
 								</div>
 							</div>
-							<div class="form-group d-flex justify-content-between align-items-center">
-								<div class="custom-control custom-checkbox">
-									<input type="checkbox" class="custom-control-input" id="remember">
-									<label class="custom-control-label" for="remember">Remember me</label>
-								</div>
-								<a href="?forgotpass" class="text-primary text-decoration-underline small">Forgot password ?</a>
-							</div>
+							
 							<button type="submit" class="btn btn-primary btn-block">LOG IN</button>
 						<div class="text-center opacity-50 font-italic">จุฬาลงกรณ์มหาวิทยาลัย</div>
 						</form>
@@ -55,6 +49,9 @@
 					</div>
 				</div>
 			</div>
+		</div>
+		<div class="row justify-content-center text-center">
+			<img src="img/logo.png" width="50" alt="Logo" class="text-center">
 		</div>
 	</div>
 

@@ -1,4 +1,4 @@
-<?
+<?php
 	global $os,$dbc;
 	$counter = $dbc->GetRecord("os_users","*","id=".$_GET['id']);
 ?>

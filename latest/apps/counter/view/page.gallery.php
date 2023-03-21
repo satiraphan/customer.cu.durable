@@ -1,4 +1,4 @@
-<?
+<?php
 	global $os,$dbc;
 	$asset = $dbc->GetRecord("asm_assets","*","id=".$_GET['id']);
 	$category = $dbc->GetRecord("asm_categories","*","id=".$asset['cat_id']);

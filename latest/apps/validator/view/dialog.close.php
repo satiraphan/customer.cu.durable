@@ -16,7 +16,7 @@
 	class myModel extends imodal{
 		function body(){
 			$dbc = $this->dbc;
-			$validator = $dbc->GetRecord("os_users","*","id=".$this->param['id']);
+			$validator = $dbc->GetRecord("asm_counting","*","id=".$this->param['id']);
 		}
 	}
 
