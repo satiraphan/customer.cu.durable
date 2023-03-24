@@ -28,13 +28,13 @@
 			"remark" => addslashes($_POST['remark'])
 		);
 
-		if($dbc->Insert("ams_tasks",$data,"id=".$_POST['id'])){
+		if($dbc->Insert("ams_tasks",$data)){
 			$task_id = $dbc->GetID();
 			echo json_encode(array(
 				'success'=>true
 			));
 			$validator = $dbc->GetRecord("ams_tasks","*","id=".$task_id);
-			$os->save_log(0,$_SESSION['auth']['user_id'],"validator-task",$_POST['id'],array("ams_tasks" => $validator));
+			$os->save_log(0,$_SESSION['auth']['user_id'],"validator-task",$task_id,array("ams_tasks" => $validator));
 		}else{
 			echo json_encode(array(
 				'success'=>false,

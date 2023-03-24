@@ -1,4 +1,4 @@
-<?
+<?php
 	global $os,$dbc;
 ?>
 <div class="card">
@@ -6,7 +6,6 @@
 		<h5 class="card-title p-2"><i class="fa fa-house mr-2"></i>รายการตรวจนับ</h5>
 	</div>
 	<div class="card-body">
-
 		
 		<table id="tblCounter" class="table table-striped table-bordered table-hover" width="100%" user-id="<?php echo $os->auth['id'];?>">
 			<thead>

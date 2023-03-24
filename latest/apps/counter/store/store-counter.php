@@ -23,6 +23,8 @@
 		"remark" => "asm_counting.remark",
 	);
 
+
+
 	$table = array(
 		"index" => "id",
 		"name" => "asm_counting",

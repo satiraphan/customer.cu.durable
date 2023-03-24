@@ -25,7 +25,7 @@
 			<div class="col-md-auto d-flex justify-content-center">
 				<div class="card shadow">
 					<div class="card-header bg-primary text-white flex-column">
-						<h4 class="text-center mb-0">เข้า่สู่ระบบ</h4>
+						<h4 class="text-center mb-0">เข้าสู่ระบบ</h4>
 						<div class="text-center opacity-50 font-italic">Durable Counting System </div>
 					</div>
 					<div class="card-body p-4">

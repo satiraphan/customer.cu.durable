@@ -229,6 +229,8 @@ class oceanos{
 				return true;
 			}else if($_SESSION['auth']['user_id']==1){
 				return true;
+			}else if(in_array($app,array("profile"))){
+				return true;
 			}else{
 				return $this->dbc->HasRecord("os_permissions","name='$app' AND action = '$action' AND gid=".$_SESSION['auth']['group_id']);
 			}

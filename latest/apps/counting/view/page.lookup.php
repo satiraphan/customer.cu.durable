@@ -8,6 +8,12 @@
 		"COUNT(asm_assets.id)",
 		"asm_counting_items.counting_id=".$counting['id']
 	);
+
+	$counted2 = $dbc->GetRecord(
+		"asm_assets LEFT JOIN asm_counting_locations ON asm_assets.location = asm_counting_locations.location_id",
+		"COUNT(asm_assets.id)",
+		"asm_counting_locations.counting_id=".$counting['id']
+	);
 ?>
 <div class="card container">
 	<div class="card-header border-bottom">
@@ -19,7 +25,7 @@
 			echo '<dt class="col-sm-3">หมายเลข</dt><dd class="col-sm-9">'.$counting['id'].'</dd>';
 			echo '<dt class="col-sm-3">หัวข้อ</dt><dd class="col-sm-9">'.$counting['name'].'</dd>';
 			echo '<dt class="col-sm-3">วันที่เรีิ่มต้น</dt><dd class="col-sm-9">'.$counting['date_start'].'</dd>';
-			echo '<dt class="col-sm-3">วันที่สินสุด</dt><dd class="col-sm-9">'.$counting['date_finishe'].'</dd>';
+			echo '<dt class="col-sm-3">วันที่สินสุด</dt><dd class="col-sm-9">'.$counting['date_finish'].'</dd>';
 			echo '<dt class="col-sm-3">วันที่สร้าง</dt><dd class="col-sm-9">'.$counting['created'].'</dd>';
 			echo '<dt class="col-sm-3">วันที่ปรับปรุง</dt><dd class="col-sm-9">'.$counting['updated'].'</dd>';
 			echo '<dt class="col-sm-3">ผู้ส่ง</dt><dd class="col-sm-9">'.$counting['submitted'].'</dd>';
@@ -33,7 +39,7 @@
 						<h3 class="card-title mb-0 mr-auto"><i class="fa-regular fa-box-taped"></i></h3>
 						<span>จำนวนที่ต้องตรวจสอบ </span>
 					</div>
-					<h2 class="text-center"><?php echo $counted[0];?></h2>
+					<h2 class="text-center"><?php echo $counted2[0];?></h2>
 				</div>
 			</div>
 		</div>

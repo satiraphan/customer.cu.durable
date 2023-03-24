@@ -20,6 +20,7 @@
 			"url": "apps/validator/store/store-item.php",	
 			"data": function ( d ) {
 				d.counting_id = $('#tblValidate').attr('counting-id');
+				d.show_all = $('#chk_showall').prop('checked');
 			}
 		},
 		"aoColumns": [

@@ -34,6 +34,10 @@
 		$where .=" AND asm_counting_items.action IS NULL";
 	}
 
+	if($_GET['location_id']!="%"){
+		$where .= " AND asm_assets.location=".$_GET['location_id'];
+	}
+
 	$table = array(
 		"index" => "id",
 		"name" => "asm_assets",

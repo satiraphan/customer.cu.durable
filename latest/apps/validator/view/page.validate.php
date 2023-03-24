@@ -1,12 +1,12 @@
 <?php
-	global $os,$dbc;
+	global $os,$dbc,$_GET;
 	$counting = $dbc->GetRecord("asm_counting","*","id=".$_GET['id']);
 ?>
 <div class="card container">
 	<div class="card-header border-bottom">
 		<h5 class="card-title p-2"><i class="far fa-eye mr-2"></i>ตรวจสอบการทำงาน</h5>
 		<div class="custom-control custom-switch">
-			<input onchange='$("#tblAsset").DataTable().draw();' type="checkbox" class="custom-control-input" id="chk_showall">
+			<input onchange='$("#tblValidate").DataTable().draw();' type="checkbox" class="custom-control-input" id="chk_showall">
 			<label class="custom-control-label" for="chk_showall">Show All</label>
 		</div>
 	</div>

@@ -314,6 +314,7 @@
 					break;
 				case "combobox":
 					echo '<select name="'.$control['name'].'" class="form-control'.$class.'">';
+					if(isset($control['source']))
 					foreach($control['source'] as $item){
 						if(is_array($item)){
 							

@@ -39,7 +39,7 @@ $("#tblIssue").DataTable({
 				if(data.current_location_id==data.new_location_id){
 					$("td", row).eq(3).html('<span class="badge badge-success">ผ่าน</span>');
 				}else{
-					$("td", row).eq(3).html('<span class="badge badge-dark">'+data.current_location_id+'</span> => <span class="badge badge-dark">'+data.new_location_id+'</dark>' );
+					$("td", row).eq(3).html('<span class="badge badge-dark">'+data.current_location+'</span> => <span class="badge badge-dark">'+data.new_location+'</dark>' );
 				}
 				break;
 			case "2":

@@ -9,6 +9,7 @@ $("#tblAsset").DataTable({
 		"url": "apps/asset/store/store-asset.php",	
 		"data": function ( d ) {
 			d.account = $('#tblAsset').attr('account');
+			d.cat_id = $("select[name=filter-category]").val();
 		}
 	},
 	"aoColumns": [

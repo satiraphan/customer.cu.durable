@@ -51,7 +51,7 @@
 				break;
 			case "issue":
 				include "control/controller.issue.view.js";
-				if($os->allow("task","add"))include "control/controller.issue.add.js";
+				//if($os->allow("task","add"))include "control/controller.issue.add.js";
 				if($os->allow("task","edit"))include "control/controller.issue.edit.js";
 				if($os->allow("task","remove"))include "control/controller.issue.remove.js";
 				if($os->allow("task","approve"))include "control/controller.issue.close.js";

@@ -32,6 +32,7 @@
 		"legend" => array(
 			"display" => true
 		),
+    	"onClick" => null
 	);
 
 	$counter = $dbc->GetRecord("asm_counting","*","1 ORDER BY id DESC");
@@ -87,7 +88,7 @@
 
 	$a_cat_label = array();
 	$a_cat_data = array();
-	$sql = "SELECT asm_categories.name,COUNT(asm_assets.id) FROM asm_assets LEFT JOIN asm_categories ON asm_assets.cat_id = asm_categories.id GROUP BY(asm_categories.id) ORDER BY COUNT(asm_assets.id) DESC LIMIT 0,5";
+	$sql = "SELECT asm_categories.name,COUNT(asm_assets.id),asm_categories.id FROM asm_assets LEFT JOIN asm_categories ON asm_assets.cat_id = asm_categories.id GROUP BY(asm_categories.id) ORDER BY COUNT(asm_assets.id) DESC LIMIT 0,10";
 	$rst = $dbc->Query($sql);
 	while($line = $dbc->Fetch($rst)){
 		array_push($a_cat_label,$line[0]);
@@ -97,9 +98,9 @@
 
 	$aPieCategory = array(
 		"type" => 'pie',
-    "data" => array(
-      "labels"=> $a_cat_label,
-      "datasets" => array(
+    	"data" => array(
+      	"labels"=> $a_cat_label,
+      	"datasets" => array(
 				array(
 					"data" => $a_cat_data,
 					"backgroundColor" => $aColor,
@@ -107,7 +108,7 @@
 
 			)
 		),
-    "options" => $options
+    	"options" => $options
 	);
   
 	$dataset['pie_category'] = $aPieCategory;

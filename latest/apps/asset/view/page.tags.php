@@ -12,19 +12,21 @@
 		while($asset = $dbc->Fetch($rst)){
 			$category = $dbc->GetRecord("asm_categories","*","id=".$asset['cat_id']);
 			
-			echo '<div class="row m-4 p-2 ">';
+			echo '<div class="row m-2 p-4">';
 				echo '<table>';
 					echo '<tbody>';
 						echo '<tr>';
-							echo '<td class="pt-4">';
-								echo '<dl id="dlAsset" class="row" data-code="'.$asset['code'].'">';
-									echo '<dt class="col-sm-3">code</dt><dd class="col-sm-9">'.$asset['code'].'</dd>';
-									echo '<dt class="col-sm-3">หมวดหมุ่</dt><dd class="col-sm-9">'.$category['name'].'</dd>';
-									echo '<dt class="col-sm-3">ชื่อ</dt><dd class="col-sm-9">'.$asset['name'].'</dd>';
-									echo '<dt class="col-sm-3">รุ่น</dt><dd class="col-sm-9">'.$asset['brand'].'</dd>';
-								echo '</dl>';
+							echo '<td style="width:350px;font-size:28px;overflow-x: hidden;font-weight: bold;" class="pt-4 label-font">';
+								echo '<br>';
+								echo $asset['code']."<br>";
+								echo $asset['name']."<br>";
+								echo $asset['brand']."<br>";
+								if(!is_null($asset['location'])){
+									$location = $dbc->GetRecord("asm_locations","*","id=".$asset['location']);
+									echo $location['name'];
+								}
 							echo '</td>';
-							echo '<td>';
+							echo '<td style="width:300px">';
 								echo '<div class="qrcode" data-code="'.$asset['code'].'"></div>';
 							echo '</td>';
 						echo '</tr>';
@@ -40,15 +42,31 @@
 
 <style>
 @media print
-{    
+{   
+	.main-body,.card-body{
+		padding:0px;
+		margin:0px;
+	}
+	.print-area{
+		padding:0px;
+		margin:0px;
+	}
+	@page {size: landscape}
+	
     .breadcrumb,.main-header{
         display: none !important;
     }
-
+	
 	#dlAsset {
 		margin-top:20px;
-		font-size: 25px;
+		page-break-before: always;
 	}
-
+	
+	.label-font{
+		font-family:"tahoma" !important;
+		font-weight: bold;
+	}
+	
+	
 }
 </style>

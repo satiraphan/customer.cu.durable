@@ -11,6 +11,7 @@ $("#tblAsset").DataTable({
 		"data": function ( d ) {
 			d.counting_id = $('#tblAsset').attr('data-counting-id');
 			d.show_all = $('#chk_showall').prop('checked');
+			d.location_id = $("select[name=location_id]").val();
 
 			
 		}

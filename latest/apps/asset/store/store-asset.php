@@ -35,6 +35,10 @@
 			)
 		)
 	);
+	
+	if($_GET['cat_id']!="%"){
+		$table['where'] = "asm_assets.cat_id=".$_GET['cat_id'];
+	}
 
 	$dbc->SetParam($table,$columns,$_GET['order'],$_GET['columns'],$_GET['search']);
 	$dbc->SetLimit($_GET['length'],$_GET['start']);

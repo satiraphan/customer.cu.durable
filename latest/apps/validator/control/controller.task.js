@@ -4,6 +4,7 @@
 			url: "apps/validator/view/dialog.task.php",
 			type: "POST",
 			data: {id:id},
+			
 			dataType: "html",
 			success: function(html){
 				$("body").append(html);

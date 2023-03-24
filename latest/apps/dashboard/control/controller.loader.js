@@ -5,10 +5,15 @@
 			type: "POST",
 			dataType: "json",
 			success: function(json){
-			  monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July']
-        data1 = [33, 79, 85, 54, 64, 97, 79]
-        new Chart('bar-chart-horizontal',json.last_counting);
-        new Chart('pie-basic', json.pie_category);
+				monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July']
+				data1 = [33, 79, 85, 54, 64, 97, 79]
+
+				json.pie_category.options.onClick = function(e){
+					console.log(e);
+				}
+
+				var ChartA = new Chart('bar-chart-horizontal',json.last_counting);
+				var ChartB = new Chart('pie-basic', json.pie_category);
       
 			}	
 		});

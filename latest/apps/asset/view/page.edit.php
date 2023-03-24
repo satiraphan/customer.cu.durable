@@ -15,8 +15,8 @@
 		array(
 			array(
 				"name" => "code",
-				"caption" => "รหัสสินค้า",
-				"placeholder" => "Account Name",
+				"caption" => "รหัสครุภัณฑ์",
+				"placeholder" => "รหัสครุภัณฑ์",
 				"value" => $asset['code']
       )
 		),
@@ -71,22 +71,24 @@
 				"name" => "year_purchase",
 				"caption" => "ปีทีซื้อ",
 				"placeholder" => "รายละเอียด",
-        "flex" => 3,
+        		"flex" => 3,
 				"value" => $asset['year_purchase']
       ),
 			array(
 				"type" => "date",
 				"name" => "date_depreciate",
 				"placeholder" => "วันหมดอายุ",
-        "flex" => 3,
-				"value" => $asset['date_depreciate']
+       			 "flex" => 3,
+				"value" => $asset['date_depreciate'],
+				"help" => "วันหมดอายุ"
       ),
 			array(
 				"type" => "date",
 				"name" => "date_warranty",
 				"placeholder" => "วันหมดประกัน",
-        "flex" => 3,
-				"value" => $asset['date_warranty']
+       		 "flex" => 3,
+				"value" => $asset['date_warranty'],
+				"help" => "วันหมดประกัน"
 			)
 		),array(
 			array(

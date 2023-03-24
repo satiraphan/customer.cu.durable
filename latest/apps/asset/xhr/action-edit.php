@@ -29,7 +29,7 @@
 			'#updated' => 'NOW()'
 		);
 
-		if($_POST['year_purchase']==""){$data['#year_purchase']="NULL";}else{$data['year_purchase']=$_POST['year_purchase'];}
+		if($_POST['year_purchase']==""){$data['#year_purchase']="NULL";}else{$data['year_purchase']=($_POST['year_purchase']>2500)?$_POST['year_purchase']-543:$_POST['year_purchase'];}
 		if($_POST['date_depreciate']==""){$data['#date_depreciate']="NULL";}else{$data['date_depreciate']=$_POST['date_depreciate'];}
 		if($_POST['date_warranty']==""){$data['#date_warranty']="NULL";}else{$data['date_warranty']=$_POST['date_warranty'];}
 

@@ -54,7 +54,21 @@
 	$dbc->SetParam($table,$columns,$_GET['order'],$_GET['columns'],$_GET['search']);
 	$dbc->SetLimit($_GET['length'],$_GET['start']);
 	$dbc->Processing();
-	echo json_encode($dbc->GetResult());
+
+	$data = $dbc->GetResult();
+
+	for($i=0;$i<count($data['aaData']);$i++){
+		if($data['aaData'][$i]['type']==1){
+			$current = $dbc->GetRecord("asm_locations","*","id=".$data['aaData'][$i]['current_location_id']);
+			$new = $dbc->GetRecord("asm_locations","*","id=".$data['aaData'][$i]['new_location_id']);
+			$data['aaData'][$i]['current_location'] =$current['name'];
+			$data['aaData'][$i]['new_location'] =$new['name'];
+
+		}
+	}
+
+
+	echo json_encode($data);
 
 	$dbc->Close();
 

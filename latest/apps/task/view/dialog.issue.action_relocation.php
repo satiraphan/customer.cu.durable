@@ -28,8 +28,7 @@
 	$modal->SetVariable(array(
 		array("id",$task['id']),
 		array("counting_item_id",$counting_item['id']),
-		array("counting_id",$counting['id']),
-		array("asset_id",$counting['asset_id'])
+		array("counting_id",$counting['id'])
 	));
 
 	$blueprint = array(

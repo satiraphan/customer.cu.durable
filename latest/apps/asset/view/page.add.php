@@ -8,8 +8,8 @@
 		array(
 			array(
 				"name" => "code",
-				"caption" => "รหัสสินค้า",
-				"placeholder" => "Account Name"
+				"caption" => "รหัสครุภัณฑ์",
+				"placeholder" => "รหัสครุภัณฑ์"
       )
 		),
 		array(
@@ -58,18 +58,20 @@
 				"name" => "year_purchase",
 				"caption" => "ปีทีซื้อ",
 				"placeholder" => "รายละเอียด",
-        "flex" => 3
+        		"flex" => 3
       ),
 			array(
 				"type" => "date",
 				"name" => "date_depreciate",
 				"placeholder" => "วันหมดอายุ",
-        "flex" => 3
+				"help" => "วันหมดอายุ",
+        		"flex" => 3
       ),
 			array(
 				"type" => "date",
 				"name" => "date_warranty",
 				"placeholder" => "วันหมดประกัน",
+				"help" => "วันหมดประกัน",
         "flex" => 3
 			)
 		),array(

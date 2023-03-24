@@ -8,6 +8,17 @@
 	</div>
 	<div class="card-menu border-bottom">
 		<div class="m-2 float-right">
+			<select name="location_id" class="form-control" onchange='$("#tblAsset").DataTable().draw();'>
+				<option value="%">ทุกห้อง</option>
+				<?php
+					$sql = "SELECT asm_locations.id AS id,asm_locations.name AS name FROM asm_counting_locations LEFT JOIN asm_locations ON asm_counting_locations.location_id = asm_locations.id  WHERE asm_counting_locations.counting_id = ".$counter['id']; 
+					$rst = $dbc->Query($sql);
+					while($line = $dbc->Fetch($rst)){
+						echo '<option value="'.$line['id'].'">'.$line['name'].'</option>';
+					}
+				?>
+
+			</select>
 			<div class="custom-control custom-switch ">
 				<input onchange='$("#tblAsset").DataTable().draw();' type="checkbox" class="custom-control-input custom-control-input" id="chk_showall">
 				<label class="custom-control-label" for="chk_showall">Show All</label>

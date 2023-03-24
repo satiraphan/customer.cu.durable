@@ -16,7 +16,7 @@
 			echo '<dt class="col-sm-3">ชื่อ</dt><dd class="col-sm-9">'.$asset['name'].'</dd>';
 			echo '<dt class="col-sm-3">รุ่น</dt><dd class="col-sm-9">'.$asset['brand'].'</dd>';
 			echo '<dt class="col-sm-3">Serial Number</dt><dd class="col-sm-9">'.$asset['serial'].'</dd>';
-			echo '<dt class="col-sm-3">ปีที่ซื้อ</dt><dd class="col-sm-9">'.$asset['name'].'</dd>';
+			echo '<dt class="col-sm-3">ปีที่ซื้อ</dt><dd class="col-sm-9">'.$asset['year_purchase'].'</dd>';
 			echo '<dt class="col-sm-3">วันหมดอายุการใช้งาน</dt><dd class="col-sm-9">'.$asset['date_depreciate'].'</dd>';
 			echo '<dt class="col-sm-3">วันหมดประกัน</dt><dd class="col-sm-9">'.$asset['date_warranty'].'</dd>';
 			echo '<dt class="col-sm-3">วันที่นำเข้าข้อมูล</dt><dd class="col-sm-9">'.$asset['created'].'</dd>';

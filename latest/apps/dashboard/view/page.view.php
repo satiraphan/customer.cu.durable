@@ -8,6 +8,9 @@
 
 	if($counting!=0){
 		$total_counting_counted = $dbc->GetRecord("asm_counting_items","COUNT(id)","counting_id = ".$counting['id']);
+	}else{
+		$total_counting_counted = array(0);
+		$counting = array("name"=>"No Data");
 	}
 ?>
 <div class="row gutters-sm">
@@ -102,5 +105,42 @@
 					<canvas id="bar-chart-horizontal"></canvas>
 				</div>
 			</div>
+	</div>
+	
+	<div class="col-6 mb-3">
+		<div class="card">
+			<div class="card-header">
+				รายการแยกหมวดหมู่
+				<button type="button" data-action="fullscreen" class="btn btn-sm btn-text-secondary btn-icon rounded-circle ml-auto">
+					<i class="material-icons">fullscreen</i>
+				</button>
+			</div>
+			<div class="card-body">
+				<table class="table table-sm table-bordered">
+					<thead>
+						<tr>
+							<th class="text-center">หมวดหมู่</th>
+							<th class="text-center">จำนวน</th>
+						</tr>
+					</thead>
+					<body>
+					<?php
+						$sql = "SELECT asm_categories.id,asm_categories.name,COUNT(asm_assets.id) FROM asm_assets 
+						LEFT JOIN asm_categories ON asm_assets.cat_id = asm_categories.id 
+						GROUP BY asm_categories.id
+						ORDER BY COUNT(asm_assets.id) DESC";
+						$rst = $dbc->Query($sql);
+						while($line = $dbc->Fetch($rst)){
+							echo '<tr>';
+								echo '<td class="text-center"><a href="#apps/asset/index.php?cat_id='.$line[0].'">'.$line[1].'</a></td>';
+								echo '<td class="text-center">'.$line[2].'</td>';
+							echo '</tr>';
+						}
+					?>
+					</body>
+				</table>
+			</div>
 		</div>
+	</div>
+
 </div>

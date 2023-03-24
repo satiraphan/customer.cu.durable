@@ -14,7 +14,7 @@
 	foreach($_POST['items'] as $item){
 		$asset = $dbc->GetRecord("asm_assets","*","id=".$item);
 		$dbc->Delete("asm_assets","id=".$item);
-		$os->save_log(0,$_SESSION['auth']['user_id'],"asset-delete",$id,array("asm_assets" => $asset));
+		$os->save_log(0,$_SESSION['auth']['user_id'],"asset-delete",$item,array("asm_assets" => $asset));
 	}
 
 	echo json_encode(array(
