@@ -15,6 +15,7 @@
 		$data = array(
 			'#submitted' => 'NOW()',
 			'#submit_user_id' => $os->auth['id'],
+			'remark' => addslashes($_POST['remark']),
 			'#status' => 3,
 			'#updated' => 'NOW()'
 		);

@@ -53,8 +53,8 @@
 		</table>
 	<?php
 		echo '<dl class="row">';
-			echo '<dt class="col-sm-3">ID</dt><dd class="col-sm-9">'.$counter['id'].'</dd>';
-			echo '<dt class="col-sm-3">Name</dt><dd class="col-sm-9">'.$counter['name'].'</dd>';
+			//echo '<dt class="col-sm-3">ID</dt><dd class="col-sm-9">'.$counter['id'].'</dd>';
+			//echo '<dt class="col-sm-3">Name</dt><dd class="col-sm-9">'.$counter['name'].'</dd>';
 		echo '</dl>';
 	?>
 	</div>

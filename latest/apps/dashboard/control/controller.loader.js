@@ -9,7 +9,8 @@
 				data1 = [33, 79, 85, 54, 64, 97, 79]
 
 				json.pie_category.options.onClick = function(e){
-					console.log(e);
+					var activePoints = ChartB.getElementsAtEvent(e);
+					console.log(activePoints);
 				}
 
 				var ChartA = new Chart('bar-chart-horizontal',json.last_counting);

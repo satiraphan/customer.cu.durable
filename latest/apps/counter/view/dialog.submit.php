@@ -53,8 +53,11 @@
 			echo '<div class="alert alert-info">';
 				echo 'มีรายการ '.array_sum($aCount).' จาก '.$count_asset[0].' รายการ';
 			echo '</div>';
-			echo '<div class="alert alert-warning">ต้องการส่งใช่มั้ย</div>';
-			echo '<form name="form_submit_counter"><input type="hidden" name="id" value="'.$counter['id'].'"></form>';
+			echo '<div class="alert alert-warning">ต้องการส่งข้อมูลใช่มั้ย</div>';
+			echo '<form name="form_submit_counter">';
+				echo '<input type="hidden" name="id" value="'.$counter['id'].'">';
+				echo '<textarea name="remark" class="form-control" placeholder="รายละเอียดเพิ่มเติม"></textarea>';
+			echo '</form>';
 
 		}
 	}

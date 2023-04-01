@@ -23,11 +23,9 @@
 		echo '<dl class="row">';
 			echo '<dt class="col-sm-3">หมวดหมู่</dt><dd class="col-sm-9">'.$category['name'].'</dd>';
 			echo '<dt class="col-sm-3">ชื่อ</dt><dd class="col-sm-9">'.$asset['name'].'</dd>';
-			echo '<dt class="col-sm-3">Brand</dt><dd class="col-sm-9">'.$asset['brand'].'</dd>';
+			echo '<dt class="col-sm-3">ยี่ห้อ</dt><dd class="col-sm-9">'.$asset['brand'].'</dd>';
 			echo '<dt class="col-sm-3">ปีที่ซื้อ</dt><dd class="col-sm-9">'.$asset['year_purchase'].'</dd>';
-			echo '<dt class="col-sm-3">วันหมดอายุ</dt><dd class="col-sm-9">'.$asset['date_depreciate'].'</dd>';
-			echo '<dt class="col-sm-3">วันหมดประกัน</dt><dd class="col-sm-9">'.$asset['date_warranty'].'</dd>';
-			echo '<dt class="col-sm-3">Location</dt><dd class="col-sm-9">'.$asset['location'].'</dd>';
+			echo '<dt class="col-sm-3">ตำแหน่ง</dt><dd class="col-sm-9">'.$asset['location'].'</dd>';
 			echo '<dt class="col-sm-3">รายละเอียด</dt><dd class="col-sm-9">'.$asset['detail'].'</dd>';
 		echo '</dl>';
 	?>
@@ -77,3 +75,12 @@
 			
 		</div>
 	</div>
+<?php
+if($counting_item_id!=""){
+	?>
+	<script>
+		fn.notify.warnbox("ได้รับการตรวจแล้ว","ตรวจแล้ว");
+	</script>
+	<?php
+}
+?>

@@ -40,6 +40,7 @@ $("#tblCounting").DataTable({
 		//s += fn.ui.button("btn btn-xs btn-outline-dark mr-1","far fa-images","fn.app.counting.dialog_photo("+data[0]+")");
 		s += fn.ui.button("btn btn-xs btn-outline-dark mr-1","far fa-eye","fn.navigate('counting','view=lookup&id="+data[0]+"')","","ตรวจดูข้อมูล");
 		if(data.status=="1")s += fn.ui.button("btn btn-xs btn-outline-warning mr-1","far fa-play","fn.app.counting.start("+data[0]+")","","เริ่มต้น");
+		if(data.status=="3")s += fn.ui.button("btn btn-xs btn-outline-primary mr-1","far fa-play","fn.app.counting.start("+data[0]+")","","เริ่มต้นใหม่");
 		if(data.status=="4")s += fn.ui.button("btn btn-xs btn-outline-success mr-1","far fa-file","fn.navigate('counting','view=report&id="+data[0]+"')","","รายงาน");
 		$("td", row).eq(4).html(s);
 	}

@@ -88,11 +88,13 @@
 
 	$a_cat_label = array();
 	$a_cat_data = array();
+	$a_cat_data_id = array();
 	$sql = "SELECT asm_categories.name,COUNT(asm_assets.id),asm_categories.id FROM asm_assets LEFT JOIN asm_categories ON asm_assets.cat_id = asm_categories.id GROUP BY(asm_categories.id) ORDER BY COUNT(asm_assets.id) DESC LIMIT 0,10";
 	$rst = $dbc->Query($sql);
 	while($line = $dbc->Fetch($rst)){
 		array_push($a_cat_label,$line[0]);
 		array_push($a_cat_data,$line[1]);
+		array_push($a_cat_data_id,$line[2]);
 	}
 
 
@@ -103,6 +105,7 @@
       	"datasets" => array(
 				array(
 					"data" => $a_cat_data,
+					"raw" => $a_cat_data_id,
 					"backgroundColor" => $aColor,
 				)
 

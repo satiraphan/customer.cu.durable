@@ -20,12 +20,12 @@ $("#tblAsset").DataTable({
 		{"bSortable":false		,"data":"id"		,"class":"text-center","width" : "120"  },
 		{"bSort":true					,"data":"action_number"	,"class":"text-center",	},
 		{"bSort":true					,"data":"code"	,"class":"text-center",	},
-		{"bSort":true					,"data":"category"	,"class":"text-center",	},
-		{"bSort":true					,"data":"name"	,"class":"text-center",	},
-		{"bSort":true					,"data":"brand"	,"class":"text-center",	},
-		{"bSort":true					,"data":"location"	,"class":"text-center",	},
+		{"bSort":true					,"data":"category"	,"class":"text-center text-nowrap",	},
+		{"bSort":true					,"data":"name"	,"class":"text-center text-nowrap",	},
+		{"bSort":true					,"data":"brand"	,"class":"text-center text-nowrap",	},
+		{"bSort":true					,"data":"location"	,"class":"text-center text-nowrap",	},
 		{"bSort":true					,"data":"status"	,"class":"text-center",	},
-		{"bSort":true					,"data":"serial"	,"class":"text-center",	},
+		{"bSort":true					,"data":"serial"	,"class":"text-center text-nowrap",	},
 	],"order": [[ 1, "desc" ]],
 	"createdRow": function ( row, data, index ) {
 		var selected = false,checked = "",s = '';
@@ -45,7 +45,7 @@ $("#tblAsset").DataTable({
 		//s += fn.ui.button("btn btn-xs btn-outline-dark mr-1","far fa-pen","fn.navigate('asset','view=edit&id="+data[0]+"')");
 		s += fn.ui.button("btn btn-xs btn-outline-dark mr-1","far fa-eye","fn.navigate('asset','view=lookup&id="+data[0]+"')","","ข้อมูล");
 		s += fn.ui.button("btn btn-xs btn-outline-dark mr-1","far fa-images","fn.navigate('asset','view=gallery&id="+data[0]+"')","","รูปภาพ");
-		$("td", row).eq(0).html(s);
+		$("td", row).eq(0).html('<div class="btn-group">'+s+'</div>');
 	}
 });
 
