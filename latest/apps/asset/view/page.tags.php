@@ -16,15 +16,16 @@
 				echo '<table>';
 					echo '<tbody>';
 						echo '<tr>';
-							echo '<td style="width:350px;font-size:28px;overflow-x: hidden;font-weight: bold;" class="pt-4 label-font">';
+							echo '<td style="width:350px;font-size:26px;overflow-x: hidden;font-weight: bold;" class="pt-4 label-font">';
 								echo '<br>';
 								echo $asset['code']."<br>";
 								echo $asset['name']."<br>";
 								echo $asset['brand']."<br>";
 								if(!is_null($asset['location'])){
 									$location = $dbc->GetRecord("asm_locations","*","id=".$asset['location']);
-									echo $location['name'];
+									echo $location['name']."<br>";
 								}
+								echo '<span style="font-size:22px">'.$asset['detail'].'<span>';
 							echo '</td>';
 							echo '<td style="width:300px">';
 								echo '<div class="qrcode" data-code="'.$asset['code'].'"></div>';

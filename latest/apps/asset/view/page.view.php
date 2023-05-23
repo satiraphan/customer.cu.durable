@@ -25,6 +25,7 @@
 		<div class="btn-area mb-2">
 			<button onclick="fn.navigate('asset','view=add')" class="btn btn-outline-dark" ><i class="fa fa-circle-plus mr-1"></i>Add</button>
 			<button onclick="fn.app.asset.dialog_remove()" class="btn btn-outline-danger" ><i class="fa fa-trash mr-1"></i>Remove</button>
+			<a href="apps/asset/include/import.csv" class="btn btn-primary mr-1"><i class="fa fa-upload mr-1"></i>Download Template</a>
 			<button onclick="$('form[name=importer] input').click();" class="btn btn-warning mr-4" ><i class="fa fa-upload mr-1"></i>Import</button>
 			<button onclick="fn.app.asset.print_tag()" class="btn btn-info mr-2" ><i class="fa fa-print mr-1"></i>Printag</button>
 			<!--
