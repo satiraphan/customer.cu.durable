@@ -8,3 +8,18 @@
 		},"json");
 		return false;
 	};
+	fn.app.asset.report = function (type) {
+		var item_selected = $("#tblAsset").data("selected");
+		$.ajax({
+			type: "POST",
+			dataType: "html",
+			success: function (html) {
+				var s = '';
+				window.location = '#apps/asset/index.php?view=' + type+'&id='+item_selected;
+				// for (i in json) {
+				//     s += json;
+				// }
+				// $("#report tbody").html(s);
+			}
+		});
+	}

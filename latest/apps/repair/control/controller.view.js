@@ -43,3 +43,23 @@ fn.ui.datatable.selectable_custom('#tblRepair','chk_repair',true,function(){
 	});
 	$("#selected_item").html(s);
 });
+
+fn.app.repair.report = function (type) {
+	var item_selected = $("#tblRepair").data("selected");
+	if(item_selected.length<1){
+		fn.notify.warnbox('Please select items', "Oops...");
+	}else {
+		$.ajax({
+			type: "POST",
+			dataType: "html",
+			success: function (html) {
+				var s = '';
+				window.location = '#apps/repair/index.php?view=' + type + '&id=' + item_selected;
+				// for (i in json) {
+				//     s += json;
+				// }
+				// $("#report tbody").html(s);
+			}
+		});
+	}
+}

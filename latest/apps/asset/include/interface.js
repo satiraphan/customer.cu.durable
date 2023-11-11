@@ -6,5 +6,6 @@ var modules = {
 		view : fn.noaccess,
 		dialog_photo : fn.noaccess,
 		print_tag: fn.noaccess,
+		report: fn.noaccess,
 };
 $.extend(fn.app,{asset:modules});

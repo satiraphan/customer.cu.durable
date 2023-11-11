@@ -5,5 +5,7 @@ var modules = {
 		lookup : fn.noaccess,
 		dialog_return : fn.noaccess,
 		return : fn.noaccess,
+		report : fn.noaccess,
+		excel : fn.noaccess,
 };
 $.extend(fn.app,{repair:modules});

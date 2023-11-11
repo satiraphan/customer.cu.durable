@@ -8,7 +8,9 @@
 	<div class="card-body">
 		<div class="btn-area mb-2">
 			<button onclick="fn.app.counting.dialog_add()" class="btn btn-outline-dark" ><i class="fa fa-circle-plus mr-1"></i>เพิ่มรอบการตรวจนับ</button>
-		</div>
+            <button onclick="fn.app.counting.report('report_1')" class="btn btn-outline-dark" ><i class="fa-solid fa-rectangle-list mr-1"></i>รายงานการตรวจสอบ</button>
+            <button onclick="fn.app.counting.report('report_2')" class="btn btn-outline-dark" ><i class="fa-solid fa-rectangle-list mr-1"></i>รายงานสรุปผลการตรวจสอบ</button>
+        </div>
 		<table id="tblCounting" class="table table-striped table-bordered table-hover" width="100%" account="<?php echo $os->auth['account'];?>">
 			<thead>
 				<tr>

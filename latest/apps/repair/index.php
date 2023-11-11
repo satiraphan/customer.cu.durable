@@ -34,6 +34,7 @@
 	App.loadPlugins(plugins, null).then(() => {
 		App.checkAll()
 	<?php
+        include "control/controller.excel.js";
 		switch($panel->getView()){
 			case "view":
 				include "control/controller.view.js";

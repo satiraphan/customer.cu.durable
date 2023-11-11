@@ -3,6 +3,7 @@
 		"account" : "Account",
 		"group" : "Group",
 		"user" : "User",
+		"report" : "Report",
 		"add" : "Add",
 		"remove" : "Remove"
 	},

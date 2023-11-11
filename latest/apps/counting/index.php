@@ -34,14 +34,15 @@
 	App.loadPlugins(plugins, null).then(() => {
 		App.checkAll()
 	<?php
+        include 'control/controller.excel.js';
 		switch($panel->getView()){
-			case "view":
+            case "view":
 				include "control/controller.view.js";
 				if($os->allow("counting","add"))include "control/controller.add.js";
 				if($os->allow("counting","edit"))include "control/controller.edit.js";
 				if($os->allow("counting","edit"))include "control/controller.close.js";
 				if($os->allow("counting","edit"))include "control/controller.start.js";
-				break;
+
 				break;
 			case "lookup":
 				if($os->allow("counting","view"))include "control/controller.lookup.js";
@@ -49,6 +50,7 @@
 			case "manage":
 				include "control/controller.manage.js";
 				break;
+
 		}
 	?>
 	}).then(() => App.stopLoading())

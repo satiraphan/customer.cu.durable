@@ -8,7 +8,9 @@
 	<div class="card-body">
 		<div class="btn-area mb-2">
 			<button onclick="fn.app.repair.dialog_remove()" class="btn btn-outline-danger" ><i class="fa fa-trash mr-1"></i>Remove</button>
-		</div>
+            <button onclick="fn.app.repair.report('repair_report')" class="btn btn-outline-dark" ><i class="fa-solid fa-rectangle-list mr-1"></i>รายงานประวัติการซ่อมแซม</button>
+
+        </div>
 		<table id="tblRepair" class="table table-striped table-bordered table-hover" width="100%" account="<?php echo $os->auth['account'];?>">
 			<thead>
 				<tr>
