@@ -18,7 +18,8 @@
 	$panel->setMeta(array(
 		array('account'	,$os->tr('main.account'),	'far fa-building'),
 		array('group'	,$os->tr('main.group'),		'far fa-clone'),
-		array('user'	,$os->tr('main.user'),		'far fa-user')
+		array('user'	,$os->tr('main.user'),		'far fa-user'),
+		array('report'	,$os->tr('main.report'),		'far fa-user')
 	));
 	
 ?>
@@ -51,6 +52,7 @@
 		App.checkAll()
 		<?php
 		echo "\n".'var lang = '.($os->get_lang_json()).";\n";
+        include "control/controller.excel.js";
 		switch($panel->getView()){
 			case "account":
 				include "control/controller.account.view.js";

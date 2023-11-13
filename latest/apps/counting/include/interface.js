@@ -12,6 +12,7 @@ var modules = {
 		dialog_user_lookup : fn.noaccess,
 		select_user : fn.noaccess,
 		save_manage : fn.noaccess,
-		start : fn.noaccess
+		start : fn.noaccess,
+		report : fn.noaccess
 };
 $.extend(fn.app,{counting:modules});
