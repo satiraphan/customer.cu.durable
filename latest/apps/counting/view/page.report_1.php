@@ -1,7 +1,7 @@
 <?php global $dbc;
 
-
 $counting_id = $_GET['id'];
+
 ?>
 <div class="card">
     <div class="card-header border-bottom">
@@ -45,53 +45,47 @@ $counting_id = $_GET['id'];
             </thead>
             <tbody>
             <?php
-            $sql = "SELECT
-                        asm_counting_items.id AS id,
-                        asm_counting_items.validated AS validated,
-                        asm_counting_items.validator AS validator,
-                        asm_counting_items.detail AS detail,
-                        asm_counting_items.action AS action,
-                        asm_counting_items.id AS id,
-                        asm_assets.name AS asset_name,
-                        asm_assets.brand AS asset_brand,
-                        asm_assets.serial AS asset_serial,
-                        asm_assets.code AS code,
-                        asm_assets.unit_name AS asset_unit_name,
-                        asm_assets.year_purchase AS year_purchase,
-                        asm_locations.name AS asset_location
-                        
 
+            $sql = "SELECT DISTINCT  asm_counting_items.asset_id AS asset_id
                     FROM asm_counting_items
-                    LEFT JOIN asm_assets ON asm_counting_items.asset_id = asm_assets.id
-                    LEFT JOIN asm_locations ON asm_assets.location = asm_locations.id
-                    WHERE asm_counting_items.counting_id IN ($counting_id)
-                    GROUP BY asm_counting_items.asset_id
-                    ORDER BY `asm_locations`.`name` ASC 
-                ";
+                    WHERE  asm_counting_items.counting_id IN ($counting_id)
+                    ORDER BY asm_counting_items.id ASC";
             $rst = $dbc->Query($sql);
             $num = 1;
             while ($line = $dbc->Fetch($rst)) {
-
+                $counting_item = '';
+                $location = '';
+                $asset_id = $line['asset_id'];
+                $sql2 = "SELECT * FROM asm_counting_items 
+                    WHERE asm_counting_items.asset_id='$asset_id' AND asm_counting_items.counting_id IN ($counting_id) 
+                    ORDER BY asm_counting_items.counting_id DESC";
+                $rst2 = $dbc->Query($sql2);
+                if ($dbc->Total($rst2) > 0) {
+                    $line = $dbc->Fetch($rst2);
+                    $counting_item = $line;
+                    $location = $dbc->GetRecord("asm_locations","name","id=".$counting_item['location_id']);
+                }
+                $asset = $dbc->GetRecord("asm_assets","*","id=".$asset_id);
 
                 echo '<tr>';
                 echo '<td class="text-center align-middle">' . $num . '</td>';
-                echo '<td class="text-center align-middle">' . $line['code'] . '</td>';
-                echo '<td class="text-center align-middle">' . $line['asset_name'] . '</td>';
-                echo '<td class="text-center align-middle">' . $line['detail'] . '</td>';
-                echo '<td class="text-center align-middle">' . $line['year_purchase'] . '</td>';
-                echo '<td class="text-center align-middle">' . $line['asset_unit_name'] . '</td>';
-                echo '<td class="text-center align-middle">' . $line['asset_location'] . '</td>';
+                echo '<td class="text-center align-middle">' . $asset['code'] . '</td>';
+                echo '<td class="text-center align-middle">' . $asset['name'] . '</td>';
+                echo '<td class="text-center align-middle">' . $counting_item['detail'] . '</td>';
+                echo '<td class="text-center align-middle">' . $asset['year_purchase'] . '</td>';
+                echo '<td class="text-center align-middle">' . $asset['unit_name'] . '</td>';
+                echo '<td class="text-center align-middle">' . $location['name'] . '</td>';
 
 
                 $icon = '<i class="fa-solid fa-check"></i>';
                 echo '<td class="text-center align-middle">';
-                echo $line['action'] == 1 ? $icon : '';
+                echo $counting_item['action'] == 1 ? $icon : '';
                 echo '</td>';
                 echo '<td class="text-center align-middle">';
-                echo $line['action'] != 1 && $line['action'] != 4 ? $icon : '';
+                echo $counting_item['action'] != 1 && $counting_item['action'] != 4 ? $icon : '';
                 echo '</td>';
                 echo '<td class="text-center align-middle">';
-                echo $line['action'] == 4 ? $icon : '';
+                echo $counting_item['action'] == 4 ? $icon : '';
                 echo '</td>';
                 echo '<tr>';
                 $num++;
