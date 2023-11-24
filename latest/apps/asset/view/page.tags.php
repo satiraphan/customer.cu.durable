@@ -12,12 +12,12 @@
 		while($asset = $dbc->Fetch($rst)){
 			$category = $dbc->GetRecord("asm_categories","*","id=".$asset['cat_id']);
 			
-			echo '<div class="row m-2 p-4">';
+			echo '<div class="row m-2 pl-0 pr-4 pt-2 pb-4">';
 				echo '<table>';
 					echo '<tbody>';
 						echo '<tr>';
-							echo '<td style="width:350px;font-size:26px;overflow-x: hidden;font-weight: bold;" class="pt-4 label-font">';
-								echo '<br>';
+							echo '<td style="width:430px;font-size:28px;overflow-x: hidden;font-weight: bold;" class="pt-0 label-font pr-4">';
+								echo '<br><br>';
 								echo $asset['code']."<br>";
 								echo $asset['name']."<br>";
 								echo $asset['brand']."<br>";

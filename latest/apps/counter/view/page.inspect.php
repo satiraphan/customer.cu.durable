@@ -20,12 +20,16 @@
 	</div>
 	<div class="card-body">
 	<?php
+		$location = '';
+		if($asset['location'] != null){
+			$loca = $dbc->GetRecord("asm_locations","*","id=".$asset['location']);
+		}
 		echo '<dl class="row">';
 			echo '<dt class="col-sm-3">หมวดหมู่</dt><dd class="col-sm-9">'.$category['name'].'</dd>';
 			echo '<dt class="col-sm-3">ชื่อ</dt><dd class="col-sm-9">'.$asset['name'].'</dd>';
 			echo '<dt class="col-sm-3">ยี่ห้อ</dt><dd class="col-sm-9">'.$asset['brand'].'</dd>';
 			echo '<dt class="col-sm-3">ปีที่ซื้อ</dt><dd class="col-sm-9">'.$asset['year_purchase'].'</dd>';
-			echo '<dt class="col-sm-3">ตำแหน่ง</dt><dd class="col-sm-9">'.$asset['location'].'</dd>';
+			echo '<dt class="col-sm-3">ตำแหน่ง</dt><dd class="col-sm-9">'.$loca['name'].'</dd>';
 			echo '<dt class="col-sm-3">รายละเอียด</dt><dd class="col-sm-9">'.$asset['detail'].'</dd>';
 		echo '</dl>';
 	?>
