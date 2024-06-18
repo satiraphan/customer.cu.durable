@@ -4,7 +4,7 @@
 	
 	define("DB_NAME","customer_chula_dcs");
 	define("DB_USER","root");
-	define("DB_PASS","liverpool");
+	define("DB_PASS","Maxnight007");
 	
 	//define("DB_SERVER","192.168.32.3");
 	//define("DB_SERVER","localhost");
