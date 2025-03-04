@@ -15,11 +15,12 @@
     $dbc->Connect();
     $os = new oceanos($dbc);
 
-
-    $counting_id = $_POST['id'];
     $filename = 'รายงานผลการตรวจสอบพัสดุ';
     $spreadsheet = new Spreadsheet();
     $sheet = $spreadsheet->getActiveSheet();
+
+    $counting_id = $_POST['id'];
+
 
     //header
     $aCol = array('A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J');
@@ -43,44 +44,38 @@
 
     //data
     $line_number = 4;
-    $sql = "SELECT
-               asm_counting_items.id AS id,
-               asm_counting_items.validated AS validated,
-               asm_counting_items.validator AS validator,
-               asm_counting_items.detail AS detail,
-               asm_counting_items.action AS action,
-               asm_counting_items.id AS id,
-               asm_assets.name AS asset_name,
-               asm_assets.brand AS asset_brand,
-               asm_assets.serial AS asset_serial,
-               asm_assets.code AS code,
-               asm_assets.unit_name AS asset_unit_name,
-               asm_assets.year_purchase AS year_purchase,
-               asm_locations.name AS asset_location
-               
-        
-           FROM asm_counting_items
-           LEFT JOIN asm_assets ON asm_counting_items.asset_id = asm_assets.id
-           LEFT JOIN asm_locations ON asm_assets.location = asm_locations.id
-           WHERE asm_counting_items.counting_id IN ($counting_id)
-           GROUP BY asm_counting_items.asset_id
-           ORDER BY `asm_locations`.`name` ASC 
-                        ";
+    $sql = "SELECT DISTINCT  asm_counting_items.asset_id AS asset_id
+                   FROM asm_counting_items
+                   WHERE  asm_counting_items.counting_id IN ($counting_id)
+                   ORDER BY asm_counting_items.id ASC";
     $rst = $dbc->Query($sql);
     $num = 1;
     while ($line = $dbc->Fetch($rst)) {
+        $counting_item = "";
+        $asset_id = $line['asset_id'];
+        $sql2 = "SELECT * FROM asm_counting_items 
+                    WHERE asm_counting_items.asset_id='$asset_id' AND asm_counting_items.counting_id IN ($counting_id) 
+                    ORDER BY asm_counting_items.counting_id DESC";
+        $rst2 = $dbc->Query($sql2);
+        if ($dbc->Total($rst2) > 0) {
+            $line = $dbc->Fetch($rst2);
+            $counting_item = $line;
+        }
+
+        $asset = $dbc->GetRecord("asm_assets","*","id=".$line['asset_id']);
+        $location = $dbc->GetRecord("asm_locations","name","id=".$counting_item['location_id']);
         $icon = '/';
 
         $sheet->setCellValue("A" . $line_number, $num);
-        $sheet->setCellValue("B" . $line_number, $line['code']);
-        $sheet->setCellValue("C" . $line_number, $line['asset_name']);
-        $sheet->setCellValue("D" . $line_number, $line['detail']);
-        $sheet->setCellValue("E" . $line_number, $line['year_purchase']);
-        $sheet->setCellValue("F" . $line_number, $line['asset_unit_name']);
-        $sheet->setCellValue("G" . $line_number, $line['asset_location']);
-        $sheet->setCellValue("H" . $line_number, $line['action'] == 1 ? $icon : '');
-        $sheet->setCellValue("I" . $line_number, $line['action'] != 1 && $line['action'] != 4 ? $icon : '');
-        $sheet->setCellValue("J" . $line_number, $line['action'] == 4 ? $icon : '');
+        $sheet->setCellValue("B" . $line_number, $asset['code']);
+        $sheet->setCellValue("C" . $line_number, $asset['name']);
+        $sheet->setCellValue("D" . $line_number, $counting_item['detail']);
+        $sheet->setCellValue("E" . $line_number, $asset['year_purchase']);
+        $sheet->setCellValue("F" . $line_number, $asset['unit_name']);
+        $sheet->setCellValue("G" . $line_number, $location['name']);
+        $sheet->setCellValue("H" . $line_number, $counting_item['action'] == 1 ? $icon : '');
+        $sheet->setCellValue("I" . $line_number, $counting_item['action'] != 1 && $counting_item['action'] != 4 ? $icon : '');
+        $sheet->setCellValue("J" . $line_number, $counting_item['action'] == 4 ? $icon : '');
 
 
         $num++;
