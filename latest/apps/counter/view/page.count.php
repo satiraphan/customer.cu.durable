@@ -60,7 +60,11 @@
 	</div>
 	<div class="card-bottom border-top">
 		<div class="m-2 float-right">
-			<button class="btn btn-outline-warning" onclick="fn.app.counter.dialog_submit(<?php echo $counter['id'];?>)"><i class="fa-solid fa-thumbs-up mr-1"></i> ยืนยัน</button>
+			<?php
+				if($os->allow("counter","approve")){
+					echo '<button class="btn btn-outline-warning" onclick="fn.app.counter.dialog_submit('.$counter['id'].')"><i class="fa-solid fa-thumbs-up mr-1"></i> ยืนยัน</button>';
+				}
+			?>
 		</div>
 		<div class="m-2">
 			<button class="btn btn-outline-dark" onclick="window.history.back()"><i class="fa-solid fa-up-left mr-1"></i> Back</button>

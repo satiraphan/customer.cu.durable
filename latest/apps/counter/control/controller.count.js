@@ -169,21 +169,76 @@ $("#tblAsset").DataTable({
 	};
 
 	
+	// QR Code Scanner Setup
 	$.qrCodeReader.jsQRpath = "plugins/qr-code/js/jsQR/jsQR.min.js";
 	$.qrCodeReader.beepPath = "plugins/qr-code/audio/beep.mp3";
 	
-	$("#openreader-btn").qrCodeReader({
-		callback : function(code){
-			$.post("apps/counter/xhr/action-search.php",{
-				"code" : code,
-				"counting_id" : $("#openreader-btn").attr("data-counting-id")
-			},function(response){
-				if(response.success){
-					fn.navigate('counter','view=inspect&id='+response.asset_id+'&counting_id='+response.counting_id);
-					//window.history.back();
-				}else{
-					fn.notify.warnbox(response.msg,"Oops...");
-				}
-			},"json");
+	// Function to initialize QR scanner
+	function initQRScanner() {
+		// Clean up any existing QR scanner elements in DOM
+		$("#qrr-overlay, #qrr-container").remove();
+		
+		// Reset QR scanner instance to ensure clean initialization
+		if ($.qrCodeReader.instance) {
+			// Force close any existing scanner instance
+			if ($.qrCodeReader.instance.isOpen) {
+				$.qrCodeReader.instance.close();
+			}
+			// Force destroy if method exists
+			if (typeof $.qrCodeReader.instance.destroy === 'function') {
+				$.qrCodeReader.instance.destroy();
+			}
+			// Clear the instance to force reinitialization
+			$.qrCodeReader.instance = null;
 		}
-	});
+		
+		$("#openreader-btn").qrCodeReader({
+			callback : function(code){
+				$.post("apps/counter/xhr/action-search.php",{
+					"code" : code,
+					"counting_id" : $("#openreader-btn").attr("data-counting-id")
+				},function(response){
+					if(response.success){
+						fn.navigate('counter','view=inspect&id='+response.asset_id+'&counting_id='+response.counting_id);
+						//window.history.back();
+					}else{
+						fn.notify.warnbox(response.msg,"Oops...");
+					}
+				},"json");
+			}
+		});
+	}
+	
+	// Initialize QR scanner
+	initQRScanner();
+	
+	// Cleanup function for page navigation
+	function cleanupQRScanner() {
+		// Clean up DOM elements first
+		$("#qrr-overlay, #qrr-container").remove();
+		
+		if ($.qrCodeReader.instance) {
+			if ($.qrCodeReader.instance.isOpen) {
+				$.qrCodeReader.instance.close();
+			}
+			// Also destroy to ensure complete cleanup - only if method exists
+			if (typeof $.qrCodeReader.instance.destroy === 'function') {
+				try {
+					$.qrCodeReader.instance.destroy();
+				} catch (e) {
+					console.warn('Error during QR scanner destroy:', e);
+				}
+			}
+			$.qrCodeReader.instance = null;
+		}
+	}
+	
+	// Add cleanup on page unload/navigation
+	$(window).on('beforeunload pagehide', cleanupQRScanner);
+	
+	// Also cleanup when navigating using the application's navigation function
+	var originalNavigate = fn.navigate;
+	fn.navigate = function() {
+		cleanupQRScanner();
+		return originalNavigate.apply(this, arguments);
+	};

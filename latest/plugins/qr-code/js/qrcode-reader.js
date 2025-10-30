@@ -63,6 +63,11 @@
 
     init: function () {
 
+      // Clean up any existing elements first (but only if we have elements to clean)
+      if (qrr && qrr.bgOverlay) {
+        qrr.destroy();
+      }
+
       // build the HTML 
       qrr.buildHTML();
       qrr.scriptLoaded = false;
@@ -78,6 +83,36 @@
 
       });
 
+    },
+
+    destroy: function() {
+      // Close any open scanner
+      if (qrr && qrr.isOpen) {
+        qrr.close();
+      }
+
+      // Remove DOM elements if they exist
+      if (qrr && qrr.bgOverlay) {
+        qrr.bgOverlay.off().remove();
+        qrr.bgOverlay = null;
+      }
+      if (qrr && qrr.container) {
+        qrr.container.off().remove();
+        qrr.container = null;
+      }
+
+      // Clear other references only if qrr exists
+      if (qrr) {
+        qrr.closeBtn = null;
+        qrr.okBtn = null;
+        qrr.loadingMessage = null;
+        qrr.canvas = null;
+        qrr.audio = null;
+        qrr.outputDiv = null;
+        qrr.outputNoData = null;
+        qrr.outputData = null;
+        qrr.video = null;
+      }
     },
 
     // build the HTML interface of the widget
@@ -338,21 +373,33 @@
       // cancel the refresh function
       if (qrr.requestID) {
         window.cancelAnimationFrame(qrr.requestID);
+        qrr.requestID = null;
       }
 
       // unbind keyboard
       $(document).off('keyup.qrCodeReader');
 
-      // stop the video
-      if (qrr.video.srcObject) {
-        qrr.video.srcObject.getTracks()[0].stop();
+      // stop the video and all tracks
+      if (qrr.video && qrr.video.srcObject) {
+        qrr.video.srcObject.getTracks().forEach(function(track) {
+          track.stop();
+        });
+        qrr.video.srcObject = null;
       }
       
       // hide the GUI
-      qrr.canvas.addClass("hidden");
-      qrr.loadingMessage.show();
-      qrr.bgOverlay.hide();
-      qrr.container.hide();
+      if (qrr.canvas) {
+        qrr.canvas.addClass("hidden");
+      }
+      if (qrr.loadingMessage) {
+        qrr.loadingMessage.show();
+      }
+      if (qrr.bgOverlay) {
+        qrr.bgOverlay.hide();
+      }
+      if (qrr.container) {
+        qrr.container.hide();
+      }
 
       qrr.isOpen = false;
     }

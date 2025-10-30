@@ -48,6 +48,7 @@
 							
 							<button type="submit" class="btn btn-primary btn-block">เข้าสู่ระบบ</button>
 						<div class="text-center opacity-50 font-italic">จุฬาลงกรณ์มหาวิทยาลัย</div>
+						<div class="text-center opacity-50 font-italic">ฉบับปรับปรุง 01/10/2025</div>
 						</form>
 						<!-- /LOG IN FORM -->
 
