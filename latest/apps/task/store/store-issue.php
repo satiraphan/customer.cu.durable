@@ -15,6 +15,7 @@
 		"title" => "ams_tasks.title",
 		"asset_id" => "ams_tasks.asset_id",
 		"asset_name" => "asm_assets.name",
+		"asset_code" => "asm_assets.code",
 		"asset_status" => "asm_assets.status",
 		"issued" => "ams_tasks.issued",
 		"issuer" => "ams_tasks.issuer",
@@ -22,10 +23,13 @@
 		"closed" => "ams_tasks.closed",
 		"counting_item_id" => "ams_tasks.counting_item_id",
 		"data" => "ams_tasks.data",
+		"detail" => "asm_counting_items.detail",
 		"remark" => "ams_tasks.remark",
 		"current_location_id" => "asm_assets.location",
 		"new_location_id" => "asm_counting_items.location_id",
-		"repair_id" => "asm_repairing.id"
+		"repair_id" => "asm_repairing.id",
+		"counting_item_action" => "asm_counting_items.action",
+		"current_location" => "asm_locations.name",
 	);
 
 	$table = array(
@@ -47,6 +51,12 @@
 				"table" => "asm_repairing",
 				"with" => "task_id"
 			),
+			array(
+				"join" => "asm_assets",
+				"field" => "location",
+				"table" => "asm_locations",
+				"with" => "id"
+			),
 		),
 		"where" => "ams_tasks.status != 3"
 	);
@@ -59,11 +69,8 @@
 
 	for($i=0;$i<count($data['aaData']);$i++){
 		if($data['aaData'][$i]['type']==1){
-			$current = $dbc->GetRecord("asm_locations","*","id=".$data['aaData'][$i]['current_location_id']);
 			$new = $dbc->GetRecord("asm_locations","*","id=".$data['aaData'][$i]['new_location_id']);
-			$data['aaData'][$i]['current_location'] =$current['name'];
 			$data['aaData'][$i]['new_location'] =$new['name'];
-
 		}
 	}
 

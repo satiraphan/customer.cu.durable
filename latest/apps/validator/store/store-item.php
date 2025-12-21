@@ -40,7 +40,9 @@
 		"remark" => "asm_assets.remark",
 		"imgs" => "asm_assets.imgs",
 
-		"username" => "os_users.name"
+		"username" => "os_users.name",
+		"task_status" => "ams_tasks.status",
+		"task_type" => "ams_tasks.type",
 	);
 
 	$where = "asm_counting_items.counting_id = ".$_GET['counting_id'];
@@ -61,6 +63,11 @@
 				"field" => "validator",
 				"table" => "os_users",
 				"with" => "id" 
+
+			),array(
+				"field" => "id",
+				"table" => "ams_tasks",
+				"with" => "counting_item_id" 
 
 			)
 			

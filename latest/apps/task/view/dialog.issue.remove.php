@@ -27,7 +27,8 @@
 				echo '<ul>';
 				foreach($items as $item){
 					$issue = $dbc->GetRecord("ams_tasks","*","id=".$item);
-					echo "<li>".$issue['id'].' : '.$issue['name']."</li>";
+					$asset = $dbc->GetRecord("asm_assets","*","id=".$issue['asset_id']);
+					echo "<li>".$issue['id'].' : '.$asset['name']."</li>";
 				}
 				echo '</ul>';
 			}else{

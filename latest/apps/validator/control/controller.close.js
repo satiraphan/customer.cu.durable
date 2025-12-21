@@ -11,6 +11,7 @@
 		});
 	};
 
+
 	fn.app.validator.close = function(){
 		$.post("apps/validator/xhr/action-close-validator.php",$("form[name=form_close_validator]").serialize(),function(response){
 			if(response.success){

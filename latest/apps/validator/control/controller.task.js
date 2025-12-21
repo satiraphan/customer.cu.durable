@@ -16,8 +16,8 @@
 	fn.app.validator.task = function(){
 		$.post("apps/validator/xhr/action-task.php",$("form[name=form_task_validator]").serialize(),function(response){
 			if(response.success){
-				$("#tblValidator").data("selected",[]);
-				$("#tblValidator").DataTable().draw();
+				$("#tblValidate").data("selected",[]);
+				$("#tblValidate").DataTable().draw();
 				$("#dialog_task_validator").modal("hide");
 			}else{
 				fn.notify.warnbox(response.msg,"Oops...");
