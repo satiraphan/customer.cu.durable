@@ -28,6 +28,7 @@
 			<a href="apps/asset/include/import.csv" class="btn btn-primary mr-1"><i class="fa fa-upload mr-1"></i>Download Template</a>
 			<button onclick="$('form[name=importer] input').click();" class="btn btn-warning mr-4" ><i class="fa fa-upload mr-1"></i>Import</button>
 			<button onclick="fn.app.asset.print_tag()" class="btn btn-info mr-2" ><i class="fa fa-print mr-1"></i>Printag</button>
+			<button onclick="fn.app.asset.export()" class="btn btn-success mr-2" ><i class="fa fa-file-export mr-1"></i>Export</button>
 			<!--
 			<button id="openreader-btn" class="btn btn-outline-dark"><i class="fa-solid fa-barcode"></i> ค้นหา</button>
 			<button class="btn btn-outline-dark"><i class="fa-solid fa-magnifying-glass"></i> ค้นหา</button>

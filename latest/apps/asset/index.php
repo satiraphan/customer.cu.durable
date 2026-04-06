@@ -45,6 +45,7 @@
 				break;
 			case "view":
 				include "control/controller.view.js";
+				include "control/controller.export.js";
 				if($os->allow("asset","edit"))include "control/controller.photo.js";
 				if($os->allow("asset","edit"))include "control/controller.import.js";
 				if($os->allow("asset","remove"))include "control/controller.remove.js";
