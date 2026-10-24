@@ -1,5 +1,6 @@
 <?php
 	session_start();
+	@ini_set('memory_limit', '512M');
 	include_once "../../../config/define.php";
 	include_once "../../../include/db.php";
 	include_once "../../../include/oceanos.php";
